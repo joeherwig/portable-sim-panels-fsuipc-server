@@ -1,0 +1,33 @@
+﻿<Window x:Class="MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:portable_sim_panels_FSUIPC_server"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="350" Width="525"
+        FontSize="14"
+        Closing="Window_Closing"
+        >
+
+    <DockPanel>
+        <StatusBar DockPanel.Dock="Bottom" Height="24">
+            <TextBlock Name="lblConnectionStatus">Connection Status</TextBlock>
+        </StatusBar>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="auto"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+            </Grid.RowDefinitions>
+            <TextBlock Grid.Row="0" Grid.Column="0" Margin="10,1,20,1">Indicated Airpeed (Knots):</TextBlock>
+            <TextBlock Name="txtAirspeed" Grid.Row="0" Grid.Column="1" Margin="1">0</TextBlock>
+            <TextBlock Grid.Row="1" Grid.Column="0" Margin="10,1,20,1">Master Avionics:</TextBlock>
+            <CheckBox Name="chkAvionicsMaster" Grid.Row="1" Grid.Column="1" Margin="1" Click="chkAvionicsMaster_Click"/>
+            <TextBlock Name="txtJson" Grid.Column="1" Margin="1.4,26.4,10.4,-243.8" Grid.Row="1" TextWrapping="Wrap" Text="TextBlock" RenderTransformOrigin="0.187,-1.003"/>
+        </Grid>
+    </DockPanel>
+</Window>
