@@ -2,8 +2,12 @@ C:\Users\jherwig\source\repos\portable-sim-panels-FSUIPC-server\bin\Debug\portab
 C:\Users\jherwig\source\repos\portable-sim-panels-FSUIPC-server\bin\Debug\portable-sim-panels-FSUIPC-server.exe
 C:\Users\jherwig\source\repos\portable-sim-panels-FSUIPC-server\bin\Debug\portable-sim-panels-FSUIPC-server.pdb
 C:\Users\jherwig\source\repos\portable-sim-panels-FSUIPC-server\bin\Debug\portable-sim-panels-FSUIPC-server.xml
+C:\Users\jherwig\source\repos\portable-sim-panels-FSUIPC-server\bin\Debug\DeltaObjectGenerator.dll
 C:\Users\jherwig\source\repos\portable-sim-panels-FSUIPC-server\bin\Debug\FSUIPCClient.dll
+C:\Users\jherwig\source\repos\portable-sim-panels-FSUIPC-server\bin\Debug\Newtonsoft.Json.dll
 C:\Users\jherwig\source\repos\portable-sim-panels-FSUIPC-server\bin\Debug\FSUIPCClient.xml
+C:\Users\jherwig\source\repos\portable-sim-panels-FSUIPC-server\bin\Debug\Newtonsoft.Json.pdb
+C:\Users\jherwig\source\repos\portable-sim-panels-FSUIPC-server\bin\Debug\Newtonsoft.Json.xml
 C:\Users\jherwig\source\repos\portable-sim-panels-FSUIPC-server\obj\Debug\portable-sim-panels-FSUIPC-server.vbprojAssemblyReference.cache
 C:\Users\jherwig\source\repos\portable-sim-panels-FSUIPC-server\obj\Debug\MainWindow.g.vb
 C:\Users\jherwig\source\repos\portable-sim-panels-FSUIPC-server\obj\Debug\Application.g.vb
@@ -18,6 +22,3 @@ C:\Users\jherwig\source\repos\portable-sim-panels-FSUIPC-server\obj\Debug\portab
 C:\Users\jherwig\source\repos\portable-sim-panels-FSUIPC-server\obj\Debug\portable-sim-panels-FSUIPC-server.exe
 C:\Users\jherwig\source\repos\portable-sim-panels-FSUIPC-server\obj\Debug\portable-sim-panels-FSUIPC-server.xml
 C:\Users\jherwig\source\repos\portable-sim-panels-FSUIPC-server\obj\Debug\portable-sim-panels-FSUIPC-server.pdb
-C:\Users\jherwig\source\repos\portable-sim-panels-FSUIPC-server\bin\Debug\Newtonsoft.Json.dll
-C:\Users\jherwig\source\repos\portable-sim-panels-FSUIPC-server\bin\Debug\Newtonsoft.Json.pdb
-C:\Users\jherwig\source\repos\portable-sim-panels-FSUIPC-server\bin\Debug\Newtonsoft.Json.xml

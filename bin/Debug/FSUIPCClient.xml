@@ -4293,7 +4293,7 @@
         </member>
         <member name="P:FSUIPC.PayloadServices.PayloadWeightNewtons">
             <summary>
-            The current weight of all payload stations in Kilograms
+            The current weight of all payload stations in Newtons
             </summary>
         </member>
         <member name="P:FSUIPC.PayloadServices.GrossWeightLbs">
@@ -4421,6 +4421,148 @@
             Gets back a single fuel tank object using the type of tank
             </summary>
             <param name="fuelTank"></param>
+            <returns></returns>
+        </member>
+        <member name="T:FSUIPC.PMDG_NGX_CDU_COLOR">
+            <summary>
+            An enum representing the colour of a cell on the CDU
+            </summary>
+        </member>
+        <member name="F:FSUIPC.PMDG_NGX_CDU_COLOR.WHITE">
+            <summary>
+            White
+            </summary>
+        </member>
+        <member name="F:FSUIPC.PMDG_NGX_CDU_COLOR.CYAN">
+            <summary>
+            Cyan
+            </summary>
+        </member>
+        <member name="F:FSUIPC.PMDG_NGX_CDU_COLOR.GREEN">
+            <summary>
+            Green
+            </summary>
+        </member>
+        <member name="F:FSUIPC.PMDG_NGX_CDU_COLOR.MAGENTA">
+            <summary>
+            Magenta
+            </summary>
+        </member>
+        <member name="F:FSUIPC.PMDG_NGX_CDU_COLOR.AMBER">
+            <summary>
+            Amber 
+            </summary>
+        </member>
+        <member name="F:FSUIPC.PMDG_NGX_CDU_COLOR.RED">
+            <summary>
+            Red
+            </summary>
+        </member>
+        <member name="T:FSUIPC.PMDG_NGX_CDU_FLAG">
+            <summary>
+            A set of flags giving info about a cell on the CDU
+            </summary>
+        </member>
+        <member name="F:FSUIPC.PMDG_NGX_CDU_FLAG.SMALL_FONT">
+            <summary>
+            The symbol is shown in a smaller font than normal
+            </summary>
+        </member>
+        <member name="F:FSUIPC.PMDG_NGX_CDU_FLAG.REVERSE">
+            <summary>
+            The symbol with the foreground and background colours reversed. 
+            </summary>
+        </member>
+        <member name="F:FSUIPC.PMDG_NGX_CDU_FLAG.DIMMED">
+            <summary>
+            The symbol is shown dimmed compared to normal
+            </summary>
+        </member>
+        <member name="T:FSUIPC.PMDG_NGX_CDU_Cell">
+            <summary>
+            Represents a cell on the CDU. Holds information about the symbol displayed in the cell.
+            </summary>
+        </member>
+        <member name="F:FSUIPC.PMDG_NGX_CDU_Cell.Symbol">
+            <summary>
+            The symbol currently displayed.
+            </summary>
+        </member>
+        <member name="F:FSUIPC.PMDG_NGX_CDU_Cell.Color">
+            <summary>
+            The foreground colour of the cell.
+            </summary>
+        </member>
+        <member name="F:FSUIPC.PMDG_NGX_CDU_Cell.Flags">
+            <summary>
+            Extra information about the cell.
+            </summary>
+        </member>
+        <member name="M:FSUIPC.PMDG_NGX_CDU_Cell.ToString">
+            <summary>
+            Returns the symbol displayed in the cell as a string.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:FSUIPC.PMDG_NGX_CDU_Row">
+            <summary>
+            Represents an entire row of cells on the CDU
+            </summary>
+        </member>
+        <member name="P:FSUIPC.PMDG_NGX_CDU_Row.Cells">
+            <summary>
+            An array of cells that make up the row from left to right. The first cell on the left is index 0. 
+            </summary>
+        </member>
+        <member name="M:FSUIPC.PMDG_NGX_CDU_Row.ToString">
+            <summary>
+            Returns the text dislayed on the row as a string.
+            </summary>
+            <returns>A string containing all the text on the row.</returns>
+        </member>
+        <member name="T:FSUIPC.PMDG_NGX_CDU_Screen">
+            <summary>
+            Represents a CDU screen in a PMDG aircraft.
+            </summary>
+        </member>
+        <member name="P:FSUIPC.PMDG_NGX_CDU_Screen.Powered">
+            <summary>
+            Indicates if this CDU has power or not
+            </summary>
+        </member>
+        <member name="P:FSUIPC.PMDG_NGX_CDU_Screen.Rows">
+            <summary>
+            An array or rows that make up the entire screen
+            </summary>
+        </member>
+        <member name="M:FSUIPC.PMDG_NGX_CDU_Screen.#ctor(System.Int32)">
+            <summary>
+            Creates a new PMDG CDU Class.
+            </summary>
+            <param name="Offset">The base offset address of the CDU data. <para>See the FSUIPC documentation for the PMDG aircraft installed in the Modules\FSUIPC Documents folder.</para></param>
+        </member>
+        <member name="M:FSUIPC.PMDG_NGX_CDU_Screen.RefreshData">
+            <summary>
+            Gets the latest data displayed on the CDU from FSUIPC.
+            </summary>
+        </member>
+        <member name="M:FSUIPC.PMDG_NGX_CDU_Screen.RefreshData(System.Byte)">
+            <summary>
+            Gets the latest data displayed on the CDU from FSUIPC.
+            </summary>
+            <param name="ClassInstance">The number of the Class Instance of WideClient you want to talk to.</param>
+        </member>
+        <member name="M:FSUIPC.PMDG_NGX_CDU_Screen.ToString">
+            <summary>
+            Returns the entire screen in a single fixed-length string.<para>The order is from left to right starting at the top row and going down.</para>
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:FSUIPC.PMDG_NGX_CDU_Screen.ToString(System.String)">
+            <summary>
+            Returns the entire screen in a single fixed-length string.<para>The order is from left to right starting at the top row and going down.</para><para>Each row is seperated by the supplied RowDeimiter</para>
+            </summary>
+            <param name="RowDelimiter">A string that will be used to mark the end of each row</param>
             <returns></returns>
         </member>
         <member name="T:FSUIPC.StatsProcess">

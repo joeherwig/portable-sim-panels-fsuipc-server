@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:portable_sim_panels_FSUIPC_server"
         mc:Ignorable="d"
-        Title="MainWindow" Height="350" Width="525"
+        Title="MainWindow" Height="350" Width="896.444"
         FontSize="14"
         Closing="Window_Closing"
         >
@@ -27,7 +27,8 @@
             <TextBlock Name="txtAirspeed" Grid.Row="0" Grid.Column="1" Margin="1">0</TextBlock>
             <TextBlock Grid.Row="1" Grid.Column="0" Margin="10,1,20,1">Master Avionics:</TextBlock>
             <CheckBox Name="chkAvionicsMaster" Grid.Row="1" Grid.Column="1" Margin="1" Click="chkAvionicsMaster_Click"/>
-            <TextBlock Name="txtJson" Grid.Column="1" Margin="1.4,26.4,10.4,-243.8" Grid.Row="1" TextWrapping="Wrap" Text="TextBlock" RenderTransformOrigin="0.187,-1.003"/>
+            <TextBlock Name="txtPrevious" Grid.Column="1" Margin="1.4,26.4,367.4,-243.8" Grid.Row="1" TextWrapping="Wrap" Text="TextBlock" RenderTransformOrigin="0.187,-1.003"/>
+            <TextBlock Name="txtJson" Grid.Column="1" Margin="363.4,26.4,9.4,-243.8" Grid.Row="1" TextWrapping="Wrap" Text="TextBlock" RenderTransformOrigin="0.187,-1.003"/>
         </Grid>
     </DockPanel>
 </Window>

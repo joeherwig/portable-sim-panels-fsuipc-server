@@ -1,0 +1,214 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>DeltaObjectGenerator</name>
+    </assembly>
+    <members>
+        <member name="T:DeltaObjectGenerator.Attributes.DeltaObjectAliasAttribute">
+            <summary>
+            Sets the value of <see cref="P:DeltaObjectGenerator.Models.DeltaObject.PropertyAlias"/>.
+            </summary>
+            <example>
+            <code>
+            public class Customer
+            {
+                [DeltaObjectAlias("last_name")]
+                public string LastName { get; set; }
+            }
+            </code>
+            </example>
+        </member>
+        <member name="T:DeltaObjectGenerator.Attributes.DeltaObjectIgnoreAttribute">
+            <summary>
+            Ignores a property for purposes of generating a <see cref="T:System.Collections.Generic.List`1"/>.
+            </summary>
+        </member>
+        <member name="T:DeltaObjectGenerator.Attributes.DeltaObjectIgnoreOnDefaultAttribute">
+            <summary>
+            Ignores a property whose value is its default for purposes of generating a <see cref="T:System.Collections.Generic.List`1"/>.
+            </summary>
+        </member>
+        <member name="T:DeltaObjectGenerator.Extensions.GenericExtensions">
+            <summary>
+            A class offering extension methods to generate a <see cref="T:System.Collections.Generic.List`1"/>.
+            </summary>
+        </member>
+        <member name="M:DeltaObjectGenerator.Extensions.GenericExtensions.GetDeltaObjects``1(``0,``0)">
+            <summary>
+            Returns a <see cref="T:System.Collections.Generic.List`1"/>, which will be empty if there are no deltas.
+            </summary>
+            <typeparam name="T">Any type.</typeparam>
+            <param name="originalObject">A type of <typeparamref name="T"/>.</param>
+            <param name="newObject">A type of <typeparamref name="T"/>.</param>
+            <returns><see cref="T:System.Collections.Generic.List`1"/></returns>
+            <exception cref="T:System.ArgumentNullException">Thrown when either arguments are <c>null</c>.</exception>
+        </member>
+        <member name="M:DeltaObjectGenerator.Extensions.GenericExtensions.GetDeltaObjects``1(``0,Newtonsoft.Json.Linq.JObject)">
+            <summary>
+            Returns a <see cref="T:DeltaObjectGenerator.Models.DeltaGroup"/>, with empty collections of <see cref="T:DeltaObjectGenerator.Models.DeltaObject"/> 
+            if there are no deltas.
+            </summary>
+            <typeparam name="T">Any type.</typeparam>
+            <param name="originalObject">A type of <typeparamref name="T"/>.</param>
+            <param name="jObject">A type of <see cref="T:Newtonsoft.Json.Linq.JObject"/>.</param>
+            <returns><see cref="T:DeltaObjectGenerator.Models.DeltaGroup"/></returns>
+            <exception cref="T:System.ArgumentNullException">Thrown when either arguments are <c>null</c>.</exception>
+        </member>
+        <member name="T:DeltaObjectGenerator.Generators.IDeltaObjectEngine">
+            <summary>
+            Interface offering methods returning <see cref="T:System.Collections.Generic.List`1"/>.
+            </summary>
+        </member>
+        <member name="M:DeltaObjectGenerator.Generators.IDeltaObjectEngine.GetDeltaObjects``1(``0,``0)">
+            <summary>
+            Returns a <see cref="T:System.Collections.Generic.List`1"/>, which will be empty if there are no deltas.
+            </summary>
+            <typeparam name="T">Any type.</typeparam>
+            <param name="originalObject">A type of <typeparamref name="T"/>.</param>
+            <param name="newObject">A type of <typeparamref name="T"/>.</param>
+            <returns><see cref="T:System.Collections.Generic.List`1"/></returns>
+            <exception cref="T:System.ArgumentNullException">Thrown when either arguments are <c>null</c>.</exception>
+        </member>
+        <member name="M:DeltaObjectGenerator.Generators.IDeltaObjectEngine.GetDeltaObjects``1(``0,Newtonsoft.Json.Linq.JObject)">
+            <summary>
+            Returns a <see cref="T:DeltaObjectGenerator.Models.DeltaGroup"/>, with empty collections of <see cref="T:DeltaObjectGenerator.Models.DeltaObject"/> 
+            if there are no deltas.
+            </summary>
+            <typeparam name="T">Any type.</typeparam>
+            <param name="originalObject">A type of <typeparamref name="T"/>.</param>
+            <param name="jObject">A type of <see cref="T:Newtonsoft.Json.Linq.JObject"/>.</param>
+            <returns><see cref="T:DeltaObjectGenerator.Models.DeltaGroup"/></returns>
+            <exception cref="T:System.ArgumentNullException">Thrown when either arguments are <c>null</c>.</exception>
+        </member>
+        <member name="T:DeltaObjectGenerator.Generators.DeltaObjectEngine">
+            <summary>
+            A class offering functionality to generate a <see cref="T:System.Collections.Generic.List`1"/>
+            </summary>
+        </member>
+        <member name="M:DeltaObjectGenerator.Generators.DeltaObjectEngine.GetDeltaObjects``1(``0,``0)">
+            <summary>
+            Returns a <see cref="T:System.Collections.Generic.List`1"/>, which will be empty if there are no deltas.
+            </summary>
+            <typeparam name="T">Any type.</typeparam>
+            <param name="originalObject">A type of <typeparamref name="T"/>.</param>
+            <param name="newObject">A type of <typeparamref name="T"/>.</param>
+            <returns><see cref="T:System.Collections.Generic.List`1"/></returns>
+            <exception cref="T:System.ArgumentNullException">Thrown when either arguments are <c>null</c>.</exception>
+        </member>
+        <member name="M:DeltaObjectGenerator.Generators.DeltaObjectEngine.GetDeltaObjects``1(``0,Newtonsoft.Json.Linq.JObject)">
+            <summary>
+            Returns a <see cref="T:DeltaObjectGenerator.Models.DeltaGroup"/>, with empty collections of <see cref="T:DeltaObjectGenerator.Models.DeltaObject"/> 
+            if there are no deltas.
+            </summary>
+            <typeparam name="T">Any type.</typeparam>
+            <param name="originalObject">A type of <typeparamref name="T"/>.</param>
+            <param name="jObject">A type of <see cref="T:Newtonsoft.Json.Linq.JObject"/>.</param>
+            <returns><see cref="T:DeltaObjectGenerator.Models.DeltaGroup"/></returns>
+            <exception cref="T:System.ArgumentNullException">Thrown when either arguments are <c>null</c>.</exception>
+        </member>
+        <member name="T:DeltaObjectGenerator.Models.DeltaGroup">
+            <summary>
+            A class containing a <see cref="T:System.Collections.Generic.List`1"/> for successfully converted properties 
+            and a <see cref="T:System.Collections.Generic.List`1"/> for unsuccessfully converted properties.
+            </summary>
+        </member>
+        <member name="P:DeltaObjectGenerator.Models.DeltaGroup.ValueConversionStatus">
+            <summary>
+            Indicates whether all, some, or none of the properties were successfully converted 
+            into their associated types.
+            </summary>
+        </member>
+        <member name="P:DeltaObjectGenerator.Models.DeltaGroup.DeltaObjects">
+            <summary>
+            Contains <see cref="T:DeltaObjectGenerator.Models.DeltaObject"/>s with <see cref="F:DeltaObjectGenerator.Models.ValueConversionStatus.Success"/>.
+            </summary>
+        </member>
+        <member name="P:DeltaObjectGenerator.Models.DeltaGroup.DeltaObjectsValueConversionFail">
+            <summary>
+            Contains <see cref="T:DeltaObjectGenerator.Models.DeltaObject"/>s with <see cref="F:DeltaObjectGenerator.Models.ValueConversionStatus.Fail"/>.
+            </summary>
+        </member>
+        <member name="T:DeltaObjectGenerator.Models.DeltaObject">
+            <summary>
+            A class containing information about a property's deltas.
+            </summary>
+        </member>
+        <member name="P:DeltaObjectGenerator.Models.DeltaObject.PropertyName">
+            <summary>
+            The name of the property.
+            </summary>
+        </member>
+        <member name="P:DeltaObjectGenerator.Models.DeltaObject.PropertyAlias">
+            <summary>
+            The property's alias as set by <see cref="T:DeltaObjectGenerator.Attributes.DeltaObjectAliasAttribute"/>,
+            or the value of the property name if <see cref="T:DeltaObjectGenerator.Attributes.DeltaObjectAliasAttribute"/> 
+            is not applied.
+            </summary>
+        </member>
+        <member name="P:DeltaObjectGenerator.Models.DeltaObject.OriginalValue">
+            <summary>
+            The original value of the property.
+            </summary>
+        </member>
+        <member name="P:DeltaObjectGenerator.Models.DeltaObject.NewValue">
+            <summary>
+            The new value of the property.
+            </summary>
+        </member>
+        <member name="P:DeltaObjectGenerator.Models.DeltaObject.StringifiedOriginalValue">
+            <summary>
+            The original value of the property as a <see cref="T:System.String"/>.
+            </summary>
+        </member>
+        <member name="P:DeltaObjectGenerator.Models.DeltaObject.StringifiedNewValue">
+            <summary>
+            The new value of the property as a <see cref="T:System.String"/>.
+            </summary>
+        </member>
+        <member name="P:DeltaObjectGenerator.Models.DeltaObject.ValueConversionStatus">
+            <summary>
+            Has a value of <see cref="F:DeltaObjectGenerator.Models.ValueConversionStatus.Success"/> when the value of <see cref="P:DeltaObjectGenerator.Models.DeltaObject.NewValue"/>
+            can be converted into the type of the property on the model, otherwise the value will be
+            <see cref="F:DeltaObjectGenerator.Models.ValueConversionStatus.Fail"/>.
+            </summary>
+        </member>
+        <member name="T:DeltaObjectGenerator.Models.GroupValueConversionStatus">
+            <summary>
+            Enum indicating status of conversion of <see cref="T:Newtonsoft.Json.Linq.JObject"/> values into their associated 
+            properties.
+            </summary>
+        </member>
+        <member name="F:DeltaObjectGenerator.Models.GroupValueConversionStatus.NoneFailed">
+            <summary>
+            Indicates all delta values are convertible to the type of their associated property. 
+            This is also the value when there are no deltas.
+            </summary>
+        </member>
+        <member name="F:DeltaObjectGenerator.Models.GroupValueConversionStatus.SomeFailed">
+            <summary>
+            Indicates some delta values are and some are not convertible to the type of 
+            their associated property.
+            </summary>
+        </member>
+        <member name="F:DeltaObjectGenerator.Models.GroupValueConversionStatus.AllFailed">
+            <summary>
+            Indicates no delta values are convertible to the type of their associated property.
+            </summary>
+        </member>
+        <member name="T:DeltaObjectGenerator.Models.ValueConversionStatus">
+            <summary>
+            Provides the status of the conversion attempt of a value from one type to another.
+            </summary>
+        </member>
+        <member name="F:DeltaObjectGenerator.Models.ValueConversionStatus.Success">
+            <summary>
+            Indicates that the value can be converted into a specific type.
+            </summary>
+        </member>
+        <member name="F:DeltaObjectGenerator.Models.ValueConversionStatus.Fail">
+            <summary>
+            Indicates that the value cannot be converted into a specific type.
+            </summary>
+        </member>
+    </members>
+</doc>
