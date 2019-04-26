@@ -1,3 +1,7 @@
+C:\Users\jherwig\source\repos\portable-sim-panels-FSUIPC-server\obj\Debug\MainWindow.g.vb
+C:\Users\jherwig\source\repos\portable-sim-panels-FSUIPC-server\obj\Debug\Application.g.vb
+C:\Users\jherwig\source\repos\portable-sim-panels-FSUIPC-server\obj\Debug\portable-sim-panels-FSUIPC-server_MarkupCompile.cache
+C:\Users\jherwig\source\repos\portable-sim-panels-FSUIPC-server\obj\Debug\portable-sim-panels-FSUIPC-server_MarkupCompile.lref
 C:\Users\jherwig\source\repos\portable-sim-panels-FSUIPC-server\bin\Debug\portable-sim-panels-FSUIPC-server.exe.config
 C:\Users\jherwig\source\repos\portable-sim-panels-FSUIPC-server\bin\Debug\portable-sim-panels-FSUIPC-server.exe
 C:\Users\jherwig\source\repos\portable-sim-panels-FSUIPC-server\bin\Debug\portable-sim-panels-FSUIPC-server.pdb
@@ -8,11 +12,6 @@ C:\Users\jherwig\source\repos\portable-sim-panels-FSUIPC-server\bin\Debug\Newton
 C:\Users\jherwig\source\repos\portable-sim-panels-FSUIPC-server\bin\Debug\FSUIPCClient.xml
 C:\Users\jherwig\source\repos\portable-sim-panels-FSUIPC-server\bin\Debug\Newtonsoft.Json.pdb
 C:\Users\jherwig\source\repos\portable-sim-panels-FSUIPC-server\bin\Debug\Newtonsoft.Json.xml
-C:\Users\jherwig\source\repos\portable-sim-panels-FSUIPC-server\obj\Debug\portable-sim-panels-FSUIPC-server.vbprojAssemblyReference.cache
-C:\Users\jherwig\source\repos\portable-sim-panels-FSUIPC-server\obj\Debug\MainWindow.g.vb
-C:\Users\jherwig\source\repos\portable-sim-panels-FSUIPC-server\obj\Debug\Application.g.vb
-C:\Users\jherwig\source\repos\portable-sim-panels-FSUIPC-server\obj\Debug\portable-sim-panels-FSUIPC-server_MarkupCompile.cache
-C:\Users\jherwig\source\repos\portable-sim-panels-FSUIPC-server\obj\Debug\portable-sim-panels-FSUIPC-server_MarkupCompile.lref
 C:\Users\jherwig\source\repos\portable-sim-panels-FSUIPC-server\obj\Debug\MainWindow.baml
 C:\Users\jherwig\source\repos\portable-sim-panels-FSUIPC-server\obj\Debug\portable-sim-panels-FSUIPC-server.g.resources
 C:\Users\jherwig\source\repos\portable-sim-panels-FSUIPC-server\obj\Debug\portable_sim_panels_FSUIPC_server.Resources.resources
@@ -22,3 +21,4 @@ C:\Users\jherwig\source\repos\portable-sim-panels-FSUIPC-server\obj\Debug\portab
 C:\Users\jherwig\source\repos\portable-sim-panels-FSUIPC-server\obj\Debug\portable-sim-panels-FSUIPC-server.exe
 C:\Users\jherwig\source\repos\portable-sim-panels-FSUIPC-server\obj\Debug\portable-sim-panels-FSUIPC-server.xml
 C:\Users\jherwig\source\repos\portable-sim-panels-FSUIPC-server\obj\Debug\portable-sim-panels-FSUIPC-server.pdb
+C:\Users\jherwig\source\repos\portable-sim-panels-FSUIPC-server\obj\Debug\portable-sim-panels-FSUIPC-server.vbprojAssemblyReference.cache

@@ -1,6 +1,10 @@
 {
   "ExpandedNodes": [
-    ""
+    "",
+    "\\My Project",
+    "\\My Project\\MyExtensions",
+    "\\packages"
   ],
+  "SelectedNode": "\\portable-sim-panels-FSUIPC-server.sln",
   "PreviewInSolutionExplorer": false
 }

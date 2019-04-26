@@ -1,22 +1,7 @@
-﻿Imports FSUIPC
-Imports DeltaObjectGenerator
-Imports Newtonsoft.Json
-Imports System
-Imports System.Collections.Generic
-Imports System.Linq
-Imports System.Runtime.Serialization.Json
-Imports System.Text
-Imports System.Threading.Tasks
-Imports System.Windows
-Imports System.Windows.Controls
-Imports System.Windows.Data
-Imports System.Windows.Documents
-Imports System.Windows.Input
-Imports System.Windows.Media
-Imports System.Windows.Media.Imaging
-Imports System.Windows.Navigation
-Imports System.Windows.Shapes
+﻿Imports System.Reflection
 Imports System.Windows.Threading
+Imports FSUIPC
+Imports Newtonsoft.Json
 
 ''' <summary>
 ''' Interaction logic for MainWindow.xaml
@@ -28,33 +13,46 @@ Partial Public Class MainWindow
     ' And another to look for a connection
     Private timerConnection As New DispatcherTimer()
 
+    'Public  As New Dictionary(Of String, Offset)
     ' =====================================
     ' DECLARE OFFSETS YOU WANT TO USE HERE
     ' =====================================
+
+
+
     Public Class FSUIPC
 
-        'Public airspeed As New Offset(Of UInteger)(&H2BC)
-        'Public altitude As New Offset(Of UInteger)(&H3324)
-        'Public heading As New Offset(Of UInteger)(&H580)
+        Public altitude As New Offset(Of UInteger)(&H3324)
         Public avionicsMaster As New Offset(Of UInteger)(&H2E80)
+        Public lights As New Offset(Of UInteger)(&HD0C)
 
-        Public Function Clone()
-            Return (Me.MemberwiseClone())
-        End Function
+    End Class
+
+    Public Class kept
+
+        Public avionicsMaster As New Integer
+        Public panelLights As New Integer
 
         Public Function getDeltaObjects(ByVal newObject)
             Return Me.getDeltaObjects(newObject)
         End Function
-
     End Class
 
-    Public values As New fsuipc()
+    Dim values As New FSUIPC()
+    Dim previousValues As New kept()
+
+    Private Function GetPropertyValue(ByVal obj As Object, ByVal PropName As String) As Object
+        Dim objType As Type = obj.GetType()
+        Dim pInfo As System.Reflection.PropertyInfo = objType.GetProperty(PropName)
+        Dim PropValue As Object = pInfo.GetValue(obj, Reflection.BindingFlags.GetProperty, Nothing, Nothing, Nothing)
+        Return PropValue
+    End Function
 
     Public Sub New()
         InitializeComponent()
         ConfigureForm()
         timerMain.Interval = TimeSpan.FromMilliseconds(50)
-        AddHandler timerMain.Tick, AddressOf timerMain_Tick
+        AddHandler timerMain.Tick, AddressOf TimerMain_Tick
         timerConnection.Interval = TimeSpan.FromMilliseconds(1000)
         AddHandler timerConnection.Tick, AddressOf TimerConnection_Tick
         timerConnection.Start()
@@ -79,15 +77,8 @@ Partial Public Class MainWindow
         ' Call process() to read/write data to/from FSUIPC
         ' We do this in a Try/Catch block incase something goes wrong
         Try
-
-            Dim previousValues As New FSUIPC()
-            previousValues = values.Clone
-
+            Dim latestValues As New kept()
             FSUIPCConnection.Process()
-
-            ' Update the information on the form
-            ' (See the Examples Application for more information on using Offsets).
-
             ' 1. Airspeed
             'Dim airspeedKnots As Double = CDbl(Me.values.airspeed.Value) / 128.0
             'Me.txtAirspeed.Text = airspeedKnots.ToString("F0")
@@ -95,11 +86,17 @@ Partial Public Class MainWindow
             ' 2. Master Avionics
             Me.chkAvionicsMaster.IsChecked = values.avionicsMaster.Value > 0
 
-            Me.txtPrevious.Text = JsonConvert.SerializeObject(previousValues, Formatting.Indented)
-            Me.txtJson.Text = JsonConvert.SerializeObject(Me.values, Formatting.Indented)
+            Dim dictionary As New Dictionary(Of String, String)
 
-            'Dim deltaObjects = previousValues.getDeltaObjects(Me.values)
+            Dim myType As Type = values.GetType
+            Dim myFields As FieldInfo() = myType.GetFields((BindingFlags.Public Or BindingFlags.Instance))
+            Dim i As Integer
+            For i = 0 To myFields.Length - 1
+                dictionary.Add(myFields(i).Name, GetPropertyValue(myFields(i).GetValue(values), "Value")) ' working but only with explicitly declared parameter name
+            Next i
 
+            txtPrevious.Text = JsonConvert.SerializeObject(dictionary, Formatting.Indented)
+            txtJson.Text = JsonConvert.SerializeObject(values, Formatting.Indented)
 
         Catch ex As Exception
             ' An error occured. Tell the user and stop this timer.
