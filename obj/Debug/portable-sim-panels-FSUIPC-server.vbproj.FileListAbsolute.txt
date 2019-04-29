@@ -6,8 +6,8 @@ C:\Users\jherwig\source\repos\portable-sim-panels-FSUIPC-server\bin\Debug\portab
 C:\Users\jherwig\source\repos\portable-sim-panels-FSUIPC-server\bin\Debug\portable-sim-panels-FSUIPC-server.exe
 C:\Users\jherwig\source\repos\portable-sim-panels-FSUIPC-server\bin\Debug\portable-sim-panels-FSUIPC-server.pdb
 C:\Users\jherwig\source\repos\portable-sim-panels-FSUIPC-server\bin\Debug\portable-sim-panels-FSUIPC-server.xml
-C:\Users\jherwig\source\repos\portable-sim-panels-FSUIPC-server\bin\Debug\DeltaObjectGenerator.dll
 C:\Users\jherwig\source\repos\portable-sim-panels-FSUIPC-server\bin\Debug\FSUIPCClient.dll
+C:\Users\jherwig\source\repos\portable-sim-panels-FSUIPC-server\bin\Debug\NCalc.dll
 C:\Users\jherwig\source\repos\portable-sim-panels-FSUIPC-server\bin\Debug\Newtonsoft.Json.dll
 C:\Users\jherwig\source\repos\portable-sim-panels-FSUIPC-server\bin\Debug\FSUIPCClient.xml
 C:\Users\jherwig\source\repos\portable-sim-panels-FSUIPC-server\bin\Debug\Newtonsoft.Json.pdb
