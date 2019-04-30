@@ -54,12 +54,14 @@ Partial Public Class MainWindow
                {"airspeedKnots", " / 128"}
            }
     Private Function calculateValue(ByVal key, ByVal rawValue)
+        Dim temp As Decimal = rawValue
         Dim returnValue As String = rawValue
 
         If valueRecalculation.ContainsKey(key) = True Then
             Dim calculation As String = rawValue.ToString() & valueRecalculation(key)
             Dim result As Expression = New Expression(calculation)
-            returnValue = result.Evaluate()
+            temp = result.Evaluate()
+            returnValue = temp.ToString("F1")
         End If
 
         Return returnValue
