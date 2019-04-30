@@ -54,10 +54,10 @@ Partial Public Class MainWindow
                {"airspeedKnots", " / 128"}
            }
     Private Function calculateValue(ByVal key, ByVal rawValue)
-        Dim returnValue = rawValue
+        Dim returnValue As String = rawValue
 
         If valueRecalculation.ContainsKey(key) = True Then
-            Dim calculation As String = rawValue & valueRecalculation(key)
+            Dim calculation As String = rawValue.ToString() & valueRecalculation(key)
             Dim result As Expression = New Expression(calculation)
             returnValue = result.Evaluate()
         End If
@@ -69,18 +69,17 @@ Partial Public Class MainWindow
         Dim result = calculateValue(key, rawValue)
 
         If previousValues.ContainsKey(key) Then
-            If previousValues.Item(key) = rawValue.ToString() Then
+            If previousValues.Item(key) = result Then
                 dictionary.Remove(key)
             Else
                 dictionary(key) = result
                 previousValues(key) = result
-
+                Console.WriteLine("updating value for " & key)
             End If
         Else
             dictionary.Add(key, result)
             previousValues.Add(key, result)
         End If
-
         Return True
     End Function
 
