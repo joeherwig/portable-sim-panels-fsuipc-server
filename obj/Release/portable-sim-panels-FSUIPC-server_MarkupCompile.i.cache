@@ -4,7 +4,7 @@
 winexe
 VB
 .vb
-C:\Users\jherwig\source\repos\portable-sim-panels-FSUIPC-server\obj\Debug\
+C:\Users\jherwig\source\repos\portable-sim-panels-FSUIPC-server\obj\Release\
 portable_sim_panels_FSUIPC_server
 none
 false
@@ -12,7 +12,7 @@ false
 C:\Users\jherwig\source\repos\portable-sim-panels-FSUIPC-server\Application.xaml
 11151548125
 
-7144812446
+8-1640053268
 142102951863
 MainWindow.xaml;
 

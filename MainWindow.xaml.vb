@@ -15,25 +15,11 @@ Partial Public Class MainWindow
     ' And another to look for a connection
     Private timerConnection As New DispatcherTimer()
 
-    'Public  As New Dictionary(Of String, Offset)
-    ' =====================================
-    ' DECLARE OFFSETS YOU WANT TO USE HERE
-    ' =====================================
-
-    Public Class FSUIPC
-
-        Public altitude As New Offset(Of UInteger)(&H3324)
-        Public airspeedKnots As New Offset(Of UInteger)(&H2BC)
-        Public avionicsMaster As New Offset(Of UInteger)(&H2E80)
-        Public lights As New Offset(Of UInteger)(&HD0C)
-
-    End Class
-
     Dim values As New FSUIPC()
     Dim previousValues As New Dictionary(Of String, String)
     Dim dictionary As New Dictionary(Of String, String)
 
-    Private Function GetPropertyValue(ByVal obj As Object, ByVal PropName As String) As Object
+    Public Function GetPropertyValue(ByVal obj As Object, ByVal PropName As String) As Object
         Dim objType As Type = obj.GetType()
         Dim pInfo As System.Reflection.PropertyInfo = objType.GetProperty(PropName)
         Dim PropValue As Object = pInfo.GetValue(obj, Reflection.BindingFlags.GetProperty, Nothing, Nothing, Nothing)
@@ -53,7 +39,7 @@ Partial Public Class MainWindow
     Dim valueRecalculation As New Dictionary(Of String, String) From {
                {"airspeedKnots", " / 128"}
            }
-    Private Function calculateValue(ByVal key, ByVal rawValue)
+    Public Function calculateValue(ByVal key, ByVal rawValue)
         Dim temp As Decimal = rawValue
         Dim returnValue As String = rawValue
 
@@ -67,7 +53,7 @@ Partial Public Class MainWindow
         Return returnValue
     End Function
 
-    Private Function updateDeltaObject(ByVal key, ByVal rawValue)
+    Public Function updateDeltaObject(ByVal key, ByVal rawValue)
         Dim result = calculateValue(key, rawValue)
 
         If previousValues.ContainsKey(key) Then
@@ -86,7 +72,7 @@ Partial Public Class MainWindow
     End Function
 
 
-    Private Sub TimerConnection_Tick(sender As Object, e As EventArgs)
+    Public Sub TimerConnection_Tick(sender As Object, e As EventArgs)
         ' Try to open the connection
         Try
             FSUIPCConnection.Open()
@@ -100,7 +86,7 @@ Partial Public Class MainWindow
         End Try
     End Sub
 
-    Private Sub TimerMain_Tick(sender As Object, e As EventArgs)
+    Public Sub TimerMain_Tick(sender As Object, e As EventArgs)
         ' Call process() to read/write data to/from FSUIPC
         ' We do this in a Try/Catch block incase something goes wrong
         Try
