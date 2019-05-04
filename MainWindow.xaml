@@ -13,6 +13,7 @@
     <DockPanel>
         <StatusBar DockPanel.Dock="Bottom" Height="24">
             <TextBlock Name="lblConnectionStatus">Connection Status</TextBlock>
+            <TextBlock Name="lblWebsocketConfig">Websocket config</TextBlock>
         </StatusBar>
         <Grid>
             <Grid.ColumnDefinitions>

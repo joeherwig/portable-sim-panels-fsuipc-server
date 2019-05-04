@@ -3,6 +3,7 @@ Imports System.Reflection
 Imports System.Windows.Threading
 Imports FSUIPC
 Imports Newtonsoft.Json
+Imports SuperWebSocket
 
 
 ''' <summary>
@@ -14,12 +15,23 @@ Partial Public Class MainWindow
     Private timerMain As New DispatcherTimer()
     ' And another to look for a connection
     Private timerConnection As New DispatcherTimer()
-
     Dim values As New FSUIPC()
     Dim previousValues As New Dictionary(Of String, String)
     Dim dictionary As New Dictionary(Of String, String)
+    Dim config As New Object
 
-    Public Function GetPropertyValue(ByVal obj As Object, ByVal PropName As String) As Object
+    Dim websocket As New WebSocketServer()
+    Dim serverConfig = New SuperSocket.SocketBase.Config.ServerConfig()
+
+
+    Private Function getConfig()
+        Dim fileReader As String
+        fileReader = My.Computer.FileSystem.ReadAllText("config.json", System.Text.Encoding.UTF8)
+        config = JsonConvert.DeserializeObject(fileReader)
+        Return config
+    End Function
+
+    private Function GetPropertyValue(ByVal obj As Object, ByVal PropName As String) As Object
         Dim objType As Type = obj.GetType()
         Dim pInfo As System.Reflection.PropertyInfo = objType.GetProperty(PropName)
         Dim PropValue As Object = pInfo.GetValue(obj, Reflection.BindingFlags.GetProperty, Nothing, Nothing, Nothing)
@@ -29,6 +41,11 @@ Partial Public Class MainWindow
     Public Sub New()
         InitializeComponent()
         ConfigureForm()
+        config = getConfig()
+        lblWebsocketConfig.Text = "running on: " & config.selectToken("websocket").selectToken("url").ToString() & ":" & config.selectToken("websocket").selectToken("port").ToString()
+        If config.selectToken("websocket").selectToken("url") = "localhost" Then
+            startWebsocketServer()
+        End If
         timerMain.Interval = TimeSpan.FromMilliseconds(35)
         AddHandler timerMain.Tick, AddressOf TimerMain_Tick
         timerConnection.Interval = TimeSpan.FromMilliseconds(1000)
@@ -62,7 +79,6 @@ Partial Public Class MainWindow
             Else
                 dictionary(key) = result
                 previousValues(key) = result
-                Console.WriteLine("updating value for " & key)
             End If
         Else
             dictionary.Add(key, result)
@@ -71,6 +87,44 @@ Partial Public Class MainWindow
         Return True
     End Function
 
+    Public Function startWebsocketServer()
+
+        AddHandler websocket.NewSessionConnected, AddressOf websocket_Opened
+        AddHandler websocket.SessionClosed, AddressOf websocket_Closed
+        AddHandler websocket.NewMessageReceived, AddressOf websocket_MessageReceived
+
+        serverConfig.MaxConnectionNumber = 1000
+        serverConfig.Port = config.selectToken("websocket").selectToken("port")
+        serverConfig.ListenBacklog = 5000
+
+        websocket.Setup(serverConfig)
+
+        websocket.Start()
+        Return True
+
+
+    End Function
+
+    Public Sub websocket_Opened()
+        'websocket.Broadcast(websocket.GetAllSessions(), "you're connected! Congrats!", Function(x) return false
+        ')
+        Console.WriteLine(websocket.GetAllSessions())
+
+    End Sub
+    'Public Sub websocket_Opened(ByVal sender As Object, ByVal e As EventArgs)
+    '    websocket.Broadcast(sender, "congrats!", False)
+    'End Sub
+
+    Public Sub websocket_MessageReceived(ByVal sender, ByVal message)
+        Console.WriteLine(websocket)
+        Console.WriteLine(message)
+       ' websocket.Broadcast(sender, "cool", sender)
+        'websocket.
+    End Sub
+
+    Public Sub websocket_Closed()
+        Console.WriteLine([String].Format("myWebsocket websocket_Closed: "))
+    End Sub
 
     Public Sub TimerConnection_Tick(sender As Object, e As EventArgs)
         ' Try to open the connection

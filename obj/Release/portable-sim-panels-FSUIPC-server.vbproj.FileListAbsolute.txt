@@ -21,3 +21,15 @@ C:\Users\jherwig\source\repos\portable-sim-panels-FSUIPC-server\obj\Release\port
 C:\Users\jherwig\source\repos\portable-sim-panels-FSUIPC-server\obj\Release\portable-sim-panels-FSUIPC-server.exe
 C:\Users\jherwig\source\repos\portable-sim-panels-FSUIPC-server\obj\Release\portable-sim-panels-FSUIPC-server.xml
 C:\Users\jherwig\source\repos\portable-sim-panels-FSUIPC-server\obj\Release\portable-sim-panels-FSUIPC-server.pdb
+C:\Users\jherwig\source\repos\portable-sim-panels-FSUIPC-server\obj\Release\portable-sim-panels-FSUIPC-server.vbprojAssemblyReference.cache
+C:\Users\jherwig\source\repos\portable-sim-panels-FSUIPC-server\bin\Release\log4net.dll
+C:\Users\jherwig\source\repos\portable-sim-panels-FSUIPC-server\bin\Release\SuperSocket.Common.dll
+C:\Users\jherwig\source\repos\portable-sim-panels-FSUIPC-server\bin\Release\SuperSocket.SocketBase.dll
+C:\Users\jherwig\source\repos\portable-sim-panels-FSUIPC-server\bin\Release\SuperSocket.SocketEngine.dll
+C:\Users\jherwig\source\repos\portable-sim-panels-FSUIPC-server\bin\Release\SuperWebSocket.dll
+C:\Users\jherwig\source\repos\portable-sim-panels-FSUIPC-server\bin\Release\log4net.xml
+C:\Users\jherwig\source\repos\portable-sim-panels-FSUIPC-server\bin\Release\SuperSocket.Common.pdb
+C:\Users\jherwig\source\repos\portable-sim-panels-FSUIPC-server\bin\Release\SuperSocket.SocketBase.pdb
+C:\Users\jherwig\source\repos\portable-sim-panels-FSUIPC-server\bin\Release\SuperSocket.SocketEngine.pdb
+C:\Users\jherwig\source\repos\portable-sim-panels-FSUIPC-server\bin\Release\SuperWebSocket.pdb
+C:\Users\jherwig\source\repos\portable-sim-panels-FSUIPC-server\bin\Release\SuperWebSocket.xml
