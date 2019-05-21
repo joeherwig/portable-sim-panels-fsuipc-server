@@ -19,24 +19,22 @@ Partial Public Class MainWindow
     Dim previousValues As New Dictionary(Of String, String)
     Dim dictionary As New Dictionary(Of String, String)
     Dim config As New Object
-    Dim wssv = New WebSocketServer(8080)
-    Dim ws = New WebSocket("ws://localhost:8080/fsuipc")
+    Dim wssv As New WebSocketServer(8080)
+    Dim ws As New WebSocket("ws://localhost:8080/fsuipc")
+
 
     Public Class wss
         Inherits WebSocketBehavior
-
-        Protected Overrides Sub OnMessage(ByVal e As MessageEventArgs)
-            Dim msg = If(e.Data Is "BALUS", "I've been balused already...", "I'm not available now.")
-            Send(msg)
-            'Send(e.Data)
-            Sessions.Broadcast(e.Data)
-        End Sub
     End Class
 
     Private Function wssStart(ByVal args As String)
         wssv.AddWebSocketService(Of wss)("/fsuipc")
         wssv.Start()
         Return wssv
+    End Function
+
+    Public Function getUpdate()
+        Return JsonConvert.SerializeObject(dictionary, Formatting.None)
     End Function
 
     Private Function getConfig()
@@ -61,10 +59,12 @@ Partial Public Class MainWindow
         lblWebsocketConfig.Text = "running on: " & config.selectToken("websocket").selectToken("url").ToString() & ":" & config.selectToken("websocket").selectToken("port").ToString()
         If config.selectToken("websocket").selectToken("url") = "localhost" Then
         End If
+
         timerMain.Interval = TimeSpan.FromMilliseconds(35)
         AddHandler timerMain.Tick, AddressOf TimerMain_Tick
         timerConnection.Interval = TimeSpan.FromMilliseconds(1000)
         AddHandler timerConnection.Tick, AddressOf TimerConnection_Tick
+
         timerConnection.Start()
     End Sub
 
@@ -135,7 +135,9 @@ Partial Public Class MainWindow
 
             txtPrevious.Text = JsonConvert.SerializeObject(previousValues, Formatting.Indented)
             txtJson.Text = JsonConvert.SerializeObject(dictionary, Formatting.Indented)
-            'wssv.Broadcast(JsonConvert.SerializeObject(dictionary, Formatting.None))
+            If (JsonConvert.SerializeObject(dictionary, Formatting.None) <> "{}") Then
+                wssv.WebSocketServices.Broadcast(JsonConvert.SerializeObject(dictionary, Formatting.None))
+            End If
         Catch ex As Exception
             ' An error occured. Tell the user and stop this timer.
             Me.timerMain.[Stop]()
