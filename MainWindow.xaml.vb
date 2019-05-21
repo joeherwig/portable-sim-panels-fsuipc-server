@@ -3,8 +3,8 @@ Imports System.Reflection
 Imports System.Windows.Threading
 Imports FSUIPC
 Imports Newtonsoft.Json
-Imports SuperWebSocket
-
+Imports WebSocketSharp
+Imports WebSocketSharp.Server
 
 ''' <summary>
 ''' Interaction logic for MainWindow.xaml
@@ -19,10 +19,25 @@ Partial Public Class MainWindow
     Dim previousValues As New Dictionary(Of String, String)
     Dim dictionary As New Dictionary(Of String, String)
     Dim config As New Object
+    Dim wssv = New WebSocketServer(8080)
+    Dim ws = New WebSocket("ws://localhost:8080/fsuipc")
 
-    Dim websocket As New WebSocketServer()
-    Dim serverConfig = New SuperSocket.SocketBase.Config.ServerConfig()
+    Public Class wss
+        Inherits WebSocketBehavior
 
+        Protected Overrides Sub OnMessage(ByVal e As MessageEventArgs)
+            Dim msg = If(e.Data Is "BALUS", "I've been balused already...", "I'm not available now.")
+            Send(msg)
+            'Send(e.Data)
+            Sessions.Broadcast(e.Data)
+        End Sub
+    End Class
+
+    Private Function wssStart(ByVal args As String)
+        wssv.AddWebSocketService(Of wss)("/fsuipc")
+        wssv.Start()
+        Return wssv
+    End Function
 
     Private Function getConfig()
         Dim fileReader As String
@@ -31,7 +46,7 @@ Partial Public Class MainWindow
         Return config
     End Function
 
-    private Function GetPropertyValue(ByVal obj As Object, ByVal PropName As String) As Object
+    Private Function GetPropertyValue(ByVal obj As Object, ByVal PropName As String) As Object
         Dim objType As Type = obj.GetType()
         Dim pInfo As System.Reflection.PropertyInfo = objType.GetProperty(PropName)
         Dim PropValue As Object = pInfo.GetValue(obj, Reflection.BindingFlags.GetProperty, Nothing, Nothing, Nothing)
@@ -40,11 +55,11 @@ Partial Public Class MainWindow
 
     Public Sub New()
         InitializeComponent()
+        wssStart("")
         ConfigureForm()
         config = getConfig()
         lblWebsocketConfig.Text = "running on: " & config.selectToken("websocket").selectToken("url").ToString() & ":" & config.selectToken("websocket").selectToken("port").ToString()
         If config.selectToken("websocket").selectToken("url") = "localhost" Then
-            startWebsocketServer()
         End If
         timerMain.Interval = TimeSpan.FromMilliseconds(35)
         AddHandler timerMain.Tick, AddressOf TimerMain_Tick
@@ -87,45 +102,6 @@ Partial Public Class MainWindow
         Return True
     End Function
 
-    Public Function startWebsocketServer()
-
-        AddHandler websocket.NewSessionConnected, AddressOf websocket_Opened
-        AddHandler websocket.SessionClosed, AddressOf websocket_Closed
-        AddHandler websocket.NewMessageReceived, AddressOf websocket_MessageReceived
-
-        serverConfig.MaxConnectionNumber = 1000
-        serverConfig.Port = config.selectToken("websocket").selectToken("port")
-        serverConfig.ListenBacklog = 5000
-
-        websocket.Setup(serverConfig)
-
-        websocket.Start()
-        Return True
-
-
-    End Function
-
-    Public Sub websocket_Opened()
-        'websocket.Broadcast(websocket.GetAllSessions(), "you're connected! Congrats!", Function(x) return false
-        ')
-        Console.WriteLine(websocket.GetAllSessions())
-
-    End Sub
-    'Public Sub websocket_Opened(ByVal sender As Object, ByVal e As EventArgs)
-    '    websocket.Broadcast(sender, "congrats!", False)
-    'End Sub
-
-    Public Sub websocket_MessageReceived(ByVal sender, ByVal message)
-        Console.WriteLine(websocket)
-        Console.WriteLine(message)
-       ' websocket.Broadcast(sender, "cool", sender)
-        'websocket.
-    End Sub
-
-    Public Sub websocket_Closed()
-        Console.WriteLine([String].Format("myWebsocket websocket_Closed: "))
-    End Sub
-
     Public Sub TimerConnection_Tick(sender As Object, e As EventArgs)
         ' Try to open the connection
         Try
@@ -159,7 +135,7 @@ Partial Public Class MainWindow
 
             txtPrevious.Text = JsonConvert.SerializeObject(previousValues, Formatting.Indented)
             txtJson.Text = JsonConvert.SerializeObject(dictionary, Formatting.Indented)
-
+            'wssv.Broadcast(JsonConvert.SerializeObject(dictionary, Formatting.None))
         Catch ex As Exception
             ' An error occured. Tell the user and stop this timer.
             Me.timerMain.[Stop]()

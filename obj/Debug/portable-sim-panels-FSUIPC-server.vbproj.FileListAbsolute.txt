@@ -6,19 +6,10 @@ C:\Users\jherwig\source\repos\portable-sim-panels-FSUIPC-server\bin\Debug\FSUIPC
 C:\Users\jherwig\source\repos\portable-sim-panels-FSUIPC-server\bin\Debug\log4net.dll
 C:\Users\jherwig\source\repos\portable-sim-panels-FSUIPC-server\bin\Debug\NCalc.dll
 C:\Users\jherwig\source\repos\portable-sim-panels-FSUIPC-server\bin\Debug\Newtonsoft.Json.dll
-C:\Users\jherwig\source\repos\portable-sim-panels-FSUIPC-server\bin\Debug\SuperSocket.Common.dll
-C:\Users\jherwig\source\repos\portable-sim-panels-FSUIPC-server\bin\Debug\SuperSocket.SocketBase.dll
-C:\Users\jherwig\source\repos\portable-sim-panels-FSUIPC-server\bin\Debug\SuperSocket.SocketEngine.dll
-C:\Users\jherwig\source\repos\portable-sim-panels-FSUIPC-server\bin\Debug\SuperWebSocket.dll
 C:\Users\jherwig\source\repos\portable-sim-panels-FSUIPC-server\bin\Debug\FSUIPCClient.xml
 C:\Users\jherwig\source\repos\portable-sim-panels-FSUIPC-server\bin\Debug\log4net.xml
 C:\Users\jherwig\source\repos\portable-sim-panels-FSUIPC-server\bin\Debug\Newtonsoft.Json.pdb
 C:\Users\jherwig\source\repos\portable-sim-panels-FSUIPC-server\bin\Debug\Newtonsoft.Json.xml
-C:\Users\jherwig\source\repos\portable-sim-panels-FSUIPC-server\bin\Debug\SuperSocket.Common.pdb
-C:\Users\jherwig\source\repos\portable-sim-panels-FSUIPC-server\bin\Debug\SuperSocket.SocketBase.pdb
-C:\Users\jherwig\source\repos\portable-sim-panels-FSUIPC-server\bin\Debug\SuperSocket.SocketEngine.pdb
-C:\Users\jherwig\source\repos\portable-sim-panels-FSUIPC-server\bin\Debug\SuperWebSocket.pdb
-C:\Users\jherwig\source\repos\portable-sim-panels-FSUIPC-server\bin\Debug\SuperWebSocket.xml
 C:\Users\jherwig\source\repos\portable-sim-panels-FSUIPC-server\obj\Debug\MainWindow.g.vb
 C:\Users\jherwig\source\repos\portable-sim-panels-FSUIPC-server\obj\Debug\Application.g.vb
 C:\Users\jherwig\source\repos\portable-sim-panels-FSUIPC-server\obj\Debug\portable-sim-panels-FSUIPC-server_MarkupCompile.cache
@@ -32,3 +23,5 @@ C:\Users\jherwig\source\repos\portable-sim-panels-FSUIPC-server\obj\Debug\portab
 C:\Users\jherwig\source\repos\portable-sim-panels-FSUIPC-server\obj\Debug\portable-sim-panels-FSUIPC-server.exe
 C:\Users\jherwig\source\repos\portable-sim-panels-FSUIPC-server\obj\Debug\portable-sim-panels-FSUIPC-server.xml
 C:\Users\jherwig\source\repos\portable-sim-panels-FSUIPC-server\obj\Debug\portable-sim-panels-FSUIPC-server.pdb
+C:\Users\jherwig\source\repos\portable-sim-panels-FSUIPC-server\bin\Debug\websocket-sharp.dll
+C:\Users\jherwig\source\repos\portable-sim-panels-FSUIPC-server\obj\Debug\portable-sim-panels-FSUIPC-server.vbprojAssemblyReference.cache
