@@ -71,7 +71,7 @@ Partial Public Class MainWindow
         If config.selectToken("websocket").selectToken("url") = "localhost" Then
         End If
 
-        timerMain.Interval = TimeSpan.FromMilliseconds(35)
+        timerMain.Interval = TimeSpan.FromMilliseconds(25)
         AddHandler timerMain.Tick, AddressOf TimerMain_Tick
         timerConnection.Interval = TimeSpan.FromMilliseconds(1000)
         AddHandler timerConnection.Tick, AddressOf TimerConnection_Tick
@@ -127,7 +127,7 @@ Partial Public Class MainWindow
             Next i
 
             txtPrevious.Text = JsonConvert.SerializeObject(previousValues, Formatting.Indented)
-            txtJson.Text = JsonConvert.SerializeObject(dictionary, Formatting.Indented)
+            'txtJson.Text = JsonConvert.SerializeObject(dictionary, Formatting.Indented)
             If (JsonConvert.SerializeObject(dictionary, Formatting.None) <> "{}") Then
                 wssv.WebSocketServices.Broadcast(JsonConvert.SerializeObject(dictionary, Formatting.None))
             End If
@@ -181,7 +181,7 @@ Friend Class LocalWebServer
     End Sub
 
     Private Sub ThreadProc()
-        Using server = New WebServer("http://localhost:80/")
+        Using server = New WebServer("http://*:80/")
             server.RegisterModule(New LocalSessionModule())
             server.RegisterModule(New StaticFilesModule("C:\Users\jherwig\projects\portable-sim-panels\public"))
             server.[Module](Of StaticFilesModule)().UseRamCache = True

@@ -2,8 +2,9 @@
   "ExpandedNodes": [
     "",
     "\\bin",
-    "\\obj"
+    "\\My Project",
+    "\\My Project\\MyExtensions"
   ],
-  "SelectedNode": "\\portable-sim-panels-FSUIPC-server.sln",
+  "SelectedNode": "\\README.md",
   "PreviewInSolutionExplorer": false
 }
