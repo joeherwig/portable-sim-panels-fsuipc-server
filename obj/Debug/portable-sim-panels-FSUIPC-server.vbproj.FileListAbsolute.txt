@@ -8,7 +8,6 @@ C:\Users\jherwig\source\repos\portable-sim-panels-FSUIPC-server\bin\Debug\NCalc.
 C:\Users\jherwig\source\repos\portable-sim-panels-FSUIPC-server\bin\Debug\Newtonsoft.Json.dll
 C:\Users\jherwig\source\repos\portable-sim-panels-FSUIPC-server\bin\Debug\FSUIPCClient.xml
 C:\Users\jherwig\source\repos\portable-sim-panels-FSUIPC-server\bin\Debug\log4net.xml
-C:\Users\jherwig\source\repos\portable-sim-panels-FSUIPC-server\bin\Debug\Newtonsoft.Json.pdb
 C:\Users\jherwig\source\repos\portable-sim-panels-FSUIPC-server\bin\Debug\Newtonsoft.Json.xml
 C:\Users\jherwig\source\repos\portable-sim-panels-FSUIPC-server\obj\Debug\MainWindow.g.vb
 C:\Users\jherwig\source\repos\portable-sim-panels-FSUIPC-server\obj\Debug\Application.g.vb
@@ -25,3 +24,7 @@ C:\Users\jherwig\source\repos\portable-sim-panels-FSUIPC-server\obj\Debug\portab
 C:\Users\jherwig\source\repos\portable-sim-panels-FSUIPC-server\obj\Debug\portable-sim-panels-FSUIPC-server.pdb
 C:\Users\jherwig\source\repos\portable-sim-panels-FSUIPC-server\bin\Debug\websocket-sharp.dll
 C:\Users\jherwig\source\repos\portable-sim-panels-FSUIPC-server\obj\Debug\portable-sim-panels-FSUIPC-server.vbprojAssemblyReference.cache
+C:\Users\jherwig\source\repos\portable-sim-panels-FSUIPC-server\bin\Debug\Unosquare.Labs.EmbedIO.dll
+C:\Users\jherwig\source\repos\portable-sim-panels-FSUIPC-server\bin\Debug\Unosquare.Swan.Lite.dll
+C:\Users\jherwig\source\repos\portable-sim-panels-FSUIPC-server\bin\Debug\Unosquare.Labs.EmbedIO.xml
+C:\Users\jherwig\source\repos\portable-sim-panels-FSUIPC-server\bin\Debug\Unosquare.Swan.Lite.xml

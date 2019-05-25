@@ -1,10 +1,15 @@
 ﻿Imports NCalc
+Imports System.Globalization
 Imports System.Reflection
 Imports System.Windows.Threading
+Imports System.Threading
 Imports FSUIPC
 Imports Newtonsoft.Json
 Imports WebSocketSharp
 Imports WebSocketSharp.Server
+Imports Unosquare.Labs.EmbedIO
+Imports Unosquare.Labs.EmbedIO.Modules
+
 
 ''' <summary>
 ''' Interaction logic for MainWindow.xaml
@@ -20,14 +25,14 @@ Partial Public Class MainWindow
     Dim dictionary As New Dictionary(Of String, String)
     Dim config As New Object
     Dim wssv As New WebSocketServer(8080)
-    Dim ws As New WebSocket("ws://localhost:8080/fsuipc")
-
+    Dim ws As New WebSocketSharp.WebSocket("ws://localhost:8080/fsuipc")
 
     Public Class wss
         Inherits WebSocketBehavior
     End Class
 
     Private Function wssStart(ByVal args As String)
+        Console.WriteLine(args)
         wssv.AddWebSocketService(Of wss)("/fsuipc")
         wssv.Start()
         Return wssv
@@ -53,6 +58,12 @@ Partial Public Class MainWindow
 
     Public Sub New()
         InitializeComponent()
+        Dim newCulture As CultureInfo = CultureInfo.CreateSpecificCulture("en-US")
+        Thread.CurrentThread.CurrentUICulture = newCulture
+        Thread.CurrentThread.CurrentCulture = newCulture
+        Dim localWS As LocalWebServer
+        localWS = New LocalWebServer("http://localhost:80/", "c:/web")
+        localWS.StartWebServer()
         wssStart("")
         ConfigureForm()
         config = getConfig()
@@ -68,26 +79,9 @@ Partial Public Class MainWindow
         timerConnection.Start()
     End Sub
 
-    Dim valueRecalculation As New Dictionary(Of String, String) From {
-               {"airspeedKnots", " / 128"}
-           }
-    Public Function calculateValue(ByVal key, ByVal rawValue)
-        Dim temp As Decimal = rawValue
-        Dim returnValue As String = rawValue
-
-        If valueRecalculation.ContainsKey(key) = True Then
-            Dim calculation As String = rawValue.ToString() & valueRecalculation(key)
-            Dim result As Expression = New Expression(calculation)
-            temp = result.Evaluate()
-            returnValue = temp.ToString("F1")
-        End If
-
-        Return returnValue
-    End Function
 
     Public Function updateDeltaObject(ByVal key, ByVal rawValue)
         Dim result = calculateValue(key, rawValue)
-
         If previousValues.ContainsKey(key) Then
             If previousValues.Item(key) = result Then
                 dictionary.Remove(key)
@@ -123,14 +117,13 @@ Partial Public Class MainWindow
             FSUIPCConnection.Process()
 
             Me.chkAvionicsMaster.IsChecked = values.avionicsMaster.Value > 0
-
             Dim myType As Type = values.GetType
             Dim myFields As FieldInfo() = myType.GetFields((BindingFlags.Public Or BindingFlags.Instance))
-
             Dim i As Integer
 
             For i = 0 To myFields.Length - 1
-                Dim currentValue As String = updateDeltaObject(myFields(i).Name, GetPropertyValue(myFields(i).GetValue(values), "Value"))
+                'Dim currentValue As String = updateDeltaObject(myFields(i).Name, GetPropertyValue(myFields(i).GetValue(values), "Value"))
+                updateDeltaObject(myFields(i).Name, GetPropertyValue(myFields(i).GetValue(values), "Value"))
             Next i
 
             txtPrevious.Text = JsonConvert.SerializeObject(previousValues, Formatting.Indented)
@@ -169,5 +162,33 @@ Partial Public Class MainWindow
         Me.timerConnection.Stop()
         Me.timerMain.Stop()
         FSUIPCConnection.Close()
+    End Sub
+End Class
+
+
+Friend Class LocalWebServer
+    Public Property url As String
+    Public Property servingFromDirectory As String
+
+    Public Sub New(ByVal Url As String, ByVal ServingFromDirectory As String)
+        Url = Url
+        ServingFromDirectory = ServingFromDirectory
+    End Sub
+
+    Public Sub StartWebServer()
+        Dim t As Thread = New Thread(New ThreadStart(AddressOf ThreadProc))
+        t.Start()
+    End Sub
+
+    Private Sub ThreadProc()
+        Using server = New WebServer("http://localhost:80/")
+            server.RegisterModule(New LocalSessionModule())
+            server.RegisterModule(New StaticFilesModule("C:\Users\jherwig\projects\portable-sim-panels\public"))
+            server.[Module](Of StaticFilesModule)().UseRamCache = True
+            server.[Module](Of StaticFilesModule)().DefaultExtension = ".html"
+            server.[Module](Of StaticFilesModule)().DefaultDocument = "index.html"
+            server.RunAsync()
+            Thread.Sleep(Timeout.Infinite)
+        End Using
     End Sub
 End Class
