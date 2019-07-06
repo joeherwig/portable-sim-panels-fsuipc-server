@@ -183,7 +183,7 @@ Friend Class LocalWebServer
     Private Sub ThreadProc()
         Using server = New WebServer("http://*:80/")
             server.RegisterModule(New LocalSessionModule())
-            server.RegisterModule(New StaticFilesModule("C:\Users\jherwig\projects\portable-sim-panels\public"))
+            server.RegisterModule(New StaticFilesModule("C:\Users\joe\projects\portable-sim-panels\public"))
             server.[Module](Of StaticFilesModule)().UseRamCache = True
             server.[Module](Of StaticFilesModule)().DefaultExtension = ".html"
             server.[Module](Of StaticFilesModule)().DefaultDocument = "index.html"
