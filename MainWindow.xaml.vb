@@ -162,6 +162,8 @@ Partial Public Class MainWindow
         Me.timerConnection.Stop()
         Me.timerMain.Stop()
         FSUIPCConnection.Close()
+        Me.Close()
+        End
     End Sub
 End Class
 

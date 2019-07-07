@@ -1,0 +1,47 @@
+[1mdiff --git a/.vs/portable-sim-panels-FSUIPC-server/v15/.suo b/.vs/portable-sim-panels-FSUIPC-server/v15/.suo[m
+[1mindex 373fe67..e5535a9 100644[m
+Binary files a/.vs/portable-sim-panels-FSUIPC-server/v15/.suo and b/.vs/portable-sim-panels-FSUIPC-server/v15/.suo differ
+[1mdiff --git a/.vs/portable-sim-panels-FSUIPC-server/v15/Server/sqlite3/storage.ide b/.vs/portable-sim-panels-FSUIPC-server/v15/Server/sqlite3/storage.ide[m
+[1mindex 29b221b..a06727a 100644[m
+Binary files a/.vs/portable-sim-panels-FSUIPC-server/v15/Server/sqlite3/storage.ide and b/.vs/portable-sim-panels-FSUIPC-server/v15/Server/sqlite3/storage.ide differ
+[1mdiff --git a/MainWindow.xaml.vb b/MainWindow.xaml.vb[m
+[1mindex d4a779a..3a43547 100644[m
+[1m--- a/MainWindow.xaml.vb[m
+[1m+++ b/MainWindow.xaml.vb[m
+[36m@@ -162,6 +162,8 @@[m [mPartial Public Class MainWindow[m
+         Me.timerConnection.Stop()[m
+         Me.timerMain.Stop()[m
+         FSUIPCConnection.Close()[m
+[32m+[m[32m        Me.Close()[m
+[32m+[m[32m        End[m
+     End Sub[m
+ End Class[m
+ [m
+[1mdiff --git a/bin/Release/portable-sim-panels-FSUIPC-server.exe b/bin/Release/portable-sim-panels-FSUIPC-server.exe[m
+[1mindex cf00794..52c8d96 100644[m
+Binary files a/bin/Release/portable-sim-panels-FSUIPC-server.exe and b/bin/Release/portable-sim-panels-FSUIPC-server.exe differ
+[1mdiff --git a/bin/Release/portable-sim-panels-FSUIPC-server.pdb b/bin/Release/portable-sim-panels-FSUIPC-server.pdb[m
+[1mindex 0120db2..bb80df7 100644[m
+Binary files a/bin/Release/portable-sim-panels-FSUIPC-server.pdb and b/bin/Release/portable-sim-panels-FSUIPC-server.pdb differ
+[1mdiff --git a/obj/Release/portable-sim-panels-FSUIPC-server.exe b/obj/Release/portable-sim-panels-FSUIPC-server.exe[m
+[1mindex cf00794..52c8d96 100644[m
+Binary files a/obj/Release/portable-sim-panels-FSUIPC-server.exe and b/obj/Release/portable-sim-panels-FSUIPC-server.exe differ
+[1mdiff --git a/obj/Release/portable-sim-panels-FSUIPC-server.pdb b/obj/Release/portable-sim-panels-FSUIPC-server.pdb[m
+[1mindex 0120db2..bb80df7 100644[m
+Binary files a/obj/Release/portable-sim-panels-FSUIPC-server.pdb and b/obj/Release/portable-sim-panels-FSUIPC-server.pdb differ
+[1mdiff --git a/obj/Release/portable-sim-panels-FSUIPC-server.vbproj.FileListAbsolute.txt b/obj/Release/portable-sim-panels-FSUIPC-server.vbproj.FileListAbsolute.txt[m
+[1mindex 122946b..c476f31 100644[m
+[1m--- a/obj/Release/portable-sim-panels-FSUIPC-server.vbproj.FileListAbsolute.txt[m
+[1m+++ b/obj/Release/portable-sim-panels-FSUIPC-server.vbproj.FileListAbsolute.txt[m
+[36m@@ -44,7 +44,6 @@[m [mC:\Users\joe\projects\portable-sim-panels-fsuipc-server\bin\Release\log4net.xml[m
+ C:\Users\joe\projects\portable-sim-panels-fsuipc-server\bin\Release\Newtonsoft.Json.xml[m
+ C:\Users\joe\projects\portable-sim-panels-fsuipc-server\bin\Release\Unosquare.Labs.EmbedIO.xml[m
+ C:\Users\joe\projects\portable-sim-panels-fsuipc-server\bin\Release\Unosquare.Swan.Lite.xml[m
+[31m-C:\Users\joe\projects\portable-sim-panels-fsuipc-server\obj\Release\portable-sim-panels-FSUIPC-server.vbprojResolveAssemblyReference.cache[m
+ C:\Users\joe\projects\portable-sim-panels-fsuipc-server\obj\Release\MainWindow.g.vb[m
+ C:\Users\joe\projects\portable-sim-panels-fsuipc-server\obj\Release\Application.g.vb[m
+ C:\Users\joe\projects\portable-sim-panels-fsuipc-server\obj\Release\portable-sim-panels-FSUIPC-server_MarkupCompile.cache[m
+[1mdiff --git a/obj/Release/portable-sim-panels-FSUIPC-server.vbprojResolveAssemblyReference.cache b/obj/Release/portable-sim-panels-FSUIPC-server.vbprojResolveAssemblyReference.cache[m
+[1mdeleted file mode 100644[m
+[1mindex 45c2dc5..0000000[m
+Binary files a/obj/Release/portable-sim-panels-FSUIPC-server.vbprojResolveAssemblyReference.cache and /dev/null differ

@@ -44,7 +44,6 @@ C:\Users\joe\projects\portable-sim-panels-fsuipc-server\bin\Release\log4net.xml
 C:\Users\joe\projects\portable-sim-panels-fsuipc-server\bin\Release\Newtonsoft.Json.xml
 C:\Users\joe\projects\portable-sim-panels-fsuipc-server\bin\Release\Unosquare.Labs.EmbedIO.xml
 C:\Users\joe\projects\portable-sim-panels-fsuipc-server\bin\Release\Unosquare.Swan.Lite.xml
-C:\Users\joe\projects\portable-sim-panels-fsuipc-server\obj\Release\portable-sim-panels-FSUIPC-server.vbprojResolveAssemblyReference.cache
 C:\Users\joe\projects\portable-sim-panels-fsuipc-server\obj\Release\MainWindow.g.vb
 C:\Users\joe\projects\portable-sim-panels-fsuipc-server\obj\Release\Application.g.vb
 C:\Users\joe\projects\portable-sim-panels-fsuipc-server\obj\Release\portable-sim-panels-FSUIPC-server_MarkupCompile.cache
