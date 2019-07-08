@@ -31,6 +31,7 @@
             <CheckBox Name="chkAvionicsMaster" Grid.Row="1" Grid.Column="1" Margin="1" Click="chkAvionicsMaster_Click"/>
             <TextBlock Name="txtPrevious" Grid.Column="1" Margin="1.4,26.4,367.4,-243.8" Grid.Row="1" TextWrapping="Wrap" Text="TextBlock" RenderTransformOrigin="0.187,-1.003"/>
             <TextBlock Name="txtJson" Grid.Column="1" Margin="363.4,26.4,9.4,-243.8" Grid.Row="1" TextWrapping="Wrap" Text="TextBlock" RenderTransformOrigin="0.187,-1.003"/>
+            <Image x:Name="imgQrCode" HorizontalAlignment="Left" Height="150" Margin="18,68,0,-196" Grid.Row="1" VerticalAlignment="Top" Width="152"/>
         </Grid>
     </DockPanel>
 </Window>

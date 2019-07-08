@@ -86,3 +86,5 @@ C:\Users\jherwig\projects\portable-sim-panels-fsuipc-server\obj\Release\portable
 C:\Users\jherwig\projects\portable-sim-panels-fsuipc-server\obj\Release\portable-sim-panels-FSUIPC-server.exe
 C:\Users\jherwig\projects\portable-sim-panels-fsuipc-server\obj\Release\portable-sim-panels-FSUIPC-server.xml
 C:\Users\jherwig\projects\portable-sim-panels-fsuipc-server\obj\Release\portable-sim-panels-FSUIPC-server.pdb
+C:\Users\jherwig\projects\portable-sim-panels-fsuipc-server\obj\Release\portable-sim-panels-FSUIPC-server.vbprojAssemblyReference.cache
+C:\Users\jherwig\projects\portable-sim-panels-fsuipc-server\bin\Release\System.Drawing.Common.dll
