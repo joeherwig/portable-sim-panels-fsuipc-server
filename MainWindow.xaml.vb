@@ -23,7 +23,7 @@ Partial Public Class MainWindow
     Dim values As New FSUIPC()
     Dim previousValues As New Dictionary(Of String, String)
     Dim dictionary As New Dictionary(Of String, String)
-    Dim config As New Object
+    Public Property config As New Object
     Dim wssv As New WebSocketServer(8080)
     Dim ws As New WebSocketSharp.WebSocket("ws://localhost:8080/fsuipc")
 
@@ -42,7 +42,7 @@ Partial Public Class MainWindow
         Return JsonConvert.SerializeObject(dictionary, Formatting.None)
     End Function
 
-    Private Function getConfig()
+    Public Function getConfig()
         Dim fileReader As String
         fileReader = My.Computer.FileSystem.ReadAllText("config.json", System.Text.Encoding.UTF8)
         config = JsonConvert.DeserializeObject(fileReader)
@@ -58,16 +58,17 @@ Partial Public Class MainWindow
 
     Public Sub New()
         InitializeComponent()
+        config = getConfig()
         Dim newCulture As CultureInfo = CultureInfo.CreateSpecificCulture("en-US")
         Thread.CurrentThread.CurrentUICulture = newCulture
         Thread.CurrentThread.CurrentCulture = newCulture
         Dim localWS As LocalWebServer
-        localWS = New LocalWebServer("http://localhost:80/", "c:/web")
+        localWS = New LocalWebServer("http://localhost:80/", config.selectToken("webserver").selectToken("servingFromDirectory").ToString())
         localWS.StartWebServer()
         wssStart("")
         ConfigureForm()
-        config = getConfig()
-        lblWebsocketConfig.Text = "running on: " & config.selectToken("websocket").selectToken("url").ToString() & ":" & config.selectToken("websocket").selectToken("port").ToString()
+        lblWebsocketConfig.Text = "websocket running on: " & config.selectToken("websocket").selectToken("url").ToString() & ":" & config.selectToken("websocket").selectToken("port").ToString()
+        btnOpenUrl.Content = "Open Gauges from : " & System.Environment.MachineName.ToString() & ":" & config.selectToken("webserver").selectToken("port").ToString()
         If config.selectToken("websocket").selectToken("url") = "localhost" Then
         End If
 
@@ -162,19 +163,30 @@ Partial Public Class MainWindow
         Me.timerConnection.Stop()
         Me.timerMain.Stop()
         FSUIPCConnection.Close()
-        Me.Close()
         End
+    End Sub
+
+    Private Sub btnOpenUrl_Click(sender As Object, e As RoutedEventArgs)
+        Console.Write(":-)")
+        Process.Start("http://" + System.Environment.MachineName.ToString() & ":" & config.selectToken("webserver").selectToken("port").ToString())
     End Sub
 End Class
 
 
-Friend Class LocalWebServer
-    Public Property url As String
-    Public Property servingFromDirectory As String
+Public Class LocalWebServer
+    Public Property Url As String
+    Public Property ServingFromDirectory As String
 
-    Public Sub New(ByVal Url As String, ByVal ServingFromDirectory As String)
-        Url = Url
-        ServingFromDirectory = ServingFromDirectory
+    'Public Sub New(ByVal Url As String, ByVal ServingFromDirectory As String)
+    '    Url = Url
+    '    ServingFromDirectory = ServingFromDirectory
+    'End Sub
+    Public Sub New(
+        ByVal Url As String,
+        ByVal ServingFromDirectory As String)
+        Me.Url = Url
+        Me.ServingFromDirectory = ServingFromDirectory
+        Console.Write(Me.ServingFromDirectory)
     End Sub
 
     Public Sub StartWebServer()
@@ -182,10 +194,11 @@ Friend Class LocalWebServer
         t.Start()
     End Sub
 
-    Private Sub ThreadProc()
+    Public Sub ThreadProc()
         Using server = New WebServer("http://*:80/")
             server.RegisterModule(New LocalSessionModule())
-            server.RegisterModule(New StaticFilesModule("C:\Users\joe\projects\portable-sim-panels\public"))
+            'server.RegisterModule(New StaticFilesModule(ServingFromDirectory))
+            server.RegisterModule(New StaticFilesModule("c:\users\jherwig\projects\portable-sim-panels\public"))
             server.[Module](Of StaticFilesModule)().UseRamCache = True
             server.[Module](Of StaticFilesModule)().DefaultExtension = ".html"
             server.[Module](Of StaticFilesModule)().DefaultDocument = "index.html"

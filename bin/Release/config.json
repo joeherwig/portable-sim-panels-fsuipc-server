@@ -1,6 +1,10 @@
 {
-  "websocket":{
+  "websocket": {
     "url": "localhost",
     "port": 8080
+  },
+  "webserver": {
+    "port": 80,
+    "servingFromDirectory": "c:\\users\\jherwig\\projects\\portable-sim-panels\\public"
   }
 }
