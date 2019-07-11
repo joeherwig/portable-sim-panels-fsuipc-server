@@ -4,7 +4,7 @@
     "port": 8080
   },
   "webserver": {
-    "port": 80,
+    "port": 82,
     "servingFromDirectory": "c:\\webGauges"
   }
 }
