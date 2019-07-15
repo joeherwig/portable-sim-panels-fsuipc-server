@@ -194,6 +194,7 @@ Public Class LocalWebServer
             server.RegisterModule(New LocalSessionModule())
             server.RegisterModule(New StaticFilesModule(ServingFromDirectory))
             Console.Write("--- WebDirectory: -- " + ServingFromDirectory)
+            server.[Module](Of StaticFilesModule)().ClearRamCache()
             server.[Module](Of StaticFilesModule)().UseRamCache = False
             server.[Module](Of StaticFilesModule)().DefaultExtension = ".html"
             server.[Module](Of StaticFilesModule)().DefaultDocument = "index.html"
