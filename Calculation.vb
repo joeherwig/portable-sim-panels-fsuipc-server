@@ -7,7 +7,8 @@ Partial Public Class MainWindow
                {"PLANE_HEADING_DEGREES_MAGNETIC", "*360/65536/65536"},
                {"PLANE_BANK_DEGREES", "*(360/65536/65536)-360"},
                {"PLANE_PITCH_DEGREES", "*(360/65536/65536)"},
-               {"VERTICAL_SPEED", "*60*3.28084/256 "}
+               {"VERTICAL_SPEED", "*60*3.28084/256 "},
+               {"", ""}
            }
     Public Function calculateValue(ByVal key, ByVal rawValue)
         Dim temp As Decimal

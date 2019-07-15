@@ -126,7 +126,7 @@ Partial Public Class MainWindow
                 updateDeltaObject(myFields(i).Name, GetPropertyValue(myFields(i).GetValue(values), "Value"))
             Next i
 
-            txtPrevious.Text = JsonConvert.SerializeObject(previousValues, Formatting.Indented)
+            'txtPrevious.Text = JsonConvert.SerializeObject(previousValues, Formatting.Indented)
             'txtJson.Text = JsonConvert.SerializeObject(dictionary, Formatting.Indented)
             If (JsonConvert.SerializeObject(dictionary, Formatting.None) <> "{}") Then
                 wssv.WebSocketServices.Broadcast(JsonConvert.SerializeObject(dictionary, Formatting.None))
@@ -194,7 +194,7 @@ Public Class LocalWebServer
             server.RegisterModule(New LocalSessionModule())
             server.RegisterModule(New StaticFilesModule(ServingFromDirectory))
             Console.Write("--- WebDirectory: -- " + ServingFromDirectory)
-            server.[Module](Of StaticFilesModule)().UseRamCache = True
+            server.[Module](Of StaticFilesModule)().UseRamCache = False
             server.[Module](Of StaticFilesModule)().DefaultExtension = ".html"
             server.[Module](Of StaticFilesModule)().DefaultDocument = "index.html"
             server.RunAsync()
