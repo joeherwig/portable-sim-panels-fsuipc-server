@@ -5,7 +5,7 @@ Partial Public Class MainWindow
     ' place for each key (variable) the formula as value where the lowercase 'x' represents the source value.
     Dim valueRecalculation As New Dictionary(Of String, String) From {
         {"AIRSPEED_INDICATED", "x / 128"},
-        {"PLANE_HEADING_DEGREES_MAGNETIC", "x * 360 / 65536 / 65536"},
+        {"PLANE_HEADING_DEGREES_MAGNETIC", "x * (360 / 65536 / 65536)"},
         {"PLANE_BANK_DEGREES", "x * (360 / 65536 / 65536) - 360"},
         {"PLANE_PITCH_DEGREES", "x * (360 / 65536 / 65536)"},
         {"VERTICAL_SPEED", "x * 60 * 3.28084 / 256 "},
@@ -15,7 +15,8 @@ Partial Public Class MainWindow
         {"TURB_ENG_4_ITT", "(x - 491.67) * 5/9"},
         {"GEAR_LEFT_POSITION", "x/163.83"},
         {"GEAR_CENTER_POSITION", "x/163.83"},
-        {"GEAR_RIGHT_POSITION", "x/163.83"}
+        {"GEAR_RIGHT_POSITION", "x/163.83"},
+        {"AUTOPILOT_HEADING_LOCK_DIR", "x / 65536 * 360"}
     }
     Public Function calculateValue(ByVal key, ByVal rawValue)
         Dim temp As Decimal

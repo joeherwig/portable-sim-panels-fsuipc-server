@@ -27,6 +27,9 @@ Partial Public Class MainWindow
         Public GEAR_LEFT_POSITION As New Offset(Of UInteger)(&HBF4)
         Public GEAR_CENTER_POSITION As New Offset(Of UInteger)(&HBEC)
         Public GEAR_RIGHT_POSITION As New Offset(Of UInteger)(&HBF0)
+        Public AUTOPILOT_MASTER As New Offset(Of UInteger)(&H7BC)
+        Public AUTOPILOT_HEADING_LOCK As New Offset(Of UInteger)(&H7C8)
+        Public AUTOPILOT_HEADING_LOCK_DIR As New Offset(Of UInteger)(&H7CC)
     End Class
 
 End Class
