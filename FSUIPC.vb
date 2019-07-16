@@ -30,6 +30,8 @@ Partial Public Class MainWindow
         Public AUTOPILOT_MASTER As New Offset(Of UInteger)(&H7BC)
         Public AUTOPILOT_HEADING_LOCK As New Offset(Of UInteger)(&H7C8)
         Public AUTOPILOT_HEADING_LOCK_DIR As New Offset(Of UInteger)(&H7CC)
+        Public AUTOPILOT_ALTITUDE_LOCK As New Offset(Of UInteger)(&H7D0)
+        Public AUTOPILOT_ALTITUDE_LOCK_VAR As New Offset(Of UInteger)(&H7D4)
     End Class
 
 End Class
