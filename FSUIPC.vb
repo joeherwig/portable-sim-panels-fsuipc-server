@@ -24,6 +24,9 @@ Partial Public Class MainWindow
         Public TURB_ENG_2_ITT As New Offset(Of Double)(&H2138)
         Public TURB_ENG_3_ITT As New Offset(Of Double)(&H2238)
         Public TURB_ENG_4_ITT As New Offset(Of Double)(&H2338)
+        Public GEAR_LEFT_POSITION As New Offset(Of UInteger)(&HBF4)
+        Public GEAR_CENTER_POSITION As New Offset(Of UInteger)(&HBEC)
+        Public GEAR_RIGHT_POSITION As New Offset(Of UInteger)(&HBF0)
     End Class
 
 End Class

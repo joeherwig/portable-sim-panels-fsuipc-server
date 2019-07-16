@@ -12,7 +12,10 @@ Partial Public Class MainWindow
         {"TURB_ENG_1_ITT", "(x - 491.67) * 5/9"},
         {"TURB_ENG_2_ITT", "(x - 491.67) * 5/9"},
         {"TURB_ENG_3_ITT", "(x - 491.67) * 5/9"},
-        {"TURB_ENG_4_ITT", "(x - 491.67) * 5/9"}
+        {"TURB_ENG_4_ITT", "(x - 491.67) * 5/9"},
+        {"GEAR_LEFT_POSITION", "x/163.83"},
+        {"GEAR_CENTER_POSITION", "x/163.83"},
+        {"GEAR_RIGHT_POSITION", "x/163.83"}
     }
     Public Function calculateValue(ByVal key, ByVal rawValue)
         Dim temp As Decimal
