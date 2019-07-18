@@ -20,10 +20,10 @@ Partial Public Class MainWindow
         {"AUTOPILOT_ALTITUDE_LOCK_VAR", "x * 3.28084 / 65536"},
         {"NAV_1_DME_DISTANCE", "x / 10"},
         {"NAV_1_DME_SPEED", "x / 10"},
-        {"NAV_1_DME_TimeTo", "x / 10"},
+        {"NAV_1_DME_TIMETO", "x / 10"},
         {"NAV_2_DME_DISTANCE", "x / 10"},
         {"NAV_2_DME_SPEED", "x / 10"},
-        {"NAV_2_DME_TimeTo", "x / 10"}
+        {"NAV_2_DME_TIMETO", "x / 10"}
     }
     Public Function calculateValue(ByVal key, ByVal rawValue)
         Dim temp As Decimal
