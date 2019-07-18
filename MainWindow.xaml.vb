@@ -21,6 +21,8 @@ Partial Public Class MainWindow
     Dim previousValues As New Dictionary(Of String, String)
     Dim dictionary As New Dictionary(Of String, String)
     Public Property config As New Object
+    Dim showValues As New Boolean
+    Dim sendFull As New Boolean
     Dim wssv As New WebSocketServer(8080)
     Dim ws As New WebSocketSharp.WebSocket("ws://localhost:8080/fsuipc")
 
@@ -149,11 +151,20 @@ Partial Public Class MainWindow
                 'Dim currentValue As String = updateDeltaObject(myFields(i).Name, GetPropertyValue(myFields(i).GetValue(values), "Value"))
                 updateDeltaObject(myFields(i).Name, GetPropertyValue(myFields(i).GetValue(values), "Value"))
             Next i
+            If (chkShowValues.IsChecked) Then
+                txtPrevious.Text = JsonConvert.SerializeObject(previousValues, Formatting.Indented)
+                txtJson.Text = JsonConvert.SerializeObject(dictionary, Formatting.Indented)
+            Else
+                txtPrevious.Text = ""
+                txtJson.Text = ""
+            End If
 
-            'txtPrevious.Text = JsonConvert.SerializeObject(previousValues, Formatting.Indented)
-            'txtJson.Text = JsonConvert.SerializeObject(dictionary, Formatting.Indented)
             If (JsonConvert.SerializeObject(dictionary, Formatting.None) <> "{}") Then
-                wssv.WebSocketServices.Broadcast(JsonConvert.SerializeObject(dictionary, Formatting.None))
+                If (chkSendFull.IsChecked) Then
+                    wssv.WebSocketServices.Broadcast(JsonConvert.SerializeObject(previousValues, Formatting.None))
+                Else
+                    wssv.WebSocketServices.Broadcast(JsonConvert.SerializeObject(dictionary, Formatting.None))
+                End If
             End If
         Catch ex As Exception
             ' An error occured. Tell the user and stop this timer.
@@ -192,6 +203,14 @@ Partial Public Class MainWindow
     Private Sub btnOpenUrl_Click(sender As Object, e As RoutedEventArgs)
         Console.Write(":-)")
         Process.Start("http://" + System.Environment.MachineName.ToString() & ":" & config.selectToken("webserver").selectToken("port").ToString())
+    End Sub
+
+    Private Sub CheckBox_Checked(sender As Object, e As RoutedEventArgs)
+        showValues = Not showValues
+    End Sub
+
+    Private Sub ChkSendFull_Checked(sender As Object, e As RoutedEventArgs) Handles chkSendFull.Checked
+        sendFull = Not sendFull
     End Sub
 End Class
 

@@ -17,7 +17,13 @@ Partial Public Class MainWindow
         {"GEAR_CENTER_POSITION", "x/163.83"},
         {"GEAR_RIGHT_POSITION", "x/163.83"},
         {"AUTOPILOT_HEADING_LOCK_DIR", "x / 65536 * 360"},
-        {"AUTOPILOT_ALTITUDE_LOCK_VAR", "x * 3.28084 / 65536"}
+        {"AUTOPILOT_ALTITUDE_LOCK_VAR", "x * 3.28084 / 65536"},
+        {"NAV_1_DME_DISTANCE", "x / 10"},
+        {"NAV_1_DME_SPEED", "x / 10"},
+        {"NAV_1_DME_TimeTo", "x / 10"},
+        {"NAV_2_DME_DISTANCE", "x / 10"},
+        {"NAV_2_DME_SPEED", "x / 10"},
+        {"NAV_2_DME_TimeTo", "x / 10"}
     }
     Public Function calculateValue(ByVal key, ByVal rawValue)
         Dim temp As Decimal

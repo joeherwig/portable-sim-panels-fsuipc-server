@@ -3,7 +3,6 @@
 Partial Public Class MainWindow
 
     Public Class FSUIPC
-
         Public INDICATED_ALTITUDE As New Offset(Of UInteger)(&H3324)
         Public AIRSPEED_INDICATED As New Offset(Of UInteger)(&H2BC)
         Public avionicsMaster As New Offset(Of UInteger)(&H2E80)
@@ -32,6 +31,16 @@ Partial Public Class MainWindow
         Public AUTOPILOT_HEADING_LOCK_DIR As New Offset(Of UInteger)(&H7CC)
         Public AUTOPILOT_ALTITUDE_LOCK As New Offset(Of UInteger)(&H7D0)
         Public AUTOPILOT_ALTITUDE_LOCK_VAR As New Offset(Of UInteger)(&H7D4)
+        Public AUTOPILOT_APPROACH_HOLD As New Offset(Of UInteger)(&H800)
+        Public AUTOTHROTTLE_ARM As New Offset(Of UInteger)(&H810)
+        Public DME_Switch As New Offset(Of Short)(&H378)
+        Public NAV_1_DME_DISTANCE As New Offset(Of Short)(&H300)
+        Public NAV_1_DME_SPEED As New Offset(Of Short)(&H302)
+        Public NAV_1_DME_TIMETO As New Offset(Of Short)(&H304)
+        Public NAV_2_DME_DISTANCE As New Offset(Of Short)(&H306)
+        Public NAV_2_DME_SPEED As New Offset(Of Short)(&H308)
+        Public NAV_2_DME_TIMETO As New Offset(Of Short)(&H30A)
+
     End Class
 
 End Class
