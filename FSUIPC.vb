@@ -45,6 +45,12 @@ Partial Public Class MainWindow
         Public TRAILING_EDGE_FLAPS_RIGHT_PERCENT As New Offset(Of Integer)(&HBE4)
         Public GENERAL_ENG_1_OIL_PRESSURE As New Offset(Of UShort)(&H8BA)
         Public GENERAL_ENG_2_OIL_PRESSURE As New Offset(Of UShort)(&H952)
+        Public GENERAL_ENG_3_OIL_PRESSURE As New Offset(Of UShort)(&H9EA)
+        Public GENERAL_ENG_4_OIL_PRESSURE As New Offset(Of UShort)(&HA82)
+        Public GENERAL_ENG_1_OIL_TEMPERATURE As New Offset(Of Short)(&H8B8)
+        Public GENERAL_ENG_2_OIL_TEMPERATURE As New Offset(Of Short)(&H950)
+        Public GENERAL_ENG_3_OIL_TEMPERATURE As New Offset(Of Short)(&H9E8)
+        Public GENERAL_ENG_4_OIL_TEMPERATURE As New Offset(Of Short)(&HA80)
 
     End Class
 
