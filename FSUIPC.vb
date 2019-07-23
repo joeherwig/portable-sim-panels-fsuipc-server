@@ -40,6 +40,11 @@ Partial Public Class MainWindow
         Public NAV_2_DME_DISTANCE As New Offset(Of Short)(&H306)
         Public NAV_2_DME_SPEED As New Offset(Of Short)(&H308)
         Public NAV_2_DME_TIMETO As New Offset(Of Short)(&H30A)
+        Public ELEVATOR_TRIM_POSITION As New Offset(Of Short)(&HBC2)
+        Public TRAILING_EDGE_FLAPS_LEFT_PERCENT As New Offset(Of Integer)(&HBE0)
+        Public TRAILING_EDGE_FLAPS_RIGHT_PERCENT As New Offset(Of Integer)(&HBE4)
+        Public GENERAL_ENG_1_OIL_PRESSURE As New Offset(Of UShort)(&H8BA)
+        Public GENERAL_ENG_2_OIL_PRESSURE As New Offset(Of UShort)(&H952)
 
     End Class
 

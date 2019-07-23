@@ -23,7 +23,12 @@ Partial Public Class MainWindow
         {"NAV_1_DME_TIMETO", "x / 10"},
         {"NAV_2_DME_DISTANCE", "x / 10"},
         {"NAV_2_DME_SPEED", "x / 10"},
-        {"NAV_2_DME_TIMETO", "x / 10"}
+        {"NAV_2_DME_TIMETO", "x / 10"},
+        {"ELEVATOR_TRIM_POSITION", "x / 163.83"},
+        {"TRAILING_EDGE_FLAPS_LEFT_PERCENT", "x / 163.83"},
+        {"TRAILING_EDGE_FLAPS_RIGHT_PERCENT", "x / 163.83"},
+        {"GENERAL_ENG_1_OIL_PRESSURE", "x "},
+        {"GENERAL_ENG_2_OIL_PRESSURE", "x"}
     }
     Public Function calculateValue(ByVal key, ByVal rawValue)
         Dim temp As Decimal
