@@ -11,7 +11,7 @@ You just need
 
 # How to start
 - [download the zip](https://gitlab.com/joeherwig/portable-sim-panels-fsuipc-server/-/archive/master/portable-sim-panels-fsuipc-server-master.zip) and unpack it where ever you desire it.
-- goto `bin\Release\config.json` and assign your preffered settings. I'm using port 82 instead of Port 80 for my portable-sim-panels (default HTTP-Port for Websites) because some Addons bring their own webbased gauges and you cannot run two applications listening on the same port on the same network device.
+- goto `bin\Release\config.json` and assign your preffered settings. I'm using port 82 instead of Port 80 for my [portable-sim-panels](https://github.com/joeherwig/portable-sim-panels/) (default HTTP-Port for Websites) because some Addons bring their own webbased gauges and you cannot run two applications listening on the same port on the same network device.
 The default settings are shown [here](https://gitlab.com/joeherwig/portable-sim-panels-fsuipc-server/blob/master/bin/Release/config.json).
 - execute `bin/Release/portable-sim-panels-FSUIPC-server.exe` within your extracted folder to run the FSUIPC2WebSocket Server.
 
