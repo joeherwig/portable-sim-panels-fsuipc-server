@@ -38,3 +38,6 @@ fsuipcSocket.onmessage = (event) => {
 
 ```
 It just connects to the server and prints the JSON Data into the body and as JSON Object to the console.
+
+# What can i do with it?
+See the corresponding gauges at [portable-sim-panels](https://github.com/joeherwig/portable-sim-panels) to check what you can do with this FSUIPC to Websocket API.
