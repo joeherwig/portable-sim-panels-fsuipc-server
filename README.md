@@ -24,13 +24,17 @@ By activating "**_show values_**" you can monitor the which are currently being 
 # Implementation
 A simple javascript example that can be run within your browsers console as well:
 ```
-var fsuipcSocket = new WebSocket("wss://HostnameWhereYouRunTheServerOn/fsuipc");
+// replace in the following line 'localhost' and `8080` with the settings you setup before if you don't use the defaults.
+fsuipcSocket = new WebSocket('ws://localhost:8080/fsuipc');
 
 fsuipcSocket.onopen = (event) => {
   console.log('connection to fsuipcSocket established ... awaiting data');
 };
 
 fsuipcSocket.onmessage = (event) => {
-  console.log(event.data);
+  console.log(JSON.parse(event.data));
+  document.getElementsByTagName('body')[0].innerHTML = event.data.replace(/,/g,',<br>');
 }
+
 ```
+It just connects to the server and prints the JSON Data into the body and as JSON Object to the console.
