@@ -22,7 +22,7 @@ By setting the checkboxes to "_**send all data**_" you can skip the function whi
 By activating "**_show values_**" you can monitor the which are currently being received from FSUIPC and being sent via the websocket.port.  For performance optimizations it is set to default "(off)".
 
 # Implementation
-A simple javascript example that can be run within your browsers console as well:
+A simple javascript example that can be run within your browsers console as well. Just open a new Tab and paste the below code to the console to check how to receive the data from FSUIPC within your browser.
 ```
 // replace in the following line 'localhost' and `8080` with the settings you setup before if you don't use the defaults.
 fsuipcSocket = new WebSocket('ws://localhost:8080/fsuipc');
