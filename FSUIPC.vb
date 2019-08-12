@@ -3,6 +3,8 @@
 Partial Public Class MainWindow
 
     Public Class FSUIPC
+        Public TITLE As New Offset(Of String)(&H3D00, 256)
+        Public ACT_IDENTIFYER As New Offset(Of String)(&H313C, 12)
         Public INDICATED_ALTITUDE As New Offset(Of UInteger)(&H3324)
         Public AIRSPEED_INDICATED As New Offset(Of UInteger)(&H2BC)
         Public avionicsMaster As New Offset(Of UInteger)(&H2E80)

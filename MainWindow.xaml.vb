@@ -1,6 +1,7 @@
 ﻿Imports NCalc
 Imports System.Globalization
 Imports System.Reflection
+Imports System.Text.RegularExpressions
 Imports System.Windows.Threading
 Imports System.Threading
 Imports FSUIPC
@@ -87,7 +88,14 @@ Partial Public Class MainWindow
 
 
     Public Function updateDeltaObject(ByVal key, ByVal rawValue)
-        Dim result = calculateValue(key, rawValue)
+        Dim rgx As New Regex("^\d.*\.*\d$")
+        Dim result
+        Console.WriteLine(rgx.IsMatch(rawValue))
+        If (rgx.IsMatch(rawValue)) Then
+            result = calculateValue(key, rawValue)
+        Else
+            result = rawValue
+        End If
         If previousValues.ContainsKey(key) Then
             If previousValues.Item(key) = result Then
                 dictionary.Remove(key)
