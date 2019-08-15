@@ -16,7 +16,7 @@
             <TextBlock Name="lblWebsocketConfig">Websocket config</TextBlock>
             <Button x:Name="btnOpenUrl" Content="Webserver config" Width="367" Click="btnOpenUrl_Click"/>
         </StatusBar>
-        <Grid>
+        <Grid Margin="0,0,0,5">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="auto"/>
                 <ColumnDefinition Width="*"/>
@@ -27,11 +27,12 @@
             </Grid.RowDefinitions>
             <TextBlock Grid.Row="0" Grid.Column="0" Margin="10,1,20,1">Indicated Airpeed (Knots):</TextBlock>
             <TextBlock Name="txtAirspeed" Grid.Row="0" Grid.Column="1" Margin="1">0</TextBlock>
-            <TextBlock Grid.Row="1" Grid.Column="0" Margin="10,1,20,1">Master Avionics:</TextBlock>
-            <CheckBox Name="chkAvionicsMaster" Grid.Row="1" Grid.Column="1" Margin="1" Click="chkAvionicsMaster_Click"/>
-            <TextBlock Name="txtPrevious" Grid.Column="1" Margin="1.4,26.4,367.4,-243.8" Grid.Row="1" TextWrapping="Wrap" Text="TextBlock" RenderTransformOrigin="0.187,-1.003"/>
-            <TextBlock Name="txtJson" Grid.Column="1" Margin="363.4,26.4,9.4,-243.8" Grid.Row="1" TextWrapping="Wrap" Text="TextBlock" RenderTransformOrigin="0.187,-1.003"/>
-            <Image x:Name="imgQrCode" HorizontalAlignment="Left" Height="150" Margin="18,68,0,-196" Grid.Row="1" VerticalAlignment="Top" Width="152"/>
+            <TextBlock Grid.Row="1" Grid.Column="0" Margin="10,10,20,1" RenderTransformOrigin="0.319,1.704">Master Avionics:</TextBlock>
+            <TextBox Name="txtPrevious" Height="371" Margin="10,37,340,-373" Grid.Row="1" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Grid.Column="1" FontSize="10" ScrollViewer.CanContentScroll="True"/>
+            <TextBox Name="txtJson" Margin="363,38,10,-373" Grid.Row="1" TextWrapping="Wrap" Text="TextBox" Grid.Column="1" FontSize="10" ScrollViewer.CanContentScroll="True" RenderTransformOrigin="0.94,0.442"/>
+            <CheckBox x:Name="chkAvionicsMaster" Grid.Row="1" Margin="170,10,0,1" Click="chkAvionicsMaster_Click" RenderTransformOrigin="-0.4,1.207"/>
+            <CheckBox x:Name="chkShowValues" Content="Show values" Grid.Column="1" HorizontalAlignment="Left" Margin="10,10,0,0" Grid.Row="1" VerticalAlignment="Top" RenderTransformOrigin="0.5,0.5" Width="117" Checked="CheckBox_Checked"/>
+            <CheckBox x:Name="chkSendFull" Grid.Row="1" Margin="132,10,415,5" Click="chkAvionicsMaster_Click" RenderTransformOrigin="1.336,1.16" Grid.Column="1" Content="send all data"/>
         </Grid>
     </DockPanel>
 </Window>

@@ -1,6 +1,7 @@
 ﻿Imports NCalc
 Imports System.Globalization
 Imports System.Reflection
+Imports System.Text.RegularExpressions
 Imports System.Windows.Threading
 Imports System.Threading
 Imports FSUIPC
@@ -15,23 +16,27 @@ Imports Unosquare.Labs.EmbedIO.Modules
 ''' </summary>
 Partial Public Class MainWindow
     Inherits Window
-    ' Set up a main timer
     Private timerMain As New DispatcherTimer()
-    ' And another to look for a connection
     Private timerConnection As New DispatcherTimer()
     Dim values As New FSUIPC()
     Dim previousValues As New Dictionary(Of String, String)
     Dim dictionary As New Dictionary(Of String, String)
     Public Property config As New Object
+    Dim showValues As New Boolean
+    Dim sendFull As New Boolean
     Dim wssv As New WebSocketServer(8080)
     Dim ws As New WebSocketSharp.WebSocket("ws://localhost:8080/fsuipc")
 
     Public Class wss
         Inherits WebSocketBehavior
+        'Public Event wssOnMessage As EventHandler Implements wss.onMessage
+        'Protected Overrides Sub OnMessage(ByVal e As MessageEventArgs)
+        'Dim msg = If(e.Data = "BALUS", "I've been balused already...", "I'm not available now.")
+        '    Send(msg)
+        'End Sub
     End Class
 
     Private Function wssStart(ByVal args As String)
-        Console.WriteLine(args)
         wssv.AddWebSocketService(Of wss)("/fsuipc")
         wssv.Start()
         Return wssv
@@ -64,8 +69,10 @@ Partial Public Class MainWindow
         Dim localWS As New LocalWebServer(config.selectToken("webserver").selectToken("port").ToString(), config.selectToken("webserver").selectToken("servingFromDirectory").ToString())
         localWS.StartWebServer()
         wssStart("")
+
+        'AddHandler wss, AddressOf getFullObject
+
         ConfigureForm()
-        'lblWebsocketConfig.Text = "websocket running on: " & config.selectToken("websocket").selectToken("url").ToString() & ":" & config.selectToken("websocket").selectToken("port").ToString()
         lblWebsocketConfig.Text = "Gauges are served from " + config.selectToken("webserver").selectToken("servingFromDirectory").ToString() + " at "
         btnOpenUrl.Content = "Open Gauges from : " & System.Environment.MachineName.ToString() & ":" & config.selectToken("webserver").selectToken("port").ToString()
         If config.selectToken("websocket").selectToken("url") = "localhost" Then
@@ -81,7 +88,14 @@ Partial Public Class MainWindow
 
 
     Public Function updateDeltaObject(ByVal key, ByVal rawValue)
-        Dim result = calculateValue(key, rawValue)
+        Dim rgx As New Regex("^\d.*\.*\d$")
+        Dim result
+        Console.WriteLine(rgx.IsMatch(rawValue))
+        If (rgx.IsMatch(rawValue)) Then
+            result = calculateValue(key, rawValue)
+        Else
+            result = rawValue
+        End If
         If previousValues.ContainsKey(key) Then
             If previousValues.Item(key) = result Then
                 dictionary.Remove(key)
@@ -103,10 +117,30 @@ Partial Public Class MainWindow
             ' If there was no problem, stop this timer and start the main timer
             Me.timerConnection.[Stop]()
             Me.timerMain.Start()
+            getFullObject()
             ' Update the connection status
             ConfigureForm()
             ' No connection found. Don't need to do anything, just keep trying
         Catch
+        End Try
+    End Sub
+
+    Public Sub getFullObject()
+        Try
+            FSUIPCConnection.Process()
+            Dim myType As Type = values.GetType
+            Dim myFields As FieldInfo() = myType.GetFields((BindingFlags.Public Or BindingFlags.Instance))
+            Dim i As Integer
+            Dim fullObject As New Dictionary(Of String, String)
+
+            For i = 0 To myFields.Length - 1
+                fullObject.Add(myFields(i).Name, GetPropertyValue(myFields(i).GetValue(values), "Value"))
+            Next i
+            If (JsonConvert.SerializeObject(dictionary, Formatting.None) <> "{}") Then
+                wssv.WebSocketServices.Broadcast(JsonConvert.SerializeObject(fullObject, Formatting.None))
+            End If
+        Catch ex As Exception
+            ConfigureForm()
         End Try
     End Sub
 
@@ -125,11 +159,20 @@ Partial Public Class MainWindow
                 'Dim currentValue As String = updateDeltaObject(myFields(i).Name, GetPropertyValue(myFields(i).GetValue(values), "Value"))
                 updateDeltaObject(myFields(i).Name, GetPropertyValue(myFields(i).GetValue(values), "Value"))
             Next i
+            If (chkShowValues.IsChecked) Then
+                txtPrevious.Text = JsonConvert.SerializeObject(previousValues, Formatting.Indented)
+                txtJson.Text = JsonConvert.SerializeObject(dictionary, Formatting.Indented)
+            Else
+                txtPrevious.Text = ""
+                txtJson.Text = ""
+            End If
 
-            txtPrevious.Text = JsonConvert.SerializeObject(previousValues, Formatting.Indented)
-            'txtJson.Text = JsonConvert.SerializeObject(dictionary, Formatting.Indented)
             If (JsonConvert.SerializeObject(dictionary, Formatting.None) <> "{}") Then
-                wssv.WebSocketServices.Broadcast(JsonConvert.SerializeObject(dictionary, Formatting.None))
+                If (chkSendFull.IsChecked) Then
+                    wssv.WebSocketServices.Broadcast(JsonConvert.SerializeObject(previousValues, Formatting.None))
+                Else
+                    wssv.WebSocketServices.Broadcast(JsonConvert.SerializeObject(dictionary, Formatting.None))
+                End If
             End If
         Catch ex As Exception
             ' An error occured. Tell the user and stop this timer.
@@ -169,6 +212,14 @@ Partial Public Class MainWindow
         Console.Write(":-)")
         Process.Start("http://" + System.Environment.MachineName.ToString() & ":" & config.selectToken("webserver").selectToken("port").ToString())
     End Sub
+
+    Private Sub CheckBox_Checked(sender As Object, e As RoutedEventArgs)
+        showValues = Not showValues
+    End Sub
+
+    Private Sub ChkSendFull_Checked(sender As Object, e As RoutedEventArgs) Handles chkSendFull.Checked
+        sendFull = Not sendFull
+    End Sub
 End Class
 
 
@@ -194,7 +245,8 @@ Public Class LocalWebServer
             server.RegisterModule(New LocalSessionModule())
             server.RegisterModule(New StaticFilesModule(ServingFromDirectory))
             Console.Write("--- WebDirectory: -- " + ServingFromDirectory)
-            server.[Module](Of StaticFilesModule)().UseRamCache = True
+            server.[Module](Of StaticFilesModule)().ClearRamCache()
+            server.[Module](Of StaticFilesModule)().UseRamCache = False
             server.[Module](Of StaticFilesModule)().DefaultExtension = ".html"
             server.[Module](Of StaticFilesModule)().DefaultDocument = "index.html"
             server.RunAsync()
