@@ -119,3 +119,5 @@ C:\Users\joach\projects\portable-sim-panels-fsuipc-server\obj\Release\portable_s
 C:\Users\joach\projects\portable-sim-panels-fsuipc-server\obj\Release\portable-sim-panels-FSUIPC-server.vbproj.GenerateResource.cache
 C:\Users\joach\projects\portable-sim-panels-fsuipc-server\obj\Release\portable-sim-panels-FSUIPC-server.vbproj.CoreCompileInputs.cache
 C:\Users\joach\projects\portable-sim-panels-fsuipc-server\obj\Release\portable-sim-panels-FSUIPC-server.vbproj.CopyComplete
+C:\Users\joe\projects\portable-sim-panels-fsuipc-server\bin\Release\System.Drawing.Common.dll
+C:\Users\joe\projects\portable-sim-panels-fsuipc-server\obj\Release\portable-sim-panels-FSUIPC-server.vbprojResolveAssemblyReference.cache
