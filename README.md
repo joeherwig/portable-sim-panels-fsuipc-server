@@ -46,3 +46,6 @@ See the corresponding gauges at [portable-sim-panels](https://github.com/joeherw
 
 This Application is available as FOSS (Free and open source Software) under The the following license:
 <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="Creative Commons Lizenzvertrag" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png" /></a>
+
+# [available Variables / FSUIPC-Offsets](https://gitlab.com/joeherwig/portable-sim-panels-fsuipc-server/blob/master/FSUIPC.vb)
+You can find the available values of the current version at the [FSUIPC.vb](https://gitlab.com/joeherwig/portable-sim-panels-fsuipc-server/blob/master/FSUIPC.vb) file.
