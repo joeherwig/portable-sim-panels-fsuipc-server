@@ -58,3 +58,4 @@ C:\Users\joe\projects\portable-sim-panels-fsuipc-server\obj\Debug\portable-sim-p
 C:\Users\joe\projects\portable-sim-panels-fsuipc-server\obj\Debug\portable-sim-panels-FSUIPC-server.exe
 C:\Users\joe\projects\portable-sim-panels-fsuipc-server\obj\Debug\portable-sim-panels-FSUIPC-server.xml
 C:\Users\joe\projects\portable-sim-panels-fsuipc-server\obj\Debug\portable-sim-panels-FSUIPC-server.pdb
+C:\Users\joe\projects\portable-sim-panels-fsuipc-server\bin\Debug\System.Drawing.Common.dll

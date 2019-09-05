@@ -8,7 +8,6 @@ Partial Public Class MainWindow
         Public INDICATED_ALTITUDE As New Offset(Of UInteger)(&H3324)
         Public AIRSPEED_INDICATED As New Offset(Of UInteger)(&H2BC)
         Public avionicsMaster As New Offset(Of UInteger)(&H2E80)
-        Public lights As New Offset(Of UInteger)(&HD0C)
         Public PLANE_HEADING_DEGREES_MAGNETIC As New Offset(Of UInteger)(&H580)
         Public PLANE_BANK_DEGREES As New Offset(Of UInteger)(&H57C)
         Public PLANE_PITCH_DEGREES As New Offset(Of UInteger)(&H578)
@@ -47,7 +46,8 @@ Partial Public Class MainWindow
         Public AUTOPILOT_VERTICALSPEED_LOCK_KNOTS As New Offset(Of UInteger)(&H7F2)
         Public AUTOPILOT_APPROACH_HOLD As New Offset(Of UInteger)(&H800)
         Public AUTOTHROTTLE_ARM As New Offset(Of UInteger)(&H810)
-        Public DME_Switch As New Offset(Of Short)(&H378)
+        ' Public DME_SWITCH As New Offset(Of UShort)(&H378)
+        Public DME_SWITCH As New Offset(Of UShort)(&H66C0)
         Public NAV_1_DME_DISTANCE As New Offset(Of Short)(&H300)
         Public NAV_1_DME_SPEED As New Offset(Of Short)(&H302)
         Public NAV_1_DME_TIMETO As New Offset(Of Short)(&H304)
@@ -65,6 +65,7 @@ Partial Public Class MainWindow
         Public GENERAL_ENG_2_OIL_TEMPERATURE As New Offset(Of Short)(&H950)
         Public GENERAL_ENG_3_OIL_TEMPERATURE As New Offset(Of Short)(&H9E8)
         Public GENERAL_ENG_4_OIL_TEMPERATURE As New Offset(Of Short)(&HA80)
+        Public LIGHTS As New Offset(Of Short)(&HD0C)
 
     End Class
 

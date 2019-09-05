@@ -148,6 +148,7 @@ Partial Public Class MainWindow
         ' Call process() to read/write data to/from FSUIPC
         ' We do this in a Try/Catch block incase something goes wrong
         Try
+            Me.values.DME_SWITCH.Value = FSUIPCConnection.ReadLVar("DME_Switch")
             FSUIPCConnection.Process()
 
             Me.chkAvionicsMaster.IsChecked = values.avionicsMaster.Value > 0
@@ -244,7 +245,6 @@ Public Class LocalWebServer
         Using server = New WebServer("http://*:" + Port + "/")
             server.RegisterModule(New LocalSessionModule())
             server.RegisterModule(New StaticFilesModule(ServingFromDirectory))
-            Console.Write("--- WebDirectory: -- " + ServingFromDirectory)
             server.[Module](Of StaticFilesModule)().ClearRamCache()
             server.[Module](Of StaticFilesModule)().UseRamCache = False
             server.[Module](Of StaticFilesModule)().DefaultExtension = ".html"
