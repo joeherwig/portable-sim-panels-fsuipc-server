@@ -42,7 +42,11 @@ It just connects to the server and prints the JSON Data into the body and as JSO
 # What can i do with it?
 See the corresponding gauges at [portable-sim-panels](https://github.com/joeherwig/portable-sim-panels) to check what you can do with this FSUIPC to Websocket API.
 
-<img src="https://joeherwig.github.io/EDST-Flightsim-Scenery_Hahnweide-Kirchheim-unter-Teck/images/JOE-Simtech-Logo.svg" width="100px">
+# [available Variables / FSUIPC-Offsets](https://gitlab.com/joeherwig/portable-sim-panels-fsuipc-server/blob/master/FSUIPC.vb)
+You can find the available values of the current version at the [FSUIPC.vb](https://gitlab.com/joeherwig/portable-sim-panels-fsuipc-server/blob/master/FSUIPC.vb) file.
 
-This Application is available as FOSS (Free and open source Software) under The the following license:
+<a href="https://joesimtech.com"><img src="https://joeherwig.github.io/EDST-Flightsim-Scenery_Hahnweide-Kirchheim-unter-Teck/images/JOE-Simtech-Logo.svg" width="50px"></a>
+
+This application is available as FOSS (Free and open source Software) under the the <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/">Creative Commons 'by-nc-sa 4.0'-license.</a>
+
 <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="Creative Commons Lizenzvertrag" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png" /></a>
