@@ -24,13 +24,16 @@ Partial Public Class MainWindow
         {"NAV_2_DME_DISTANCE", "x / 10"},
         {"NAV_2_DME_SPEED", "x / 10"},
         {"NAV_2_DME_TIMETO", "x / 10"},
-        {"ELEVATOR_TRIM_POSITION", "x / 163.83"},
         {"TRAILING_EDGE_FLAPS_LEFT_PERCENT", "x / 163.83"},
         {"TRAILING_EDGE_FLAPS_RIGHT_PERCENT", "x / 163.83"},
-        {"GENERAL_ENG_1_OIL_TEMPERATURE", "x / 117.0285714285714"},
-        {"GENERAL_ENG_2_OIL_TEMPERATURE", "x / 117.0285714285714"},
-        {"GENERAL_ENG_3_OIL_TEMPERATURE", "x / 117.0285714285714"},
-        {"GENERAL_ENG_4_OIL_TEMPERATURE", "x / 117.0285714285714"}
+        {"GENERAL_ENG_1_OIL_TEMPERATURE", "x "},
+        {"GENERAL_ENG_2_OIL_TEMPERATURE", "x "},
+        {"GENERAL_ENG_3_OIL_TEMPERATURE", "x "},
+        {"GENERAL_ENG_4_OIL_TEMPERATURE", "x "},
+        {"ENG_1_MANIFOLD_PRESSURE", "x / 1024"},
+        {"ENG_2_MANIFOLD_PRESSURE", "x / 1024"},
+        {"ENG_3_MANIFOLD_PRESSURE", "x / 1024"},
+        {"ENG_4_MANIFOLD_PRESSURE", "x / 1024"}
     }
     Public Function calculateValue(ByVal key, ByVal rawValue)
         Dim temp As Decimal

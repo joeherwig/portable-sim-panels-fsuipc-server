@@ -12,6 +12,7 @@ Partial Public Class MainWindow
         Public PLANE_BANK_DEGREES As New Offset(Of UInteger)(&H57C)
         Public PLANE_PITCH_DEGREES As New Offset(Of UInteger)(&H578)
         Public VERTICAL_SPEED As New Offset(Of Integer)(&H2C8)
+        Public TURN_COORDINATOR_BALL As New Offset(of Double)(&H0380)
         Public NAV_1_CDI As New Offset(Of Single)(&H2AAC)
         Public NAV_1_GSI As New Offset(Of Single)(&H2AB0)
         Public NAV_2_CDI As New Offset(Of Single)(&H2AB4)
@@ -65,6 +66,14 @@ Partial Public Class MainWindow
         Public GENERAL_ENG_2_OIL_TEMPERATURE As New Offset(Of Short)(&H950)
         Public GENERAL_ENG_3_OIL_TEMPERATURE As New Offset(Of Short)(&H9E8)
         Public GENERAL_ENG_4_OIL_TEMPERATURE As New Offset(Of Short)(&HA80)
+        Public ENG_1_MANIFOLD_PRESSURE As New Offset(Of Short)(&h08c0)
+        Public ENG_2_MANIFOLD_PRESSURE As New Offset(Of Short)(&h0958)
+        Public ENG_3_MANIFOLD_PRESSURE As New Offset(Of Short)(&H09f0)
+        Public ENG_4_MANIFOLD_PRESSURE As New Offset(Of Short)(&HA88)
+        Public PROP_1_RPM As New Offset(Of Double)(&H2400)
+        Public PROP_2_RPM As New Offset(Of Double)(&H2500)
+        Public PROP_3_RPM As New Offset(Of Double)(&H2600)
+        Public PROP_4_RPM As New Offset(Of Double)(&H2700)
         Public LIGHTS As New Offset(Of Short)(&HD0C)
 
     End Class
