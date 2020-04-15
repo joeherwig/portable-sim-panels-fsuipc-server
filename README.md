@@ -3,9 +3,11 @@
 FSUIPC Websocket-Server.
 Connects to the Simulator via FSUIPC / XPUIPC and offers the ability to subscribe to the changed values via websocket procotol.
 
+And we're also <img src="https://joesimtech.com/wp-content/uploads/2020/04/P3D_v5_Badge.svg" width="120"> V5 compatible!
+
 # Prerequesities
 You just need
-- FSUIPC compatible simulator (Tested with Prepar3D 3.x and 4.x (32 / 64 Bit)
+- FSUIPC compatible simulator (Tested with Prepar3D 3.x, 4.x and even 5.0 (32 / 64 Bit)
 - a registered and properly setup version of FSUIPC
 - .Net Framework redistributables Version 4.7.2
 
