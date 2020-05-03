@@ -148,7 +148,7 @@ Partial Public Class MainWindow
         ' Call process() to read/write data to/from FSUIPC
         ' We do this in a Try/Catch block incase something goes wrong
         Try
-            Me.values.DME_SWITCH.Value = FSUIPCConnection.ReadLVar("DME_Switch")
+            'Me.values.DME_SWITCH.Value = FSUIPCConnection.ReadLVar("DME_Switch")
             FSUIPCConnection.Process()
 
             Me.chkAvionicsMaster.IsChecked = values.avionicsMaster.Value > 0
@@ -176,11 +176,9 @@ Partial Public Class MainWindow
                 End If
             End If
         Catch ex As Exception
-            ' An error occured. Tell the user and stop this timer.
             Me.timerMain.[Stop]()
-            MessageBox.Show("Communication with FSUIPC Failed" & vbLf & vbLf & ex.Message, "FSUIPC", MessageBoxButton.OK, MessageBoxImage.Exclamation)
-            ' Update the connection status
             ConfigureForm()
+            Me.timerConnection.Start()
         End Try
     End Sub
 
