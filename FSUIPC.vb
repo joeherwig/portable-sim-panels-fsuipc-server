@@ -12,7 +12,7 @@ Partial Public Class MainWindow
         Public PLANE_BANK_DEGREES As New Offset(Of UInteger)(&H57C)
         Public PLANE_PITCH_DEGREES As New Offset(Of UInteger)(&H578)
         Public VERTICAL_SPEED As New Offset(Of Integer)(&H2C8)
-        Public TURN_COORDINATOR_BALL As New Offset(Of Double)(&H380)
+        Public TURN_COORDINATOR_BALL As New Offset(Of SByte)(&H36E)
         Public ENG_1_TORQUE As New Offset(Of Single)(&H920)
         Public ENG_2_TORQUE As New Offset(Of Single)(&H9B8)
         Public ENG_3_TORQUE As New Offset(Of Single)(&HA50)
