@@ -5,6 +5,6 @@
   },
   "webserver": {
     "port": 82,
-    "servingFromDirectory": "c:\\webGauges"
+    "servingFromDirectory": "../portable-sim-panels"
   }
 }

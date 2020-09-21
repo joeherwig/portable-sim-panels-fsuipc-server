@@ -78,11 +78,12 @@ Partial Public Class MainWindow
         If config.selectToken("websocket").selectToken("url") = "localhost" Then
         End If
 
+
+
         timerMain.Interval = TimeSpan.FromMilliseconds(25)
         AddHandler timerMain.Tick, AddressOf TimerMain_Tick
         timerConnection.Interval = TimeSpan.FromMilliseconds(1000)
         AddHandler timerConnection.Tick, AddressOf TimerConnection_Tick
-
         timerConnection.Start()
     End Sub
 
@@ -137,6 +138,7 @@ Partial Public Class MainWindow
                 fullObject.Add(myFields(i).Name, GetPropertyValue(myFields(i).GetValue(values), "Value"))
             Next i
             If (JsonConvert.SerializeObject(dictionary, Formatting.None) <> "{}") Then
+                previousValues.Remove("TITLE")
                 wssv.WebSocketServices.Broadcast(JsonConvert.SerializeObject(fullObject, Formatting.None))
             End If
         Catch ex As Exception

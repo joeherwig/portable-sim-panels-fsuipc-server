@@ -52,6 +52,8 @@ Partial Public Class MainWindow
         Public NAV_1_DME_SPEED As New Offset(Of Short)(&H302)
         Public NAV_1_DME_TIMETO As New Offset(Of Short)(&H304)
         Public NAV_1_TOFROM As New Offset(Of Byte)(&HC4B)
+        Public HSI_TOFROM As New Offset(Of Byte)(&H2FAD)
+        '
         Public NAV_1_GS_ALIVE As New Offset(Of Byte)(&HC4C)
         Public NAV_1_SIGNAL_STRENGTH As New Offset(Of Int32)(&HC52)
         Public NAV_1_RADIAL As New Offset(Of Short)(&HC50)
