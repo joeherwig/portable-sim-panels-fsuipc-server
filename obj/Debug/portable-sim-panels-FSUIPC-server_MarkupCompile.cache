@@ -1,20 +1,20 @@
-﻿portable-sim-panels-FSUIPC-server
+﻿portable-sim-panels-fsuipc-server
 
 
 winexe
-VB
-.vb
+C#
+.cs
 C:\Users\j.herwig\projects\portable-sim-panels-fsuipc-server\obj\Debug\
-portable_sim_panels_FSUIPC_server
+portableSimPanelsFsuipcServer
 none
 false
+DEBUG;TRACE
+C:\Users\j.herwig\projects\portable-sim-panels-fsuipc-server\App.xaml
+2-471068629
 
-C:\Users\j.herwig\projects\portable-sim-panels-fsuipc-server\Application.xaml
-11151548125
+81834473550
+14844251313
+images.xaml;MainWindow.xaml;
 
-91618552651
-221445216128
-MainWindow.xaml;
-
-True
+False
 

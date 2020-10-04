@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   version="1.1"
+   viewBox="0 0 150 150"
+   height="160"
+   width="160"
+   id="svg2"
+   inkscape:version="0.92.1 r15371"
+   sodipodi:docname="gear-indicator.svg">
+  <sodipodi:namedview
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1"
+     objecttolerance="10"
+     gridtolerance="10"
+     guidetolerance="10"
+     inkscape:pageopacity="0"
+     inkscape:pageshadow="2"
+     inkscape:window-width="2560"
+     inkscape:window-height="1361"
+     id="namedview10"
+     showgrid="false"
+     inkscape:zoom="7.3012501"
+     inkscape:cx="83.111184"
+     inkscape:cy="90.287624"
+     inkscape:window-x="-9"
+     inkscape:window-y="-9"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="g4226" />
+  <defs
+     id="defs17121">
+    <script
+       xlink:href="../libs/d3.3.min.js"
+       id="script9" />
+    <script
+       type="text/javascript"
+       id="businesslogic"><![CDATA[
+
+        window.parent.addEventListener("update", eventHandler, true);
+
+        let gearCenterPosition = 0,
+          gearLeftPosition = 0,
+          gearRightPosition = 0;
+
+        function eventHandler(update) {
+          Update(update.detail);
+        }
+
+
+        function Update(inputObject){
+          obj = inputObject;
+          for(let attr = 0; attr < Object.keys(inputObject).length; attr++){
+            let key = Object.keys(inputObject)[attr];
+            let value = Object.values(inputObject)[attr];
+
+            switch (key.toUpperCase()) {
+
+              case 'GEAR_CENTER_POSITION':
+                if (gearCenterPosition !== value) {
+                  gearCenterPosition = value;
+                  if (gearCenterPosition == 0) {
+                    d3.select("#nose-gear").style("fill", 'black');
+                  } else if (gearCenterPosition == 100) {
+                    d3.select("#nose-gear").style("fill", 'green');
+                  } else {
+                    d3.select("#nose-gear").style("fill", 'orange');
+                  }
+                }
+                break;
+
+                case 'GEAR_LEFT_POSITION':
+                  if (gearLeftPosition !== value) {
+                    gearLeftPosition = value;
+                    if (gearLeftPosition == 0) {
+                      d3.select("#left-main-gear").style("fill", 'black');
+                    } else if (gearLeftPosition == 100) {
+                      d3.select("#left-main-gear").style("fill", 'green');
+                    } else {
+                      d3.select("#left-main-gear").style("fill", 'orange');
+                    }
+                  }
+                  break;
+
+                  case 'GEAR_RIGHT_POSITION':
+                    if (gearRightPosition !== value) {
+                      gearRightPosition = value;
+                      if (gearRightPosition == 0) {
+                        d3.select("#right-main-gear").style("fill", 'black');
+                      } else if (gearRightPosition == 100) {
+                        d3.select("#right-main-gear").style("fill", 'green');
+                      } else {
+                        d3.select("#right-main-gear").style("fill", 'orange');
+                      }
+                    }
+                    break;
+
+              case 'test':
+                let x = value.x;
+                let y = value.y;
+                Update({
+                  "ELEVATOR_TRIM_POSITION":(x/3),
+                  "ELEVATOR_TRIM_POSITION2":(x/3),
+                  "Plane_Bank_Degrees":(x/3),
+                  "Plane_Pitch_Degrees":(y/10),
+                  "Autopilot_Altitude_Lock_Var":Math.abs(y*x*2),
+                  "Plane_Heading_Degrees_True":x,
+                  "Airspeed_Indicated": y*-1,
+                  "Plane_Altitude":x*y*-1,
+                  "GPS_GROUND_SPEED":y*-1.04/1.94384,
+                  "INCIDENCE_BETA":y/1.5,
+                  "GENERAL_ENG_RPM_1": x,
+                  "ENG_MANIFOLD_PRESSURE_1": x/2.2,
+                  "ENG_MANIFOLD_PRESSURE_2": x/2,
+                  "Gear_Position": y/4,
+                  "FLAPS_HANDLE_PERCENT": x/4
+                });
+                break;
+
+              default:
+                break;
+            };
+          }
+        }
+
+        ]]></script>
+  </defs>
+  <metadata
+     id="metadata17124">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title />
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     id="label-value-group"
+     transform="translate(8.5805085,-67.372882)">
+    <g
+       id="g4226"
+       style="fill:none">
+      <circle
+         r="29.713984"
+         cy="180.99152"
+         cx="21.834747"
+         id="left-main-gear"
+         style="fill:black;fill-opacity:1;stroke:#f3f3f3;stroke-opacity:1" />
+      <circle
+         r="29.713984"
+         cy="180.99152"
+         cx="110.91102"
+         id="right-main-gear"
+         style="fill:black;fill-opacity:1;stroke:#f3f3f3;stroke-opacity:1" />
+      <circle
+         r="29.713984"
+         cy="104.83475"
+         cx="66.372879"
+         id="nose-gear"
+         style="fill:black;fill-opacity:1;stroke:#f3f3f3;stroke-opacity:1" />
+    </g>
+  </g>
+</svg>

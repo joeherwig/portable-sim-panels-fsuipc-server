@@ -1,0 +1,231 @@
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   version="1.1"
+   viewBox="0 0 150 150"
+   max-height="100%"
+   max-width="100%">
+  <sodipodi:namedview
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1"
+     objecttolerance="10"
+     gridtolerance="10"
+     guidetolerance="10"
+     inkscape:pageopacity="0"
+     inkscape:pageshadow="2"
+     inkscape:window-width="2495"
+     inkscape:window-height="1416"
+     id="namedview10"
+     showgrid="false"
+     inkscape:zoom="3.1466667"
+     inkscape:cx="-34.943076"
+     inkscape:cy="35.475865"
+     inkscape:window-x="65"
+     inkscape:window-y="24"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="label-value-group" />
+  <defs
+     id="defs17121">
+
+    <script
+        xlink:href="../libs/d3.3.min.js"/>
+    <script xlink:href="../libs/findSuitablePanel.js"/>
+
+       <script
+          type="text/javascript" id="businesslogic"><![CDATA[
+
+        function isset (fn) {
+            var value;
+            try {
+                value = fn();
+            } catch (e) {
+                value = undefined;
+            } finally {
+                return value !== undefined;
+            }
+        };
+
+        window.parent.addEventListener("update", eventHandler, true);
+
+        function eventHandler(update) {
+          Update(update.detail);
+        }
+
+        let config = {},
+          pi = Math.PI,
+          stepangle,
+          fullrange,
+          zeroangle,
+          rangeMax,
+          rangeMin,
+          baseColor,
+          calculatedValue,
+          innerRadius,
+          outerRadius,
+          id = window.frameElement.id;
+
+        var path = window.parent.location.pathname.split('/');
+        path.pop();
+        path = path.join("/") + "/";
+        fetchAsync(window.parent.location.pathname + '/config.json')
+          .then(data => {
+            config = data[window.frameElement.id];
+            return true;
+          })
+          .catch(reason => console.log("Error in config.json:\n" + reason))
+
+
+        function init(){
+          label = isset(() => config.label) ? config.label : ''
+          rangeMin = isset(() => config.rangemin) ? config.rangemin : 0
+          rangeMax = isset(() => config.rangemax) ? config.rangemax : 100
+          minAngle = isset(() => config.baseStyle.arcMinAngle) ? config.baseStyle.arcMinAngle : -140
+          maxAngle = isset(() => config.baseStyle.arcMaxAngle) ? config.baseStyle.arcMaxAngle : 110
+          pointerwidth = isset(() => config.baseStyle.pointerwidth) ? config.baseStyle.pointerwidth : 2
+          innerRadius = isset(() => config.baseStyle.innerRadius) ? config.baseStyle.innerRadius : 68
+          outerRadius = isset(() => config.baseStyle.outerRadius) ? config.baseStyle.outerRadius : 70
+          baseColor = isset(() => config.baseStyle.baseColor) ? config.baseStyle.baseColor : "#333333"
+          normalColor = isset(() => config.baseStyle.normalColor) ? config.baseStyle.normalColor : "white"
+          calculatedValue = isset(() => config.calculatedValue) ? config.calculatedValue : false
+          fullrange =  maxAngle - minAngle
+          stepangle = fullrange / (rangeMax - rangeMin);
+          zeroangle = rangeMin * stepangle * -1 + minAngle;
+
+          let svg = d3.select("svg")
+              .append("svg")
+              .attr("viewBox","0 0 150 150")
+              .attr("width", 150)
+              .attr("height", 150)
+              .append("g")
+              .attr("transform", "translate(75,75)");
+
+          let arc = d3.svg.arc()
+              .innerRadius(68)
+              .outerRadius(70)
+              .startAngle(minAngle * (pi/180))
+              .endAngle(maxAngle * (pi/180));
+
+          svg.append("path")
+              .attr("class", "arc")
+              .attr("fill", baseColor)
+              .attr("d", arc);
+          if (isset(() => config.ranges)) {
+            config.ranges.forEach(function(range, i) {
+              let rangeMin = zeroangle + range.minValue * stepangle;
+              let rangeMax =  zeroangle + range.maxValue * stepangle;
+              let arc2 = d3.svg.arc()
+                .innerRadius(innerRadius - range.width)
+                .outerRadius(innerRadius)
+                .startAngle(rangeMin * (pi/180))
+                .endAngle(rangeMax * (pi/180));
+              svg.append("path")
+                .attr("class", "arc-"+i)
+                .attr("fill",range.color)
+                .attr("d", arc2);
+            })
+          }
+          d3.select('#label').text(label);
+
+          svg.append("path")
+            .style("stroke-width", 1)
+            .style("stroke", "#000")
+            .style("fill", "white")
+            .attr("d", "M 0,0 L 2,0 L 4,-50 L 0,-69 L -4,-50 L -2,0 L 0,0")
+            .attr("id","needle")
+            .attr('x', -75).attr('y', -75);
+
+        }
+
+        function Update(inputObject){
+          obj = inputObject;
+          for(let attr = 0; attr < Object.keys(inputObject).length; attr++){
+            let key = Object.keys(inputObject)[attr];
+            let value = Object.values(inputObject)[attr] ;
+
+            switch (key.toUpperCase()) {
+
+              case id:
+                value = (/^\-?\d.*\.*\d$/.test(value) && calculatedValue) ? eval(calculatedValue.replace("x",value)) : value;
+                degrees = zeroangle + value *stepangle;
+                d3.select('#needle').attr('transform', 'rotate(' + degrees + ', 0, 0)');
+                if (rangeMax - rangeMin <= 99) {
+                  d3.select('#value').text((value*1).toFixed(1));
+                } else {
+                  d3.select('#value').text(Math.round(value));
+                }
+
+                if (isset(() => config.ranges)) {
+                  let arccolor = baseColor
+                  config.ranges.forEach(function(range, i) {
+                    let rangemin = zeroangle + range.minValue * stepangle;
+                    let rangemax =  zeroangle + range.maxValue * stepangle;
+                    let arc = d3.select(".arc-"+i);
+                    let arc2;
+                    if(value > range.minValue && value <= range.maxValue && range.alerttype) {
+                      arc2 = d3.svg.arc()
+                        .innerRadius(innerRadius - range.activewidth)
+                        .outerRadius(innerRadius)
+                        .startAngle(rangemin * (pi/180))
+                        .endAngle(rangemax * (pi/180));
+                      arccolor = range.color;
+                    } else{
+                      arc2 = d3.svg.arc()
+                        .innerRadius(innerRadius - range.width)
+                        .outerRadius(innerRadius)
+                        .startAngle(rangemin * (pi/180))
+                        .endAngle(rangemax * (pi/180));                  }
+                  arc.attr("d", arc2);
+                  d3.select(".arc").attr("fill", arccolor)
+                  })
+                }
+                break;
+            };
+          }
+        }
+
+        ]]></script>
+  </defs>
+  <metadata
+     id="metadata17124">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title />
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     id="label-value-group"
+     transform="translate(8.5805085,-67.372882)">
+    <text
+       sodipodi:linespacing="0%"
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:24px;line-height:0%;font-family:'DejaVu Sans';-inkscape-font-specification:'DejaVu Sans, Bold';text-align:end;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:end;fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       x="137.71974"
+       y="210.75435"
+       id="value"
+       inkscape:label="value"><tspan
+         id="tspan4144"
+         style="font-size:22.5px;fill:#ffffff">0000</tspan></text>
+    <text
+       sodipodi:linespacing="0%"
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:16px;line-height:0%;font-family:'DejaVu Sans';-inkscape-font-specification:'DejaVu Sans, Bold';text-align:end;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:end;fill:#cccccc;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       x="137.71974"
+       y="185.67311"
+       id="label"
+       inkscape:label="label"><tspan
+         id="tspan4144-6"
+         style="font-size:17.5px;fill:#cccccc">label</tspan></text>
+  </g>
+</svg>
