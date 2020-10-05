@@ -8,8 +8,8 @@
         Title="portable-sim-panels-FSUIPC-server" Height="400" Width="600" Background="{DynamicResource BackgroundColor}" WindowStyle="None"
         MouseDown="Window_MouseDown" MinWidth="400" MinHeight="250">
     <Window.Resources>
-        <SolidColorBrush x:Key="BackgroundColor" Color="#FF222222"/>
-        <SolidColorBrush x:Key="TextColor" Color="AntiqueWhite"/>
+        <SolidColorBrush x:Key="BackgroundColor" Color="#000000"/>
+        <SolidColorBrush x:Key="TextColor" Color="#F2FFFFFF"/>
         <Style TargetType="{x:Type Window}">
             <Setter Property="Background" Value="{StaticResource BackgroundColor}"/>
         </Style>
@@ -63,7 +63,8 @@
                 <ColumnDefinition Width="Auto"/>
             </Grid.ColumnDefinitions>
             <TextBox x:Name="JsonFilterField" Height="23" TextWrapping="Wrap" Text="filter" Background="{DynamicResource BackgroundColor}" Foreground="{DynamicResource TextColor}" Margin="10,0" VerticalAlignment="Top" Grid.ColumnSpan="4"/>
-            <TextBox x:Name="JsonTextField" Margin="10,28,10,10" TextWrapping="Wrap" Grid.ColumnSpan="3" Background="{DynamicResource BackgroundColor}" Foreground="{DynamicResource TextColor}" AcceptsReturn="True" BorderBrush="{x:Null}"/>
+            <TextBox x:Name="JsonTextField" Margin="10,28,10,10" TextWrapping="Wrap" Grid.ColumnSpan="3" Foreground="{DynamicResource TextColor}" AcceptsReturn="True" BorderBrush="{x:Null}" Background="{DynamicResource BackgroundColor}" OpacityMask="#7F2A2A2A"/>
         </Grid>
+        <Image Source="airplane-airline-aircraft-travel.jpg" Panel.ZIndex="-1" Stretch="UniformToFill"/>
     </Grid>
 </Window>

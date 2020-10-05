@@ -324,78 +324,6 @@
             A strongly-types list of AI Planes
             </summary>
         </member>
-        <member name="T:FSUIPC.AirportsDatabase">
-            <summary>
-            A class that reads the files produced by Pete Downson's MakeRunways.exe and provides your application
-            with a database of airports with runway, helipad and gate information
-            </summary>
-        </member>
-        <member name="P:FSUIPC.AirportsDatabase.Airports">
-            <summary>
-            A strongly-types list of FsAirport objects. This list can be queried with LINQ.
-            </summary>
-        </member>
-        <member name="P:FSUIPC.AirportsDatabase.IsLoaded">
-            <summary>
-            True if the database has been loaded.
-            </summary>
-        </member>
-        <member name="M:FSUIPC.AirportsDatabase.Clear">
-            <summary>
-            Clears all the airports from the database. Use to free up memory if your application no longer needs the database.
-            </summary>
-        </member>
-        <member name="M:FSUIPC.AirportsDatabase.Load">
-            <summary>
-            Loads the database by reading the output file from MakeRunways.exe. Looks in the main FlightSim install folder. This is provided
-            by FSUIPC.
-            </summary>
-        </member>
-        <member name="M:FSUIPC.AirportsDatabase.Load(System.Collections.Generic.HashSet{System.String})">
-            <summary>
-            Loads the database by reading the output file from MakeRunways.exe. Looks in the main FlightSim install folder. This is provided
-            by FSUIPC.
-            </summary>
-            <param name="AirportList">A Hashset of strings containing a list of ICAO codes. Only these airports are loaded into the database.</param>
-        </member>
-        <member name="M:FSUIPC.AirportsDatabase.Load(System.String)">
-            <summary>
-            Loads the database by reading the output file from MakeRunways.exe. Looks in the folder provided in the parameter.
-            </summary>
-            <param name="Folder">The full path of the folder where the MakeRunways output files can be found.</param>
-        </member>
-        <member name="M:FSUIPC.AirportsDatabase.Load(System.String,System.Collections.Generic.HashSet{System.String})">
-            <summary>
-            Loads the database by reading the output file from MakeRunways.exe. Looks in the folder provided in the parameter.
-            </summary>
-            <param name="Folder">The full path of the folder where the MakeRunways output files can be found.</param>
-            <param name="AirportList">A Hashset of strings containing a list of ICAO codes. Only these airports are loaded into the database.</param>
-        </member>
-        <member name="M:FSUIPC.AirportsDatabase.SetReferenceLocation">
-            <summary>
-            Sets the location from where distance and bearing information is calculated. This default overload uses the current player position.
-            </summary>
-        </member>
-        <member name="M:FSUIPC.AirportsDatabase.SetReferenceLocation(FSUIPC.FsAirport)">
-            <summary>
-            Sets the location from where distance and bearing information is calculated. 
-            </summary>
-            <param name="Airport">The Airport to use as the reference location.</param>
-        </member>
-        <member name="M:FSUIPC.AirportsDatabase.SetReferenceLocation(System.String)">
-            <summary>
-            Sets the location from where distance and bearing information is calculated. 
-            </summary>
-            <param name="ICAO">The ICAO code of the airport to use as the reference location.</param>
-        </member>
-        <member name="M:FSUIPC.AirportsDatabase.SetReferenceLocation(FSUIPC.FsLatitude,FSUIPC.FsLongitude,System.Double)">
-            <summary>
-            Sets the location from where distance and bearing information is calculated. 
-            </summary>
-            <param name="NewLatitude">The Latitude of the reference location</param>
-            <param name="NewLongitude">The Longitude of the reference location</param>
-            <param name="MagVar">The Magnetic Variation at the reference location</param>
-        </member>
         <member name="T:FSUIPC.FsILSInfo">
             <summary>
             A class holding information about the ILS facilities for a runway
@@ -598,12 +526,12 @@
         </member>
         <member name="P:FSUIPC.FsRunway.ThresholdOffsetFeet">
             <summary>
-            The dsitance from the threshold to the real start of the runway in Feet
+            The diitance from the threshold to the real start of the runway in Feet
             </summary>
         </member>
         <member name="P:FSUIPC.FsRunway.ThresholdOffsetMetres">
             <summary>
-            The dsitance from the threshold to the real start of the runway in Metres
+            The distance from the threshold to the real start of the runway in Metres
             </summary>
         </member>
         <member name="P:FSUIPC.FsRunway.StartLocation">
@@ -1017,6 +945,11 @@
             A list of all runways at this airport
             </summary>
         </member>
+        <member name="P:FSUIPC.FsAirport.Taxiways">
+            <summary>
+            A list of all taxiways at this airport
+            </summary>
+        </member>
         <member name="P:FSUIPC.FsAirport.Gates">
             <summary>
             A list of all gates at this airport
@@ -1064,6 +997,133 @@
             </summary>
             <returns></returns>
         </member>
+        <member name="T:FSUIPC.FsTaxiway">
+            <summary>
+            A class holding information about a Taxiway
+            </summary>
+        </member>
+        <member name="P:FSUIPC.FsTaxiway.Name">
+            <summary>
+            The name of the taxiway (e.g. A1)
+            </summary>
+        </member>
+        <member name="P:FSUIPC.FsTaxiway.Airport">
+            <summary>
+            The FsAriport object that this taxiway belongs to
+            </summary>
+        </member>
+        <member name="P:FSUIPC.FsTaxiway.StartPoint">
+            <summary>
+            The start point of this taxiway (on the centre line)
+            </summary>
+        </member>
+        <member name="P:FSUIPC.FsTaxiway.EndPoint">
+            <summary>
+            The end point of this taxiway (on the centre line)
+            </summary>
+        </member>
+        <member name="P:FSUIPC.FsTaxiway.MinimumWidthMetres">
+            <summary>
+            The end point of this taxiway (on the centre line)
+            </summary>
+        </member>
+        <member name="P:FSUIPC.FsTaxiway.MinimumWidthFeet">
+            <summary>
+            The end point of this taxiway (on the centre line)
+            </summary>
+        </member>
+        <member name="P:FSUIPC.FsTaxiway.MaximumWidthMetres">
+            <summary>
+            The end point of this taxiway (on the centre line)
+            </summary>
+        </member>
+        <member name="P:FSUIPC.FsTaxiway.MaximumWidthFeet">
+            <summary>
+            The end point of this taxiway (on the centre line)
+            </summary>
+        </member>
+        <member name="P:FSUIPC.FsTaxiway.IsPlayerOnTaxiway">
+            <summary>
+            Returns true if the player is within the bounds of this taxiway
+            </summary>
+        </member>
+        <member name="P:FSUIPC.FsTaxiway.Segments">
+            <summary>
+            Returns the individual segments that make up this taxiway
+            </summary>
+        </member>
+        <member name="M:FSUIPC.FsTaxiway.ToString">
+            <summary>
+            Get the ID (Name) if the Taxiway  e.g. A
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:FSUIPC.FsTaxiwaySegment">
+            <summary>
+            A class holding information about a Taxiway Segment
+            </summary>
+        </member>
+        <member name="P:FSUIPC.FsTaxiwaySegment.Type">
+            <summary>
+            The type of segment
+            </summary>
+        </member>
+        <member name="P:FSUIPC.FsTaxiwaySegment.StartPoint">
+            <summary>
+            The start point of this segment (on the centre line)
+            </summary>
+        </member>
+        <member name="P:FSUIPC.FsTaxiwaySegment.StartWidthMetres">
+            <summary>
+            The width in metres of this segment at the start point
+            </summary>
+        </member>
+        <member name="P:FSUIPC.FsTaxiwaySegment.StartWidthFeet">
+            <summary>
+            The width in feet of this segment at the start point
+            </summary>
+        </member>
+        <member name="P:FSUIPC.FsTaxiwaySegment.EndPoint">
+            <summary>
+            The end point of this segment (on the centre line)
+            </summary>
+        </member>
+        <member name="P:FSUIPC.FsTaxiwaySegment.EndWidthMetres">
+            <summary>
+            The width in metres of this segment at the end point
+            </summary>
+        </member>
+        <member name="P:FSUIPC.FsTaxiwaySegment.EndWidthFeet">
+            <summary>
+            The width in feet of this segment at the end point
+            </summary>
+        </member>
+        <member name="P:FSUIPC.FsTaxiwaySegment.Bounds">
+            <summary>
+            The bounding rectangle of this segment 
+            </summary>
+        </member>
+        <member name="P:FSUIPC.FsTaxiwaySegment.IsPlayerOnSegment">
+            <summary>
+            Returns true if the player is within the bounds of this taxiway segment
+            </summary>
+        </member>
+        <member name="P:FSUIPC.FsTaxiwaySegment.Next">
+            <summary>
+            The next segment on this taxiway. Returns null (Nothing in VB.NET) if this is the last segment.
+            </summary>
+        </member>
+        <member name="P:FSUIPC.FsTaxiwaySegment.Previous">
+            <summary>
+            The previous segment on this taxiway. Returns null (Nothing in VB.NET) if this is the first segment.
+            </summary>
+        </member>
+        <member name="M:FSUIPC.FsTaxiwaySegment.ToString">
+            <summary>
+            Returns a string representing the type of this segment
+            </summary>
+            <returns></returns>
+        </member>
         <member name="T:FSUIPC.FsAirportComFrequencyCollection">
             <summary>
             A strongly-typed list of COM Frequency classes
@@ -1098,6 +1158,18 @@
             Gets a single helipad using the ID
             </summary>
             <param name="ID">The ID of the helipad</param>
+            <returns></returns>
+        </member>
+        <member name="T:FSUIPC.FsTaxiwayCollection">
+            <summary>
+            A strongly-typed collection of taxiways
+            </summary>
+        </member>
+        <member name="P:FSUIPC.FsTaxiwayCollection.Item(System.String)">
+            <summary>
+            Gets a single taxiway using the ID (Name)
+            </summary>
+            <param name="ID">The ID (Name) of the taxiway</param>
             <returns></returns>
         </member>
         <member name="T:FSUIPC.FsRunwayCollection">
@@ -1151,6 +1223,98 @@
             </summary>
             <param name="RunwayMatch">A delegate or Lambda expression that will test each runway.</param>
             <returns></returns>
+        </member>
+        <member name="T:FSUIPC.AirportsDatabase">
+            <summary>
+            A class that reads the files produced by Pete Downson's MakeRunways.exe and provides your application
+            with a database of airports with runway, helipad and gate information
+            </summary>
+        </member>
+        <member name="P:FSUIPC.AirportsDatabase.LoadGates">
+            <summary>
+            Set to false to prevent loading the gate information from the G5.csv file. Default is true.
+            </summary>
+        </member>
+        <member name="P:FSUIPC.AirportsDatabase.LoadHelipads">
+            <summary>
+            Set to false to prevent loading the helipad information from the Helipads.csv file. Default is true.
+            </summary>
+        </member>
+        <member name="P:FSUIPC.AirportsDatabase.LoadFrequencies">
+            <summary>
+            Set to false to prevent loading the frequency information from the G5.csv file. Default is true.
+            </summary>
+        </member>
+        <member name="P:FSUIPC.AirportsDatabase.LoadTaxiways">
+            <summary>
+            Set to true to enable loading the taxiway information from T5.csv. Default is false.
+            </summary>
+        </member>
+        <member name="P:FSUIPC.AirportsDatabase.Airports">
+            <summary>
+            A strongly-types list of FsAirport objects. This list can be queried with LINQ.
+            </summary>
+        </member>
+        <member name="P:FSUIPC.AirportsDatabase.IsLoaded">
+            <summary>
+            True if the database has been loaded.
+            </summary>
+        </member>
+        <member name="M:FSUIPC.AirportsDatabase.Clear">
+            <summary>
+            Clears all the airports from the database. Use to free up memory if your application no longer needs the database.
+            </summary>
+        </member>
+        <member name="M:FSUIPC.AirportsDatabase.Load">
+            <summary>
+            Loads the database by reading the output file from MakeRunways.exe. Looks in the main FlightSim install folder. This is provided
+            by FSUIPC.
+            </summary>
+        </member>
+        <member name="M:FSUIPC.AirportsDatabase.Load(System.Collections.Generic.HashSet{System.String})">
+            <summary>
+            Loads the database by reading the output file from MakeRunways.exe. Looks in the main FlightSim install folder. This is provided
+            by FSUIPC.
+            </summary>
+            <param name="AirportList">A Hashset of strings containing a list of ICAO codes. Only these airports are loaded into the database.</param>
+        </member>
+        <member name="M:FSUIPC.AirportsDatabase.Load(System.String)">
+            <summary>
+            Loads the database by reading the output file from MakeRunways.exe. Looks in the folder provided in the parameter.
+            </summary>
+            <param name="Folder">The full path of the folder where the MakeRunways output files can be found.</param>
+        </member>
+        <member name="M:FSUIPC.AirportsDatabase.Load(System.String,System.Collections.Generic.HashSet{System.String})">
+            <summary>
+            Loads the database by reading the output file from MakeRunways.exe. Looks in the folder provided in the parameter.
+            </summary>
+            <param name="Folder">The full path of the folder where the MakeRunways output files can be found.</param>
+            <param name="AirportList">A Hashset of strings containing a list of ICAO codes. Only these airports are loaded into the database.</param>
+        </member>
+        <member name="M:FSUIPC.AirportsDatabase.SetReferenceLocation">
+            <summary>
+            Sets the location from where distance and bearing information is calculated. This default overload uses the current player position.
+            </summary>
+        </member>
+        <member name="M:FSUIPC.AirportsDatabase.SetReferenceLocation(FSUIPC.FsAirport)">
+            <summary>
+            Sets the location from where distance and bearing information is calculated. 
+            </summary>
+            <param name="Airport">The Airport to use as the reference location.</param>
+        </member>
+        <member name="M:FSUIPC.AirportsDatabase.SetReferenceLocation(System.String)">
+            <summary>
+            Sets the location from where distance and bearing information is calculated. 
+            </summary>
+            <param name="ICAO">The ICAO code of the airport to use as the reference location.</param>
+        </member>
+        <member name="M:FSUIPC.AirportsDatabase.SetReferenceLocation(FSUIPC.FsLatitude,FSUIPC.FsLongitude,System.Double)">
+            <summary>
+            Sets the location from where distance and bearing information is calculated. 
+            </summary>
+            <param name="NewLatitude">The Latitude of the reference location</param>
+            <param name="NewLongitude">The Longitude of the reference location</param>
+            <param name="MagVar">The Magnetic Variation at the reference location</param>
         </member>
         <member name="T:FSUIPC.FSUIPCVersion">
             <summary>
@@ -1805,6 +1969,190 @@
             <param name="Feet">The alitiude in feet</param>
             <returns></returns>
         </member>
+        <member name="T:FSUIPC.FsBitArray">
+            <summary>
+             Manages an array of bit values, which are represented as Booleans, where
+             true indicates that the bit is on (1) and false indicates the bit is off (0).
+            </summary>
+        </member>
+        <member name="P:FSUIPC.FsBitArray.BitArray">
+            <summary>
+            Returns the underlying native, .NET System.Collections.BitArray associated with this FsBitArray
+            </summary>
+        </member>
+        <member name="P:FSUIPC.FsBitArray.Changed">
+            <summary>
+            Returns an array of booleans indicating if the corresponding bit was changed during the last FSUIPCConnection.Process() call
+            </summary>
+        </member>
+        <member name="M:FSUIPC.FsBitArray.HasChanged(System.Int32)">
+            <summary>
+            Returns a boolean indicating if the specified bit was changed during or since the last FSUIPCConnection.Process() call
+            </summary>
+            <param name="Index">Ths index of the bit to test</param>
+            <returns>True if the bit has changed during or since the last FSUIPCConnection.Process() call</returns>
+        </member>
+        <member name="M:FSUIPC.FsBitArray.#ctor(System.Int32)">
+            <summary>
+            Initializes a new instance of the FsBitArray class that can
+            hold the specified number of bit values, which are initially set to false.
+            </summary>
+            <param name="length">The number of bit values in the new FsBitArray.</param>
+        </member>
+        <member name="M:FSUIPC.FsBitArray.#ctor(System.Byte[])">
+            <summary>
+             Initializes a new instance of the FsBitArray class that contains
+                bit values copied from the specified array of bytes.
+            </summary>
+            <param name="bytes"> An array of bytes containing the values to copy, where each byte represents eight consecutive bits.</param>
+        </member>
+        <member name="M:FSUIPC.FsBitArray.#ctor(System.Boolean[])">
+            <summary>
+             Initializes a new instance of the FsBitArray class that contains
+            bit values copied from the specified array of Booleans.
+            </summary>
+            <param name="values"> An array of Booleans to copy.</param>
+        </member>
+        <member name="M:FSUIPC.FsBitArray.#ctor(System.Int32[])">
+            <summary>
+            Initializes a new instance of the FsBitArray class that contains
+                bit values copied from the specified array of 32-bit integers.
+            </summary>
+            <param name="values">An array of integers containing the values to copy, where each integer represents 32 consecutive bits.</param>
+        </member>
+        <member name="M:FSUIPC.FsBitArray.#ctor(System.Collections.BitArray)">
+            <summary>
+            Initializes a new instance of the FsBitArray class that contains
+            bit values copied from the specified System.Collections.BitArray.
+            </summary>
+            <param name="bits">The System.Collections.BitArray to copy.</param>
+        </member>
+        <member name="M:FSUIPC.FsBitArray.#ctor(FSUIPC.FsBitArray)">
+            <summary>
+             Initializes a new instance of the FsBitArray class that contains
+               bit values copied from the specified FsBitArray.
+            </summary>
+            <param name="bits">The FsBitArray to copy.</param>
+        </member>
+        <member name="M:FSUIPC.FsBitArray.#ctor(System.Int32,System.Boolean)">
+            <summary>
+             Initializes a new instance of the FsBitArray class that can
+              hold the specified number of bit values, which are initially set to the specified value.
+            </summary>
+            <param name="length">The number of bit values in the new FsBitArray.</param>
+            <param name="defaultValue">The Boolean value to assign to each bit.</param>
+        </member>
+        <member name="P:FSUIPC.FsBitArray.Item(System.Int32)">
+            <summary>
+            Gets or sets the value of the bit at a specific position in the FsBitArray.
+            </summary>
+            <param name="index">The zero-based index of the value to get or set.</param>
+            <returns> The value of the bit at position index.</returns>
+        </member>
+        <member name="P:FSUIPC.FsBitArray.SyncRoot">
+            <summary>
+            Gets an object that can be used to synchronize access to the FsBitArray.
+            </summary>
+        </member>
+        <member name="P:FSUIPC.FsBitArray.Count">
+            <summary>
+            Gets the number of elements contained in the FsBitArray.
+            </summary>
+        </member>
+        <member name="P:FSUIPC.FsBitArray.Length">
+            <summary>
+            Gets or sets the number of elements in the FsBitArray.
+            </summary>
+        </member>
+        <member name="P:FSUIPC.FsBitArray.IsSynchronized">
+            <summary>
+            Gets a value indicating whether access to the FsBitArray is
+            synchronized (thread safe).
+            </summary>
+        </member>
+        <member name="P:FSUIPC.FsBitArray.IsReadOnly">
+            <summary>
+            Gets a value indicating whether the FsBitArray is read-only.
+            </summary>
+        </member>
+        <member name="M:FSUIPC.FsBitArray.And(FSUIPC.FsBitArray)">
+            <summary>
+             Performs the bitwise AND operation on the elements in the current FsBitArray
+             against the corresponding elements in the specified FsBitArray.
+            </summary>
+            <param name="value"> The FsBitArray with which to perform the bitwise AND operation.</param>
+            <returns>The current instance after the bitwise AND operation
+            on the elements in the current FsBitArray against the corresponding
+            elements in the specified FsBitArray.</returns>
+        </member>
+        <member name="M:FSUIPC.FsBitArray.Clone">
+            <summary>
+            Creates a shallow copy of the FsBitArray.
+            </summary>
+            <returns> A shallow copy of the FsBitArray.</returns>
+        </member>
+        <member name="M:FSUIPC.FsBitArray.CopyTo(System.Array,System.Int32)">
+            <summary>
+            Copies the entire FsBitArray to a compatible one-dimensional
+            System.Array, starting at the specified index of the target array.
+            </summary>
+            <param name="array">The one-dimensional System.Array that is the destination of the elements copied from FsBitArray. The System.Array must have zero-based indexing.</param>
+            <param name="index">The zero-based index in array at which copying begins.</param>
+        </member>
+        <member name="M:FSUIPC.FsBitArray.Get(System.Int32)">
+            <summary>
+            Gets the value of the bit at a specific position in the FsBitArray.
+            </summary>
+            <param name="index"> The zero-based index of the value to get.</param>
+            <returns> The value of the bit at position index.</returns>
+        </member>
+        <member name="M:FSUIPC.FsBitArray.GetEnumerator">
+            <summary>
+            Returns an enumerator that iterates through the FsBitArray.
+            </summary>
+            <returns> An System.Collections.IEnumerator for the entire FsBitArray.</returns>
+        </member>
+        <member name="M:FSUIPC.FsBitArray.Not">
+            <summary>
+            Inverts all the bit values in the current FsBitArray, so that
+            elements set to true are changed to false, and elements set to false are changed
+            to true.
+            </summary>
+            <returns>The current instance with inverted bit values.</returns>
+        </member>
+        <member name="M:FSUIPC.FsBitArray.Or(FSUIPC.FsBitArray)">
+            <summary>
+             Performs the bitwise OR operation on the elements in the current FsBitArray
+             against the corresponding elements in the specified FsBitArray.
+            </summary>
+            <param name="value">The FsBitArray with which to perform the bitwise OR operation.</param>
+            <returns> The current instance after the bitwise OR operation
+                on the elements in the current FsBitArray against the corresponding
+                elements in the specified FsBitArray.</returns>
+        </member>
+        <member name="M:FSUIPC.FsBitArray.Set(System.Int32,System.Boolean)">
+            <summary>
+            Sets the bit at a specific position in the FsBitArray to the specified value.
+            </summary>
+            <param name="index">The zero-based index of the bit to set.</param>
+            <param name="value">The Boolean value to assign to the bit.</param>
+        </member>
+        <member name="M:FSUIPC.FsBitArray.SetAll(System.Boolean)">
+            <summary>
+            Sets all bits in the FsBitArray to the specified value.
+            </summary>
+            <param name="value">The Boolean value to assign to all bits.</param>
+        </member>
+        <member name="M:FSUIPC.FsBitArray.Xor(FSUIPC.FsBitArray)">
+            <summary>
+            Performs the bitwise exclusive OR operation on the elements in the current FsBitArray
+                against the corresponding elements in the specified FsBitArray.
+            </summary>
+            <param name="value"> The FsBitArray with which to perform the bitwise exclusive OR operation.</param>
+            <returns>The current instance after the bitwise exclusive
+                OR operation on the elements in the current FsBitArray against
+                the corresponding elements in the specified FsBitArray.</returns>
+        </member>
         <member name="T:FSUIPC.FsLatLonCircle">
             <summary>
             Represents an circular area in FS defined with a centre Lat, Lon point and a radius
@@ -2353,6 +2701,11 @@
         <member name="F:FSUIPC.FlightSim.Prepar3dx64">
             <summary>
             Prepar3d Version 4 and above (64 bit)
+            </summary>
+        </member>
+        <member name="F:FSUIPC.FlightSim.MSFS">
+            <summary>
+            Microsoft Flight Simulator (2020)
             </summary>
         </member>
         <member name="T:FSUIPC.FSUIPCError">
@@ -2948,7 +3301,7 @@
             <summary>
             Create a new field for an FSUIPC structure.
             </summary>
-            <param name="ArrayOrStringLength">The number of bytes to read.  Used to define the length of types: String, BitArray and array of bytes.  Use a negative length for strings without 0 terminators.</param>
+            <param name="ArrayOrStringLength">The number of bytes to read.  Used to define the length of types: String, BitArray, FsBitArray and array of bytes.  Use a negative length for strings without 0 terminators.</param>
         </member>
         <member name="T:FSUIPC.FSUIPCStructFieldArray`1">
             <summary>
@@ -3488,27 +3841,6 @@
             <param name="NewDateTime">The new date and time</param>
             <returns></returns>
         </member>
-        <member name="T:FSUIPC.FsVersion">
-            <summary>
-            A struct representing the type and version of the Flight Simulator the DLL is talking to.
-            </summary>
-        </member>
-        <member name="F:FSUIPC.FsVersion.Simulator">
-            <summary>
-            The type of Simulator (e.g. FSX, P3D)
-            </summary>
-        </member>
-        <member name="F:FSUIPC.FsVersion.VersionCode">
-            <summary>
-            The raw version code returned by FSUIPC. See the docs for offset 0x3124.<para>Use the ToString() method for a decoded string</para>
-            </summary>
-        </member>
-        <member name="M:FSUIPC.FsVersion.ToString">
-            <summary>
-            Returns a string that describes the flight sim type and version. The version is decoded into a meaningful version number.
-            </summary>
-            <returns>The string representing the flight sim and version</returns>
-        </member>
         <member name="T:FSUIPC.SendModifierKeys">
             <summary>
             Modifier keys to be held while another key is pressed.
@@ -3860,6 +4192,27 @@
             Declare public fields of type FSUIPCStructField for each field in the structure.
             </summary>
         </member>
+        <member name="T:FSUIPC.FsVersion">
+            <summary>
+            A struct representing the type and version of the Flight Simulator the DLL is talking to.
+            </summary>
+        </member>
+        <member name="F:FSUIPC.FsVersion.Simulator">
+            <summary>
+            The type of Simulator (e.g. FSX, P3D)
+            </summary>
+        </member>
+        <member name="F:FSUIPC.FsVersion.VersionCode">
+            <summary>
+            The raw version code returned by FSUIPC. See the docs for offset 0x3124.<para>Use the ToString() method for a decoded string</para>
+            </summary>
+        </member>
+        <member name="M:FSUIPC.FsVersion.ToString">
+            <summary>
+            Returns a string that describes the flight sim type and version. The version is decoded into a meaningful version number.
+            </summary>
+            <returns>The string representing the flight sim and version</returns>
+        </member>
         <member name="T:FSUIPC.OffsetAction">
             <summary>
             Specifies an action to be performed by the offset on the next process.
@@ -3888,14 +4241,14 @@
         </member>
         <member name="M:FSUIPC.Offset.#ctor(System.Int32,System.Int32)">
             <summary>
-            Creates a Offset that will read from or write the specified number of bytes to the specified Offset.  Only used with data types of String, BitArray and an array of bytes.
+            Creates a Offset that will read from or write the specified number of bytes to the specified Offset.  
             </summary>
             <param name="Address">The FSUIPC offset address to read from or write to, as specified in the FSUIPC for Programmer's document.</param>
             <param name="Length">The number of bytes to read/write.</param>
         </member>
         <member name="M:FSUIPC.Offset.#ctor(System.Int32,System.Int32,System.Boolean)">
             <summary>
-            Creates a new Offset that will read from or write the specified number of bytes to the specified Offset.  Only used with data types of String, BitArray and an array of bytes.
+            Creates a new Offset that will read from or write the specified number of bytes to the specified Offset. 
             </summary>
             <param name="Address">The FSUIPC offset address to read from or write to, as specified in the FSUIPC for Programmer's document.</param>
             <param name="Length">The number of bytes to read/write.</param>
@@ -3903,7 +4256,7 @@
         </member>
         <member name="M:FSUIPC.Offset.#ctor(System.String,System.Int32,System.Int32)">
             <summary>
-            Creates a new Offset that will read from or write the specified number of bytes to the specified Offset.  Only used with data types of String, BitArray and an array of bytes.
+            Creates a new Offset that will read from or write the specified number of bytes to the specified Offset. 
             </summary>
             <param name="DataGroupName">The name of the DataGroup to put this Offset into.<para>To process this Offset you must call Process() and pass the GroupName as a parameter.</para></param>
             <param name="Address">The FSUIPC offset address to read from or write to, as specified in the FSUIPC for Programmer's document.</param>
@@ -3911,7 +4264,7 @@
         </member>
         <member name="M:FSUIPC.Offset.#ctor(System.String,System.Int32,System.Int32,System.Boolean)">
             <summary>
-            Creates a new Offset in the specified group that will read from or write the specified number of bytes to the specified Offset.  Only used with data types of String, BitArray and an array of bytes.
+            Creates a new Offset in the specified group that will read from or write the specified number of bytes to the specified Offset.  
             </summary>
             <param name="DataGroupName">The name of the DataGroup to put this Offset into.<para>To process this Offset you must call Process() and pass the GroupName as a parameter.</para></param>
             <param name="Address">The FSUIPC offset address to read from or write to, as specified in the FSUIPC for Programmer's document.</param>
@@ -3971,6 +4324,11 @@
         <member name="P:FSUIPC.Offset.Connected">
             <summary>
             Returns true is this offset is currently connected. i.e. it will be read or written during process() calls.
+            </summary>
+        </member>
+        <member name="P:FSUIPC.Offset.ValueChanged">
+            <summary>
+            Indicates if the value of this Offset was changed during the last Process() call.
             </summary>
         </member>
         <member name="P:FSUIPC.Offset.Write">
@@ -4045,10 +4403,10 @@
         </member>
         <member name="M:FSUIPC.Offset`1.#ctor(System.Int32,System.Int32)">
             <summary>
-            Creates a Offset that will read from or write the specified number of bytes to the specified Offset.  Only used with data types of String, BitArray, FsLongitude, FsLatitude and an array of bytes.
+            Creates a Offset that will read from or write the specified number of bytes to the specified Offset.  Only used with data types of String, BitArray, FsBitArray, FsLongitude, FsLatitude and an array of bytes.
             </summary>
             <param name="Address">The FSUIPC offset address to read from or write to, as specified in the FSUIPC for Programmer's document.</param>
-            <param name="ArrayOrStringLength">The number of bytes to read.  Used to define the length of types: String, BitArray, FsLongitude, FsLatitude and array of bytes.  Use a negative length for strings without 0 terminators.</param>
+            <param name="ArrayOrStringLength">The number of bytes to read.  Used to define the length of types: String, BitArray, FsBitArray, FsLongitude, FsLatitude and array of bytes.  Use a negative length for strings without 0 terminators.</param>
         </member>
         <member name="M:FSUIPC.Offset`1.#ctor(System.Int32,System.Boolean)">
             <summary>
@@ -4067,27 +4425,27 @@
         </member>
         <member name="M:FSUIPC.Offset`1.#ctor(System.Int32,System.Int32,System.Boolean)">
             <summary>
-            Creates a new Offset that will read from or write the specified number of bytes to the specified Offset.  Only used with data types of String, BitArray, FsLongitude, FsLatitude and an array of bytes.
+            Creates a new Offset that will read from or write the specified number of bytes to the specified Offset.  Only used with data types of String, BitArray, FsBitArray, FsLongitude, FsLatitude and an array of bytes.
             </summary>
             <param name="Address">The FSUIPC offset address to read from or write to, as specified in the FSUIPC for Programmer's document.</param>
-            <param name="ArrayOrStringLength">The number of bytes to read.  Used to define the length of types: String, BitArray, FsLongitude, FsLatitude and array of bytes. Use a negative length for strings without 0 terminators.</param>
+            <param name="ArrayOrStringLength">The number of bytes to read.  Used to define the length of types: String, BitArray, FsBitArray, FsLongitude, FsLatitude and array of bytes. Use a negative length for strings without 0 terminators.</param>
             <param name="WriteOnly">If true, Sets this Offset to only write data.  Its value is never read from FSUIPC.  You can change the setting with the WriteOnly property at any time.</param>        
         </member>
         <member name="M:FSUIPC.Offset`1.#ctor(System.String,System.Int32,System.Int32)">
             <summary>
-            Creates a new Offset that will read from or write the specified number of bytes to the specified Offset.  Only used with data types of String, BitArray, FsLongitude, FsLatitude and an array of bytes.
+            Creates a new Offset that will read from or write the specified number of bytes to the specified Offset.  Only used with data types of String, BitArray, FsBitArray, FsLongitude, FsLatitude and an array of bytes.
             </summary>
             <param name="DataGroupName">The name of the DataGroup to put this Offset into.<para>To process this Offset you must call Process() and pass the GroupName as a parameter.</para></param>
             <param name="Address">The FSUIPC offset address to read from or write to, as specified in the FSUIPC for Programmer's document.</param>
-            <param name="ArrayOrStringLength">The number of bytes to read.  Used to define the length of types: String, BitArray, FsLongitude, FsLatitude and array of bytes.  Use a negative length for strings without 0 terminators.</param>
+            <param name="ArrayOrStringLength">The number of bytes to read.  Used to define the length of types: String, BitArray, FsBitArray, FsLongitude, FsLatitude and array of bytes.  Use a negative length for strings without 0 terminators.</param>
         </member>
         <member name="M:FSUIPC.Offset`1.#ctor(System.String,System.Int32,System.Int32,System.Boolean)">
             <summary>
-            Creates a new Offset in the specified group that will read from or write the specified number of bytes to the specified Offset.  Only used with data types of String, BitArray, FsLongitude, FsLatitude and an array of bytes.
+            Creates a new Offset in the specified group that will read from or write the specified number of bytes to the specified Offset.  Only used with data types of String, BitArray, FsBitArray, FsLongitude, FsLatitude and an array of bytes.
             </summary>
             <param name="DataGroupName">The name of the DataGroup to put this Offset into.<para>To process this Offset you must call Process() and pass the GroupName as a parameter.</para></param>
             <param name="Address">The FSUIPC offset address to read from or write to, as specified in the FSUIPC for Programmer's document.</param>
-            <param name="ArrayOrStringLength">The number of bytes to read.  Used to define the length of types: String, BitArray, FsLongitude, FsLatitude and array of bytes. Use a negative length for strings without 0 terminators.</param>
+            <param name="ArrayOrStringLength">The number of bytes to read.  Used to define the length of types: String, BitArray, FsBitArray, FsLongitude, FsLatitude and array of bytes. Use a negative length for strings without 0 terminators.</param>
             <param name="WriteOnly">If true, Sets this Offset to only write data.  Its value is never read from FSUIPC.  You can change the setting with the WriteOnly property at any time.</param>        
         </member>
         <member name="P:FSUIPC.Offset`1.Value">
@@ -4421,6 +4779,87 @@
             Gets back a single fuel tank object using the type of tank
             </summary>
             <param name="fuelTank"></param>
+            <returns></returns>
+        </member>
+        <member name="T:FSUIPC.TextMenu">
+            <summary>
+            Helper class for reading the SimConnect Menu Text displayed by other Add-Ons (e.g. Radar Contact)
+            </summary>
+        </member>
+        <member name="P:FSUIPC.TextMenu.Duration">
+            <summary>
+            Indicates how long in seconds the text should be displayed for.
+            </summary>
+        </member>
+        <member name="P:FSUIPC.TextMenu.IsMenu">
+            <summary>
+            Indicates if the display text is a menu. If false it's a single line message.
+            </summary>
+        </member>
+        <member name="P:FSUIPC.TextMenu.Changed">
+            <summary>
+            Indicates if the text has changed since the last Refrash()
+            </summary>
+        </member>
+        <member name="P:FSUIPC.TextMenu.MenuItems">
+            <summary>
+            An array of strings representing each menu item
+            </summary>
+        </member>
+        <member name="P:FSUIPC.TextMenu.MenuItemCount">
+            <summary>
+            The number of lines in the menu. This is filled when IsMenu is true.
+            </summary>
+        </member>
+        <member name="P:FSUIPC.TextMenu.MenuTitleText">
+            <summary>
+            The title of the menu. This is filled when IsMenu is true.
+            </summary>
+        </member>
+        <member name="P:FSUIPC.TextMenu.MenuPromptText">
+            <summary>
+            The prompt text of the menu. This is the fist line displayed above the menu options. This is filled when IsMenu is true.
+            </summary>
+        </member>
+        <member name="P:FSUIPC.TextMenu.Message">
+            <summary>
+            The message text. This filled when IsMenu is false.
+            </summary>
+        </member>
+        <member name="P:FSUIPC.TextMenu.ID">
+            <summary>
+            The ID of the SimConnect event
+            </summary>
+        </member>
+        <member name="M:FSUIPC.TextMenu.#ctor">
+            <summary>
+            Creates a new TextMenu class.
+            </summary>
+        </member>
+        <member name="M:FSUIPC.TextMenu.#ctor(System.Byte)">
+            <summary>
+            Creates a new TextMenu class for a specific WideClient class instance.
+            </summary>
+        </member>
+        <member name="M:FSUIPC.TextMenu.RefreshData">
+            <summary>
+            Gets the latest text or menu displayed in the flight sim.
+            </summary>
+        </member>
+        <member name="M:FSUIPC.TextMenu.ToString">
+            <summary>
+            Returns the entire screen in a single fixed-length string.<para>The order is from left to right starting at the top row and going down.</para>
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:FSUIPC.TextMenu.ToString(System.String,System.Boolean,System.Boolean,System.Boolean)">
+            <summary>
+            Returns the entire screen in a single fixed-length string.<para>The order is from left to right starting at the top row and going down.</para><para>Each row is seperated by the supplied RowDeimiter</para>
+            </summary>
+            <param name="RowDelimiter">A string that will be used to mark the end of each row</param>
+            <param name="IncludeMenuTitle">Pass true to include the title of the menu in the string</param>
+            <param name="IncludeMenuPrompt">Pass true to include the menu prompt in the string</param>
+            <param name="AddNumbersToMenuItem">Pass true to automatically add numbers to the menu items</param>
             <returns></returns>
         </member>
         <member name="T:FSUIPC.PMDG_NGX_CDU_COLOR">
