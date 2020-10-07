@@ -78,6 +78,7 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="dataUpdate.cs" />
     <Compile Include="FSUIPC.cs" />
     <Compile Include="Dictionairy.cs" />
     <Compile Include="UpdateMainWindow.cs" />

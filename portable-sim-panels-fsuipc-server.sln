@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30011.22
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FSUIPCWPFAutoCS", "FSUIPCWPFAutoCS.csproj", "{4F899A9E-DEFE-4016-BDCD-60FC8B8DF9CB}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "portable-sim-panels-fsuipc-server", "portable-sim-panels-fsuipc-server.csproj", "{4F899A9E-DEFE-4016-BDCD-60FC8B8DF9CB}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

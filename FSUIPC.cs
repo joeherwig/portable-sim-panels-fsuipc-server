@@ -39,7 +39,7 @@ namespace portableSimPanelsFsuipcServer
         public Offset<double> TURB_ENG_3_ITT = new Offset<double>(0x2238);
         public Offset<double> TURB_ENG_4_ITT = new Offset<double>(0x2338);
         public Offset<uint> GEAR_LEFT_POSITION = new Offset<uint>(0xBF4);
-        public Offset<uint> GEAR_CENTER_POSITION = new Offset<uint>(0xBE);
+        public Offset<uint> GEAR_CENTER_POSITION = new Offset<uint>(0x0BEC);
         public Offset<uint> GEAR_RIGHT_POSITION = new Offset<uint>(0xBF0);
         public Offset<uint> AUTOPILOT_AVAILABLE = new Offset<uint>(0x764);
         public Offset<uint> AUTOPILOT_MASTER = new Offset<uint>(0x7B);
@@ -100,6 +100,7 @@ namespace portableSimPanelsFsuipcServer
         public Offset<double> PROP_3_RPM = new Offset<double>(0x2600);
         public Offset<double> PROP_4_RPM = new Offset<double>(0x2700);
         public Offset<short> LIGHTS = new Offset<short>(0xD0);
+
     }
 
 }

@@ -5,8 +5,11 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:portableSimPanelsFsuipcServer"
         mc:Ignorable="d"
-        Title="portable-sim-panels-FSUIPC-server" Height="400" Width="600" Background="{DynamicResource BackgroundColor}" WindowStyle="None"
-        MouseDown="Window_MouseDown" MinWidth="400" MinHeight="250">
+        Title="portable-sim-panels-FSUIPC-server" 
+        Height="250" Width="400" 
+        Background="{DynamicResource BackgroundColor}" WindowStyle="None"
+        MouseDown="Window_MouseDown" MinWidth="400" MinHeight="250"
+        WindowChrome.WindowChrome="{DynamicResource WindowChromeKey}">
     <Window.Resources>
         <SolidColorBrush x:Key="BackgroundColor" Color="#000000"/>
         <SolidColorBrush x:Key="TextColor" Color="#F2FFFFFF"/>
@@ -16,9 +19,15 @@
         <Style TargetType="Button">
             <Setter Property="Background" Value="{DynamicResource BackgroundColor}"></Setter>
         </Style>
+        <WindowChrome x:Key="WindowChromeKey">
+            <WindowChrome.ResizeBorderThickness>
+                <Thickness>5</Thickness>
+            </WindowChrome.ResizeBorderThickness>
+            <WindowChrome.CaptionHeight>0</WindowChrome.CaptionHeight>
+        </WindowChrome>
     </Window.Resources>
 
-    <Grid Margin="0,0,-5,5" MinWidth="300" MinHeight="300" >
+    <Grid Margin="0,0,-8,-8" >
         <Grid.ColumnDefinitions>
             <ColumnDefinition MinWidth="200"/>
         </Grid.ColumnDefinitions>
@@ -54,7 +63,6 @@
             </StackPanel>
 
         </Grid>
-        <Grid HorizontalAlignment="Left" Height="100" Margin="337,185,0,0" VerticalAlignment="Top" Width="100"/>
         <Grid Margin="100,37,10,10">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="246*"/>
@@ -62,9 +70,9 @@
                 <ColumnDefinition Width="23*"/>
                 <ColumnDefinition Width="Auto"/>
             </Grid.ColumnDefinitions>
-            <TextBox x:Name="JsonFilterField" Height="23" TextWrapping="Wrap" Text="filter" Background="{DynamicResource BackgroundColor}" Foreground="{DynamicResource TextColor}" Margin="10,0" VerticalAlignment="Top" Grid.ColumnSpan="4"/>
+            <TextBox x:Name="JsonFilterField" Height="23" TextWrapping="Wrap" Text="" Background="{DynamicResource BackgroundColor}" Foreground="{DynamicResource TextColor}" Margin="10,0" VerticalAlignment="Top" Grid.ColumnSpan="3"/>
             <TextBox x:Name="JsonTextField" Margin="10,28,10,10" TextWrapping="Wrap" Grid.ColumnSpan="3" Foreground="{DynamicResource TextColor}" AcceptsReturn="True" BorderBrush="{x:Null}" Background="{DynamicResource BackgroundColor}" OpacityMask="#7F2A2A2A"/>
         </Grid>
-        <Image Source="airplane-airline-aircraft-travel.jpg" Panel.ZIndex="-1" Stretch="UniformToFill"/>
+        <Image Panel.ZIndex="-1" Source="airplane-airline-aircraft-travel.jpg" Stretch="UniformToFill"/>
     </Grid>
 </Window>

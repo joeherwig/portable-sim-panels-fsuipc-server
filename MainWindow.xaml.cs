@@ -63,7 +63,7 @@ namespace portableSimPanelsFsuipcServer
                 // No connection found. Don't need to do anything, just keep trying
             }
         }
-
+        /*
         // This method runs 20 times per second (every 50ms). This is set in the form constructor above.
         private void timerMain_Tick(object sender, EventArgs e)
         {
@@ -73,13 +73,11 @@ namespace portableSimPanelsFsuipcServer
             {
                 FSUIPCConnection.Process();
 
-                // Update the information on the form
-                // (See the Examples Application for more information on using Offsets).
-
-                // 1. Airspeed
                 double airspeedKnots = (double)this.airspeed.Value / 128d;
                 App.FsuipcObject.Data["AirspeedKnots"] = airspeedKnots.ToString();
-                App.FsuipcObject.Data["VS"] = this.VERTICAL_SPEED.Value.ToString();
+                App.FsuipcObject.Data["VERTICAL_SPEED"] = this.VERTICAL_SPEED.Value.ToString();
+                App.FsuipcObject.Data["INDICATED_ALTITUDE"] = this.INDICATED_ALTITUDE.Value.ToString();
+                App.FsuipcObject.Data["PLANE_PITCH_DEGREES"] = this.PLANE_PITCH_DEGREES.Value.ToString();
                 UpdateJsonTextField(JsonConvert.SerializeObject(App.FsuipcObject.Data, Formatting.Indented));
                 //txtAirspeed.Text = airspeedKnots.ToString("F0");
 
@@ -94,7 +92,7 @@ namespace portableSimPanelsFsuipcServer
                 // Update the connection status
                 configureForm();
             }
-        }
+        }*/
 
         // This runs when the master avionics tick has been changed
         private void chkAvionicsMaster_Click(object sender, RoutedEventArgs e)

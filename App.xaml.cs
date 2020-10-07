@@ -11,7 +11,7 @@ namespace portableSimPanelsFsuipcServer
     /// <summary>
     /// Interaction logic for App.xaml
     /// </summary>
-    public partial class App : Application
+    public partial class App 
     {
         public static Dict FsuipcObject = new Dict();
         public static Dict Previous = new Dict();
