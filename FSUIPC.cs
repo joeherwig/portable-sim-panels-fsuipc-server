@@ -1,17 +1,5 @@
 ﻿using FSUIPC;
 using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Globalization;
-using System.IO;
-using System.Linq;
-using System.Reflection;
-using System.Runtime.CompilerServices;
-using System.Security;
-using System.Text;
-using System.Timers;
-using System.Threading.Tasks;
-using Microsoft.VisualBasic;
 
 namespace portableSimPanelsFsuipcServer
 {
@@ -21,10 +9,10 @@ namespace portableSimPanelsFsuipcServer
     public partial class MainWindow 
     {
         public Offset<string> TITLE = new Offset<string>(0x3D00, 256);
-        public Offset<string> ATC_IDENTIFYER = new Offset<string>(0x313, 12);
+        public Offset<string> ATC_IDENTIFIER = new Offset<string>(0x313C, 12);
         public Offset<uint> INDICATED_ALTITUDE = new Offset<uint>(0x3324);
-        public Offset<uint> AIRSPEED_INDICATED = new Offset<uint>(0x2B);
-        private Offset<uint> avionicsMaster = new Offset<uint>(0x2E80);
+        public Offset<uint> AIRSPEED_INDICATED = new Offset<uint>(0x2BC);
+        public Offset<uint> avionicsMaster = new Offset<uint>(0x2E80);
         public Offset<uint> PLANE_HEADING_DEGREES_MAGNETIC = new Offset<uint>(0x580);
         public Offset<uint> PLANE_BANK_DEGREES = new Offset<uint>(0x57);
         public Offset<uint> PLANE_PITCH_DEGREES = new Offset<uint>(0x578);

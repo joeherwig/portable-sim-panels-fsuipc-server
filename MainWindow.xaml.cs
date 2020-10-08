@@ -63,38 +63,7 @@ namespace portableSimPanelsFsuipcServer
                 // No connection found. Don't need to do anything, just keep trying
             }
         }
-        /*
-        // This method runs 20 times per second (every 50ms). This is set in the form constructor above.
-        private void timerMain_Tick(object sender, EventArgs e)
-        {
-            // Call process() to read/write data to/from FSUIPC
-            // We do this in a Try/Catch block incase something goes wrong
-            try
-            {
-                FSUIPCConnection.Process();
-
-                double airspeedKnots = (double)this.airspeed.Value / 128d;
-                App.FsuipcObject.Data["AirspeedKnots"] = airspeedKnots.ToString();
-                App.FsuipcObject.Data["VERTICAL_SPEED"] = this.VERTICAL_SPEED.Value.ToString();
-                App.FsuipcObject.Data["INDICATED_ALTITUDE"] = this.INDICATED_ALTITUDE.Value.ToString();
-                App.FsuipcObject.Data["PLANE_PITCH_DEGREES"] = this.PLANE_PITCH_DEGREES.Value.ToString();
-                UpdateJsonTextField(JsonConvert.SerializeObject(App.FsuipcObject.Data, Formatting.Indented));
-                //txtAirspeed.Text = airspeedKnots.ToString("F0");
-
-                // 2. Master Avionics
-                //this.chkAvionicsMaster.IsChecked = avionicsMaster.Value > 0;
-            }
-            catch (Exception ex)
-            {
-                // An error occured. Tell the user and stop this timer.
-                this.timerMain.Stop();
-                MessageBox.Show("Communication with FSUIPC Failed\n\n" + ex.Message, "FSUIPC", MessageBoxButton.OK, MessageBoxImage.Exclamation);
-                // Update the connection status
-                configureForm();
-            }
-        }*/
-
-        // This runs when the master avionics tick has been changed
+        
         private void chkAvionicsMaster_Click(object sender, RoutedEventArgs e)
         {
             // Update the FSUIPC offset with the new value (1 = Checked/On, 0 = Unchecked/Off)
