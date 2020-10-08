@@ -39,7 +39,7 @@ namespace portableSimPanelsFsuipcServer
                 App.FsuipcObject.Data["AUTOPILOT_ALTITUDE_LOCK"] = calc.calculateValue("AUTOPILOT_ALTITUDE_LOCK", this.AUTOPILOT_ALTITUDE_LOCK.Value.ToString(), out result);
                 App.FsuipcObject.Data["AUTOPILOT_APPROACH_HOLD"] = calc.calculateValue("AUTOPILOT_APPROACH_HOLD", this.AUTOPILOT_APPROACH_HOLD.Value.ToString(), out result);
                 App.FsuipcObject.Data["AUTOPILOT_APR_LOCK"] = calc.calculateValue("AUTOPILOT_APR_LOCK", this.AUTOPILOT_APR_LOCK.Value.ToString(), out result);
-                /*App.FsuipcObject.Data["AUTOPILOT_ATTITUDE_LOCK"] = calc.calculateValue("AUTOPILOT_ATTITUDE_LOCK", this.AUTOPILOT_ATTITUDE_LOCK.Value.ToString(), out result);
+                App.FsuipcObject.Data["AUTOPILOT_ATTITUDE_LOCK"] = calc.calculateValue("AUTOPILOT_ATTITUDE_LOCK", this.AUTOPILOT_ATTITUDE_LOCK.Value.ToString(), out result);
                 App.FsuipcObject.Data["AUTOPILOT_AVAILABLE"] = calc.calculateValue("AUTOPILOT_AVAILABLE", this.AUTOPILOT_AVAILABLE.Value.ToString(), out result);
                 App.FsuipcObject.Data["AUTOPILOT_BACKCOURSE_LOCK"] = calc.calculateValue("AUTOPILOT_BACKCOURSE_LOCK", this.AUTOPILOT_BACKCOURSE_LOCK.Value.ToString(), out result);
                 App.FsuipcObject.Data["AUTOPILOT_FD_LOCK"] = calc.calculateValue("AUTOPILOT_FD_LOCK", this.AUTOPILOT_FD_LOCK.Value.ToString(), out result);
@@ -100,7 +100,7 @@ namespace portableSimPanelsFsuipcServer
                 App.FsuipcObject.Data["PROP_2_RPM"] = calc.calculateValue("PROP_2_RPM", this.PROP_2_RPM.Value.ToString(), out result);
                 App.FsuipcObject.Data["PROP_3_RPM"] = calc.calculateValue("PROP_3_RPM", this.PROP_3_RPM.Value.ToString(), out result);
                 App.FsuipcObject.Data["PROP_4_RPM"] = calc.calculateValue("PROP_4_RPM", this.PROP_4_RPM.Value.ToString(), out result);
-               // App.FsuipcObject.Data["TITLE"] = calc.calculateValue("TITLE", this.TITLE.Value.ToString(), out result);
+                App.FsuipcObject.Data["TITLE"] = calc.calculateValue("TITLE", this.TITLE.Value.ToString(), out result);
                 App.FsuipcObject.Data["TRAILING_EDGE_FLAPS_LEFT_PERCENT"] = calc.calculateValue("TRAILING_EDGE_FLAPS_LEFT_PERCENT", this.TRAILING_EDGE_FLAPS_LEFT_PERCENT.Value.ToString(), out result);
                 App.FsuipcObject.Data["TRAILING_EDGE_FLAPS_RIGHT_PERCENT"] = calc.calculateValue("TRAILING_EDGE_FLAPS_RIGHT_PERCENT", this.TRAILING_EDGE_FLAPS_RIGHT_PERCENT.Value.ToString(), out result);
                 App.FsuipcObject.Data["TURB_ENG_1_ITT"] = calc.calculateValue("TURB_ENG_1_ITT", this.TURB_ENG_1_ITT.Value.ToString(), out result);
