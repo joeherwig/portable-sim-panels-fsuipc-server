@@ -114,7 +114,20 @@ namespace portableSimPanelsFsuipcServer
                     App.Previous = App.FsuipcObject.ToDictionary(entry => entry.Key, entry => entry.Value);
                 }
                 App.getDeltaObject(App.Previous, App.FsuipcObject);
-                UpdateJsonTextField(JsonConvert.SerializeObject(App.DeltaObject, Formatting.Indented));
+                if (WindowState != WindowState.Minimized) {
+                    if (JsonFilterField.Text == "") {
+                        UpdateJsonTextField(JsonConvert.SerializeObject(App.DeltaObject, Formatting.Indented));
+                    } else
+                    {
+                        if (App.Previous.ContainsKey(JsonFilterField.Text.ToUpper())) { 
+                            UpdateJsonTextField(JsonConvert.SerializeObject(App.Previous[JsonFilterField.Text.ToUpper()], Formatting.Indented));
+                        }
+                        else
+                        {
+                            UpdateJsonTextField(JsonConvert.SerializeObject(App.Previous, Formatting.Indented));
+                        }
+                    }
+                }
             }
             catch (Exception ex)
             {

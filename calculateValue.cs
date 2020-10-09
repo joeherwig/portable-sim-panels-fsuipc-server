@@ -147,6 +147,10 @@ public class calc
         {
             "ENG_4_MANIFOLD_PRESSURE",
             "x / 1024"
+        },
+        {
+            "PROP_1_RPM",
+            "x"
         }
     };
     public static string calculateValue(string key, string rawValue, out string returnValue)
