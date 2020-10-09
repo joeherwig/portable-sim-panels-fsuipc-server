@@ -88,6 +88,7 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="calculateValue.cs" />
+    <Compile Include="getDeltaObject.cs" />
     <Compile Include="dataUpdate.cs" />
     <Compile Include="FSUIPC.cs" />
     <Compile Include="Dictionairy.cs" />

@@ -48,7 +48,6 @@ namespace portableSimPanelsFsuipcServer
         public Offset<uint> AUTOPILOT_VERTICALSPEED_LOCK_KNOTS = new Offset<uint>(0x7F2);
         public Offset<uint> AUTOPILOT_APPROACH_HOLD = new Offset<uint>(0x800);
         public Offset<uint> AUTOTHROTTLE_ARM = new Offset<uint>(0x810);
-        // Public DME_SWITCH As New Offset(Of UShort)(&H378)
         public Offset<ushort> DME_SWITCH = new Offset<ushort>(0x66C0);
         public Offset<short> Nav_1_OBS = new Offset<short>(0xC4E);
         public Offset<float> NAV_1_CDI = new Offset<float>(0x2AA);
@@ -58,7 +57,6 @@ namespace portableSimPanelsFsuipcServer
         public Offset<short> NAV_1_DME_TIMETO = new Offset<short>(0x304);
         public Offset<byte> NAV_1_TOFROM = new Offset<byte>(0xC4B);
         public Offset<byte> HSI_TOFROM = new Offset<byte>(0x2FAD);
-        // 
         public Offset<byte> NAV_1_GS_ALIVE = new Offset<byte>(0xC4);
         public Offset<Int32> NAV_1_SIGNAL_STRENGTH = new Offset<Int32>(0xC52);
         public Offset<short> NAV_1_RADIAL = new Offset<short>(0xC50);

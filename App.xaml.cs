@@ -13,9 +13,8 @@ namespace portableSimPanelsFsuipcServer
     /// </summary>
     public partial class App 
     {
-        public static Dict FsuipcObject = new Dict();
-        public static Dict Previous = new Dict();
-        public static Dict Minified = new Dict();
-        //public static MainWindow MainWindow = new MainWindow();
+        public static Dictionary<string, string> FsuipcObject = new Dictionary<string, string>();
+        public static Dictionary<string, string> Previous = new Dictionary<string, string>();
+        public static Dictionary<string, string> DeltaObject = new Dictionary<string, string>();
     }
 }

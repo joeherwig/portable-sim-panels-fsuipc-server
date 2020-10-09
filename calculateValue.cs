@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using NCalc2;
 using portableSimPanelsFsuipcServer;
 
-public partial class calc
+public class calc
 {
     // place for each key (variable) the formula as value where the lowercase 'x' represents the source value.
     public static Dictionary<string, string> valueRecalculation = new Dictionary<string, string>()
@@ -163,8 +163,7 @@ public partial class calc
             }
             catch (Exception ex)
             {
-                Console.WriteLine("Error catched: " + ex.Message);
-                returnValue = rawValue;
+                Console.WriteLine(ex.Message);
             }
         } else
         {

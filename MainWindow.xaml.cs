@@ -104,13 +104,10 @@ namespace portableSimPanelsFsuipcServer
             if (Mouse.LeftButton == MouseButtonState.Pressed)
             {
                 this.DragMove();
-                App.Previous.Data = App.FsuipcObject.Data;
-                App.FsuipcObject.Data["Ground_Speed_" + App.FsuipcObject.Data.Count] = "123";
-                App.FsuipcObject.Data["Ground_Speed"] = "123." + App.FsuipcObject.Data.Count;
 
                 if (JsonFilterField.Text == "")
                 {
-                    UpdateJsonTextField(JsonConvert.SerializeObject(App.FsuipcObject.Data, Formatting.Indented));
+                    UpdateJsonTextField(JsonConvert.SerializeObject(App.FsuipcObject, Formatting.Indented));
                 }
                 else
                 {

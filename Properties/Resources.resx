@@ -28,7 +28,7 @@
     </data>
                 
     There are any number of "resheader" rows that contain simple 
-    name/value pairs.
+    name/value currents.
     
     Each data row contains a name, and value. The row also contains a 
     type or mimetype. Type corresponds to a .NET class that support 
@@ -37,7 +37,7 @@
     mimetype set.
     
     The mimetype is used for serialized objects, and tells the 
-    ResXResourceReader how to depersist the object. This is currently not 
+    ResXResourceReader how to depersist the object. This is FsuipcObjectly not 
     extensible. For a given mimetype the value must be set accordingly:
     
     Note - application/x-microsoft.net.object.binary.base64 is the format 
