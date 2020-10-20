@@ -3,6 +3,7 @@ using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Runtime.CompilerServices;
 using System.Text;
 using System.Timers;
@@ -17,6 +18,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Windows.Threading;
+using System.IO;
 
 namespace portableSimPanelsFsuipcServer
 {
@@ -30,11 +32,6 @@ namespace portableSimPanelsFsuipcServer
         // And another to look for a connection
         private DispatcherTimer timerConnection = new DispatcherTimer();
 
-        // =====================================
-        // DECLARE OFFSETS YOU WANT TO USE HERE
-        // =====================================
-        private Offset<uint> airspeed = new Offset<uint>(0x02BC);
-
         public MainWindow()
         {
             InitializeComponent();
@@ -44,8 +41,22 @@ namespace portableSimPanelsFsuipcServer
             timerConnection.Interval = TimeSpan.FromMilliseconds(1000);
             timerConnection.Tick += timerConnection_Tick;
             timerConnection.Start();
+
+            var HtmlRootPath = @"..\portable-sim-panels";
+            if (Directory.Exists(HtmlRootPath))
+                Console.WriteLine("+++++++++++++++++ Folder exists on " + Dns.GetHostName());
+            var url = "http://*:83/";
+
+            httpSrv.CreateWebServer(url, HtmlRootPath)
+                .RunAsync();
+
+            var browser = new System.Diagnostics.Process()
+            {
+                StartInfo = new System.Diagnostics.ProcessStartInfo("http://" + Dns.GetHostName() + ":83/") { UseShellExecute = true }
+            };
+            browser.Start();
         }
-        
+
         private void timerConnection_Tick(object sender, EventArgs e)
         {
             // Try to open the connection
