@@ -1,24 +1,11 @@
 ﻿using FSUIPC;
 using Newtonsoft.Json;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net;
-using System.Runtime.CompilerServices;
-using System.Text;
-using System.Timers;
-using System.Threading.Tasks;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
-using System.Windows.Threading;
 using System.IO;
+using System.Net;
+using System.Windows;
+using System.Windows.Input;
+using System.Windows.Threading;
 
 namespace portableSimPanelsFsuipcServer
 {
@@ -50,11 +37,14 @@ namespace portableSimPanelsFsuipcServer
             httpSrv.CreateWebServer(url, HtmlRootPath)
                 .RunAsync();
 
-            var browser = new System.Diagnostics.Process()
+            if (true)
             {
-                StartInfo = new System.Diagnostics.ProcessStartInfo("http://" + Dns.GetHostName() + ":83/") { UseShellExecute = true }
-            };
-            browser.Start();
+                var browser = new System.Diagnostics.Process()
+                {
+                    StartInfo = new System.Diagnostics.ProcessStartInfo("http://" + Dns.GetHostName() + ":83/") { UseShellExecute = true }
+                };
+                browser.Start();
+            }
         }
 
         private void timerConnection_Tick(object sender, EventArgs e)
@@ -74,7 +64,7 @@ namespace portableSimPanelsFsuipcServer
                 // No connection found. Don't need to do anything, just keep trying
             }
         }
-        
+
         private void chkAvionicsMaster_Click(object sender, RoutedEventArgs e)
         {
             // Update the FSUIPC offset with the new value (1 = Checked/On, 0 = Unchecked/Off)

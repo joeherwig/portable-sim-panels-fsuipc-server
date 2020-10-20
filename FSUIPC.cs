@@ -6,7 +6,7 @@ namespace portableSimPanelsFsuipcServer
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
-    public partial class MainWindow 
+    public partial class MainWindow
     {
         public Offset<string> TITLE = new Offset<string>(0x3D00, 256);
         public Offset<string> ATC_IDENTIFIER = new Offset<string>(0x313C, 12);

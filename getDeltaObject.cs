@@ -1,10 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Configuration;
-using System.Data;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
-using System.Windows;
 
 namespace portableSimPanelsFsuipcServer
 {
@@ -16,7 +11,8 @@ namespace portableSimPanelsFsuipcServer
         public static void getDeltaObject(Dictionary<string, string> previousValues, Dictionary<string, string> currentValues)
         {
             App.DeltaObject.Clear();
-            foreach (KeyValuePair<string, string> pair in currentValues) {
+            foreach (KeyValuePair<string, string> pair in currentValues)
+            {
                 if (pair.Value != previousValues[pair.Key])
                 {
                     App.DeltaObject[pair.Key] = currentValues[pair.Key];

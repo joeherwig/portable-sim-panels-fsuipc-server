@@ -1,7 +1,6 @@
-﻿using System;
+﻿using NCalc2;
+using System;
 using System.Collections.Generic;
-using NCalc2;
-using portableSimPanelsFsuipcServer;
 
 public class calc
 {
@@ -169,10 +168,11 @@ public class calc
             {
                 Console.WriteLine(ex.Message);
             }
-        } else
+        }
+        else
         {
             returnValue = rawValue;
         }
-        return returnValue.ToString().Replace(",",".");
+        return returnValue.ToString().Replace(",", ".");
     }
 }

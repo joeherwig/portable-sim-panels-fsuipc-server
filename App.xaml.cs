@@ -1,17 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Configuration;
-using System.Data;
-using System.Linq;
-using System.Threading.Tasks;
-using System.Windows;
+﻿using System.Collections.Generic;
 
 namespace portableSimPanelsFsuipcServer
 {
     /// <summary>
     /// Interaction logic for App.xaml
     /// </summary>
-    public partial class App 
+    public partial class App
     {
         public static Dictionary<string, string> FsuipcObject = new Dictionary<string, string>();
         public static Dictionary<string, string> Previous = new Dictionary<string, string>();

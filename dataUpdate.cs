@@ -1,22 +1,8 @@
 ﻿using FSUIPC;
 using Newtonsoft.Json;
 using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Runtime.CompilerServices;
-using System.Text;
-using System.Timers;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
-using System.Windows.Threading;
 
 namespace portableSimPanelsFsuipcServer
 {
@@ -24,7 +10,7 @@ namespace portableSimPanelsFsuipcServer
     /// Interaction logic for MainWindow.xaml
     /// </summary>
     public partial class MainWindow : Window
-    { 
+    {
         private void timerMain_Tick(object sender, EventArgs e)
         {
             string result;
@@ -110,16 +96,21 @@ namespace portableSimPanelsFsuipcServer
                 App.FsuipcObject["TURN_COORDINATOR_BALL"] = calc.calculateValue("TURN_COORDINATOR_BALL", this.TURN_COORDINATOR_BALL.Value.ToString(), out result);
                 App.FsuipcObject["VERTICAL_SPEED"] = calc.calculateValue("VERTICAL_SPEED", this.VERTICAL_SPEED.Value.ToString(), out result);
 
-                if (App.Previous.Count() == 0) {
+                if (App.Previous.Count() == 0)
+                {
                     App.Previous = App.FsuipcObject.ToDictionary(entry => entry.Key, entry => entry.Value);
                 }
                 App.getDeltaObject(App.Previous, App.FsuipcObject);
-                if (WindowState != WindowState.Minimized) {
-                    if (JsonFilterField.Text == "") {
-                        UpdateJsonTextField(JsonConvert.SerializeObject(App.DeltaObject, Formatting.Indented));
-                    } else
+                if (WindowState != WindowState.Minimized)
+                {
+                    if (JsonFilterField.Text == "")
                     {
-                        if (App.Previous.ContainsKey(JsonFilterField.Text.ToUpper())) { 
+                        UpdateJsonTextField(JsonConvert.SerializeObject(App.DeltaObject, Formatting.Indented));
+                    }
+                    else
+                    {
+                        if (App.Previous.ContainsKey(JsonFilterField.Text.ToUpper()))
+                        {
                             UpdateJsonTextField(JsonConvert.SerializeObject(App.Previous[JsonFilterField.Text.ToUpper()], Formatting.Indented));
                         }
                         else
