@@ -2,7 +2,7 @@
 using System;
 using System.Collections.Generic;
 
-public class calc
+public class Calc
 {
     // place for each key (variable) the formula as value where the lowercase 'x' represents the source value.
     public static Dictionary<string, string> valueRecalculation = new Dictionary<string, string>()
@@ -152,12 +152,12 @@ public class calc
             "x"
         }
     };
-    public static string calculateValue(string key, string rawValue, out string returnValue)
+    public static string CalculateValue(string key, string rawValue, out string returnValue)
     {
         returnValue = rawValue;
         if (valueRecalculation.ContainsKey(key) == true)
         {
-            string calculation = calc.valueRecalculation[key].Replace("x", rawValue).Replace(",", ".");
+            string calculation = Calc.valueRecalculation[key].Replace("x", rawValue).Replace(",", ".");
             try
             {
                 Expression e = new Expression(calculation);

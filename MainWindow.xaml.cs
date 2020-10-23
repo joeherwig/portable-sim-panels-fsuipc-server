@@ -22,7 +22,7 @@ namespace portableSimPanelsFsuipcServer
         public MainWindow()
         {
             InitializeComponent();
-            configureForm();
+            ConfigureForm();
             timerMain.Interval = TimeSpan.FromMilliseconds(25);
             timerMain.Tick += timerMain_Tick;
             timerConnection.Interval = TimeSpan.FromMilliseconds(1000);
@@ -32,9 +32,9 @@ namespace portableSimPanelsFsuipcServer
             var HtmlRootPath = @"..\portable-sim-panels";
             if (Directory.Exists(HtmlRootPath))
                 Console.WriteLine("+++++++++++++++++ Folder exists on " + Dns.GetHostName());
-            var url = "http://*:83/";
+            var url = "http://*:8080/";
 
-            httpSrv.CreateWebServer(url, HtmlRootPath)
+            HttpSrv.CreateWebServer(url, HtmlRootPath)
                 .RunAsync();
 
             if (true)
@@ -57,7 +57,7 @@ namespace portableSimPanelsFsuipcServer
                 this.timerConnection.Stop();
                 this.timerMain.Start();
                 // Update the connection status
-                configureForm();
+                ConfigureForm();
             }
             catch
             {
@@ -65,14 +65,14 @@ namespace portableSimPanelsFsuipcServer
             }
         }
 
-        private void chkAvionicsMaster_Click(object sender, RoutedEventArgs e)
+        /*private void ChkAvionicsMaster_Click(object sender, RoutedEventArgs e)
         {
             // Update the FSUIPC offset with the new value (1 = Checked/On, 0 = Unchecked/Off)
             //this.avionicsMaster.Value = (uint)(this.chkAvionicsMaster.IsChecked.Value ? 1 : 0);
-        }
+        }*/
 
         // Configures the button and status label depending on if we're connected or not 
-        private void configureForm()
+        private void ConfigureForm()
         {
             if (FSUIPCConnection.IsOpen)
             {
