@@ -1,9 +1,9 @@
 ﻿using FSUIPC;
 using Newtonsoft.Json;
 using System;
+using System.Windows.Media;
 using System.IO;
 using System.Net;
-using System.Threading;
 using System.Windows;
 using System.Windows.Input;
 using System.Windows.Threading;
@@ -96,12 +96,15 @@ namespace portableSimPanelsFsuipcServer
             if (FSUIPCConnection.IsOpen)
             {
                 UpdateJsonTextField("Connected to " + FSUIPCConnection.FlightSimVersionConnected.ToString());
-                //this.lblConnectionStatus.Foreground = Brushes.Green;
+                SimulatorInfo.Content = "Connected to " + FSUIPCConnection.FlightSimVersionConnected.ToString();
+                SimulatorInfo.Foreground = new SolidColorBrush(Color.FromRgb(0,255,0));
             }
             else
             {
                 UpdateJsonTextField("Disconnected. Looking for Flight Simulator...");
-                //this.lblConnectionStatus.Foreground = Brushes.Red;
+                SimulatorInfo.Content = "Disconnected. Looking for Flight Simulator...";
+
+               SimulatorInfo.Foreground = new SolidColorBrush(Color.FromRgb(255,0,0));
             }
         }
 

@@ -41,8 +41,8 @@
                     <TranslateTransform/>
                 </TransformGroup>
             </DockPanel.RenderTransform>
-            <Button Content="Button" Width="75" Height="75" VerticalAlignment="Top"
-                x:Name="buttonFS" ContentTemplate="{StaticResource iconFS}" BorderBrush="#00000000" Cursor="Arrow"/>
+
+
         </DockPanel>
         <Grid Margin="100,0,10,0" Height="32" VerticalAlignment="Top">
             <StackPanel Orientation="Horizontal"
@@ -63,16 +63,21 @@
             </StackPanel>
 
         </Grid>
-        <Grid Margin="100,37,10,10">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="246*"/>
-                <ColumnDefinition Width="204*"/>
-                <ColumnDefinition Width="23*"/>
-                <ColumnDefinition Width="Auto"/>
-            </Grid.ColumnDefinitions>
-            <TextBox x:Name="JsonFilterField" Height="23" TextWrapping="Wrap" Text="" Background="{DynamicResource BackgroundColor}" Foreground="{DynamicResource TextColor}" Margin="10,0" VerticalAlignment="Top" Grid.ColumnSpan="3"/>
-            <TextBox x:Name="JsonTextField" Margin="10,28,10,10" TextWrapping="Wrap" Grid.ColumnSpan="3" Foreground="{DynamicResource TextColor}" AcceptsReturn="True" BorderBrush="{x:Null}" Background="{DynamicResource BackgroundColor}" OpacityMask="#7F2A2A2A"/>
-        </Grid>
         <Image Panel.ZIndex="-1" Source="airplane-airline-aircraft-travel.jpg" Stretch="UniformToFill"/>
+        <TabControl Margin="0,32,10,10" Background="{x:Null}" TabStripPlacement="Left">
+
+            <TabItem Header="Sim" Background="{DynamicResource BackgroundColor}" Foreground="{DynamicResource TextColor}" Margin="-2,-2,0,-2">
+                <Label x:Name="SimulatorInfo" Content="" VerticalAlignment="Top" Height="56" Margin="0,0,-1,0"/>
+            </TabItem>
+            <TabItem Header="FSUIPC" >
+                <Grid Margin="16,24,0,0">
+                    <TextBox x:Name="JsonFilterField" Height="18" TextWrapping="Wrap" Text="" Background="{DynamicResource BackgroundColor}" Foreground="{DynamicResource TextColor}" Margin="0,-23,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.5,1.018"/>
+                    <TextBox x:Name="JsonTextField" Margin="0,28,10,10" TextWrapping="Wrap" Foreground="{DynamicResource TextColor}" AcceptsReturn="True" BorderBrush="{x:Null}" Background="{DynamicResource BackgroundColor}" OpacityMask="#7F2A2A2A"/>
+                </Grid>
+            </TabItem>
+
+
+        </TabControl>
+
     </Grid>
 </Window>

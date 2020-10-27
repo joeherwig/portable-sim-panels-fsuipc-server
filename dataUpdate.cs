@@ -115,9 +115,9 @@ namespace portableSimPanelsFsuipcServer
                     }
                     else
                     {
-                        if (App.Previous.ContainsKey(JsonFilterField.Text.ToUpper()))
+                        if (App.Previous.ContainsKey(JsonFilterField.Text.Replace(" ", "_").ToUpper()))
                         {
-                            UpdateJsonTextField(JsonConvert.SerializeObject(App.Previous[JsonFilterField.Text.ToUpper()], Formatting.Indented));
+                            UpdateJsonTextField(JsonConvert.SerializeObject(App.Previous[JsonFilterField.Text.Replace(" ", "_").ToUpper()], Formatting.Indented));
                         }
                         else
                         {
