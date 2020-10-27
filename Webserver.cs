@@ -9,13 +9,13 @@
     /// </summary>
     public partial class HttpSrv
     {
-        public static WebServer CreateWebServer(string url, string HtmlRootPath)
+        public static WebServer CreateWebServer(string url, string HtmlRootPath, WebSocketServer webSocketServer)
         {
             var server = new WebServer(o => o
                 .WithUrlPrefix(url)
                 .WithMode(HttpListenerMode.EmbedIO))
                 .WithLocalSessionManager()
-                .WithModule(new WebSocketServer("/fsuipc"))
+                .WithModule(webSocketServer)
                 .WithStaticFolder("/", HtmlRootPath, false, m => m
                     .WithContentCaching(true));
 

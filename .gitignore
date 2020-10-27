@@ -52,5 +52,5 @@ bld/
 packages/*
 !packages/build/
 git_stats/*
-bin
-obj
+bin/*
+obj/*

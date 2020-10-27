@@ -22,14 +22,18 @@
         /// <inheritdoc />
         protected override Task OnClientConnectedAsync(IWebSocketContext context)
         => Task.WhenAll(
-                SendAsync(context, "Welcome to the chat room!"),
-                SendToOthersAsync(context, "Someone joined the chat room."));
+                SendAsync(context, "Welcome to the FSUIPC socket!"),
+                SendToOthersAsync(context, "Someone else subscribed to FSUIPC."));
 
         /// <inheritdoc />
         protected override Task OnClientDisconnectedAsync(IWebSocketContext context)
-            => SendToOthersAsync(context, "Someone left the chat room.");
+            => SendToOthersAsync(context, "Someone unsubscribed.");
 
         public Task SendToOthersAsync(IWebSocketContext context, string payload)
             => BroadcastAsync(payload, c => c != context);
+
+        // new method here. We have no access to webSocketContext. So we can call BroadcastAsync without context from base class
+        public Task SendToOthersAsync(string payload)
+	        => BroadcastAsync(payload);
     }
 }

@@ -101,6 +101,10 @@ namespace portableSimPanelsFsuipcServer
                 {
                     App.Previous = App.FsuipcObject.ToDictionary(entry => entry.Key, entry => entry.Value);
                 }
+
+                // TODO make appropriate call to inform WebSocket clients
+                webSocketServer.SendToOthersAsync(JsonConvert.SerializeObject(App.DeltaObject, Formatting.Indented));
+
                 App.getDeltaObject(App.Previous, App.FsuipcObject);
                 
                 if (WindowState != WindowState.Minimized)

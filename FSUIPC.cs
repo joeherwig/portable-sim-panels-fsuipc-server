@@ -14,7 +14,7 @@ namespace portableSimPanelsFsuipcServer
         public Offset<uint> AIRSPEED_INDICATED = new Offset<uint>(0x02BC);
         public Offset<uint> avionicsMaster = new Offset<uint>(0x2E80);
         public Offset<uint> PLANE_HEADING_DEGREES_MAGNETIC = new Offset<uint>(0x580);
-        public Offset<uint> PLANE_BANK_DEGREES = new Offset<uint>(0x57);
+        public Offset<uint> PLANE_BANK_DEGREES = new Offset<uint>(0x57C);
         public Offset<uint> PLANE_PITCH_DEGREES = new Offset<uint>(0x578);
         public Offset<int> VERTICAL_SPEED = new Offset<int>(0x2C8);
         public Offset<sbyte> TURN_COORDINATOR_BALL = new Offset<sbyte>(0x36E);

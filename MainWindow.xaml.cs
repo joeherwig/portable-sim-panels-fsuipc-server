@@ -3,6 +3,7 @@ using Newtonsoft.Json;
 using System;
 using System.IO;
 using System.Net;
+using System.Threading;
 using System.Windows;
 using System.Windows.Input;
 using System.Windows.Threading;
@@ -19,6 +20,8 @@ namespace portableSimPanelsFsuipcServer
         // And another to look for a connection
         private DispatcherTimer timerConnection = new DispatcherTimer();
 
+        private WebSocketServer webSocketServer;
+
         public MainWindow()
         {
             InitializeComponent();
@@ -29,22 +32,36 @@ namespace portableSimPanelsFsuipcServer
             timerConnection.Tick += timerConnection_Tick;
             timerConnection.Start();
 
-            var HtmlRootPath = @"..\portable-sim-panels";
+            var HtmlRootPath = @"C:\Users\j.herwig\projects\portable-sim-panels\public";
             if (Directory.Exists(HtmlRootPath))
                 Console.WriteLine("+++++++++++++++++ Folder exists on " + Dns.GetHostName());
             var url = "http://*:8080/";
 
-            HttpSrv.CreateWebServer(url, HtmlRootPath)
+            // Save web socket server as property and add it to web server
+            webSocketServer = new WebSocketServer("/fsuipc");
+
+            HttpSrv
+	            .CreateWebServer(url, HtmlRootPath, webSocketServer)
                 .RunAsync();
 
             if (true)
             {
                 var browser = new System.Diagnostics.Process()
                 {
-                    StartInfo = new System.Diagnostics.ProcessStartInfo("http://" + Dns.GetHostName() + ":83/") { UseShellExecute = true }
+                    StartInfo = new System.Diagnostics.ProcessStartInfo("http://" + Dns.GetHostName() + ":8080/") { UseShellExecute = true }
                 };
                 browser.Start();
             }
+
+
+            // Test for SendToOthersAsync method
+
+            //for (var i = 0; i < 100; i++)
+            //{
+            //    Thread.Sleep(1000);
+
+            //    webSocketServer.SendToOthersAsync(i.ToString());
+            //}
         }
 
         private void timerConnection_Tick(object sender, EventArgs e)
@@ -52,6 +69,8 @@ namespace portableSimPanelsFsuipcServer
             // Try to open the connection
             try
             {
+                // The FSUIPCConnection always fails (didn't have time to take a look on it), so this.timerMain.Start(); never called, as result dataUpdate as well
+
                 FSUIPCConnection.Open();
                 // If there was no problem, stop this timer and start the main timer
                 this.timerConnection.Stop();
