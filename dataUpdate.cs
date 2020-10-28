@@ -106,8 +106,8 @@ namespace portableSimPanelsFsuipcServer
                 webSocketServer.SendToOthersAsync(JsonConvert.SerializeObject(App.DeltaObject, Formatting.Indented));
 
                 App.getDeltaObject(App.Previous, App.FsuipcObject);
-                
-                if (WindowState != WindowState.Minimized)
+
+                if (WindowState != WindowState.Minimized && Tabs.SelectedIndex == 1)
                 {
                     if (JsonFilterField.Text == "")
                     {

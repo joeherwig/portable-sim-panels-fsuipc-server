@@ -64,10 +64,17 @@
 
         </Grid>
         <Image Panel.ZIndex="-1" Source="airplane-airline-aircraft-travel.jpg" Stretch="UniformToFill"/>
-        <TabControl Margin="0,32,10,10" Background="{x:Null}" TabStripPlacement="Left">
+        <TabControl x:Name="Tabs" Margin="0,32,10,10" Background="{x:Null}" TabStripPlacement="Left" BorderBrush="{x:Null}">
 
             <TabItem Header="Sim" Background="{DynamicResource BackgroundColor}" Foreground="{DynamicResource TextColor}" Margin="-2,-2,0,-2">
-                <Label x:Name="SimulatorInfo" Content="" Margin="0,0,1,0"/>
+                <Grid>
+                    <Label x:Name="SimulatorInfo" Content="" Margin="0,0,1,158"/>
+                    <Label x:Name="QrCodeLabel" Content="" Margin="0,47,1,123" Foreground="{DynamicResource TextColor}"/>
+                    <Button x:Name="QrCodeButton" Margin="100,87,100,10" Background="Black" BorderBrush="{x:Null}" Foreground="{DynamicResource TextColor}" Click="QrCodeButton_Click_1">
+                        <Image x:Name="QrCode" />
+                    </Button>
+                </Grid>
+
             </TabItem>
             <TabItem Header="FSUIPC" >
                 <Grid Margin="16,24,0,0">

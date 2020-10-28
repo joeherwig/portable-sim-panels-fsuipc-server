@@ -62,3 +62,4 @@ C:\Users\j.herwig\projects\portable-sim-panels-fsuipc-server - Kopie (2)\obj\Rel
 C:\Users\j.herwig\projects\portable-sim-panels-fsuipc-server - Kopie (2)\obj\Release\portable-sim-panels-fsuipc-server.csproj.CopyComplete
 C:\Users\j.herwig\projects\portable-sim-panels-fsuipc-server - Kopie (2)\obj\Release\portable-sim-panels-fsuipc-server.exe
 C:\Users\j.herwig\projects\portable-sim-panels-fsuipc-server - Kopie (2)\obj\Release\portable-sim-panels-fsuipc-server.pdb
+C:\Users\j.herwig\projects\portable-sim-panels-fsuipc-server\bin\Release\QRCoder.dll

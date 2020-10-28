@@ -8,6 +8,7 @@ using System.Net;
 using System.Windows;
 using System.Windows.Input;
 using System.Windows.Threading;
+using QRCoder;
 
 namespace portableSimPanelsFsuipcServer
 {
@@ -22,6 +23,10 @@ namespace portableSimPanelsFsuipcServer
         private DispatcherTimer timerConnection = new DispatcherTimer();
         private WebSocketServer webSocketServer;
         public JObject config;
+        private string url;
+        private string HtmlRootPath;
+        private string ServerPort;
+        private bool OpenWebsiteOnStart;
 
         public MainWindow()
         {
@@ -32,13 +37,22 @@ namespace portableSimPanelsFsuipcServer
             timerConnection.Interval = TimeSpan.FromMilliseconds(1000);
             timerConnection.Tick += timerConnection_Tick;
             timerConnection.Start();
-            var HtmlRootPath = @"" + config["webRootPath"].ToString();
-            var ServerPort = @"" + config["serverPort"].ToString(); 
-            var OpenWebsiteOnStart = bool.Parse(config["openWebsiteOnStart"].ToString());
+            HtmlRootPath = @"" + config["webRootPath"].ToString();
+            ServerPort = @"" + config["serverPort"].ToString(); 
+            OpenWebsiteOnStart = bool.Parse(config["openWebsiteOnStart"].ToString());
 
             if (Directory.Exists(HtmlRootPath))
                 Console.WriteLine("+++++++++++++++++ Folder exists on " + Dns.GetHostName());
-            var url = "http://*:"+ ServerPort + "/";
+            url = "http://*:"+ ServerPort + "/";
+
+
+            QRCodeGenerator qrGenerator = new QRCodeGenerator();
+            Console.WriteLine(url);
+            QRCodeData qrCodeData = qrGenerator.CreateQrCode("http://" + Dns.GetHostName() + ":" + ServerPort + "/", QRCodeGenerator.ECCLevel.Q);
+            XamlQRCode qrCode = new XamlQRCode(qrCodeData);
+            DrawingImage qrCodeAsXaml = qrCode.GetGraphic(20);
+            QrCode.Source = qrCodeAsXaml;
+            QrCodeLabel.Content = "Click or Scan to open Website with Gauges from: http://" + Dns.GetHostName() + ":" + ServerPort + "/";
 
             // Save web socket server as property and add it to web server
             webSocketServer = new WebSocketServer("/fsuipc");
@@ -49,11 +63,7 @@ namespace portableSimPanelsFsuipcServer
 
             if (OpenWebsiteOnStart)
             {
-                var browser = new System.Diagnostics.Process()
-                {
-                    StartInfo = new System.Diagnostics.ProcessStartInfo("http://" + Dns.GetHostName() + ":"+ ServerPort + "/") { UseShellExecute = true }
-                };
-                browser.Start();
+                openWebSite();
             }
 
 
@@ -67,6 +77,14 @@ namespace portableSimPanelsFsuipcServer
             //}
         }
 
+        private void openWebSite()
+        {
+            var browser = new System.Diagnostics.Process()
+            {
+                StartInfo = new System.Diagnostics.ProcessStartInfo("http://" + Dns.GetHostName() + ":" + ServerPort + "/") { UseShellExecute = true }
+            };
+            browser.Start();
+        }
         private void timerConnection_Tick(object sender, EventArgs e)
         {
             // Try to open the connection
@@ -101,19 +119,17 @@ namespace portableSimPanelsFsuipcServer
             {
                 UpdateJsonTextField("Connected to " + FSUIPCConnection.FlightSimVersionConnected.ToString());
                 SimulatorInfo.Content = "Connected to " + FSUIPCConnection.FlightSimVersionConnected.ToString();
-                SimulatorInfo.Foreground = new SolidColorBrush(Color.FromRgb(0,255,0));
+                SimulatorInfo.Foreground = new SolidColorBrush(System.Windows.Media.Color.FromRgb(0,255,0));
             }
             else
             {
                 UpdateJsonTextField("Disconnected. Looking for Flight Simulator...");
                 SimulatorInfo.Content = "Disconnected. Looking for Flight Simulator...";
 
-               SimulatorInfo.Foreground = new SolidColorBrush(Color.FromRgb(255,0,0));
+               SimulatorInfo.Foreground = new SolidColorBrush(System.Windows.Media.Color.FromRgb(255,0,0));
             }
 
             config = JObject.Parse(Config.GetConfig());
-            SimulatorInfo.Content = config["webRootPath"];
-
         }
 
         // Window closing so stop all the timers and close the connection
@@ -165,6 +181,9 @@ namespace portableSimPanelsFsuipcServer
             this.WindowState = WindowState.Minimized;
         }
 
-
+        private void QrCodeButton_Click_1(object sender, RoutedEventArgs e)
+        {
+            openWebSite();
+        }
     }
 }
