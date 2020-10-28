@@ -97,6 +97,7 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="calculateValue.cs" />
+    <Compile Include="Config.cs" />
     <Compile Include="WebSocket.cs" />
     <Compile Include="Webserver.cs" />
     <Compile Include="getDeltaObject.cs" />

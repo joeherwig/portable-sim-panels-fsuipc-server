@@ -67,7 +67,7 @@
         <TabControl Margin="0,32,10,10" Background="{x:Null}" TabStripPlacement="Left">
 
             <TabItem Header="Sim" Background="{DynamicResource BackgroundColor}" Foreground="{DynamicResource TextColor}" Margin="-2,-2,0,-2">
-                <Label x:Name="SimulatorInfo" Content="" VerticalAlignment="Top" Height="56" Margin="0,0,-1,0"/>
+                <Label x:Name="SimulatorInfo" Content="" Margin="0,0,1,0"/>
             </TabItem>
             <TabItem Header="FSUIPC" >
                 <Grid Margin="16,24,0,0">

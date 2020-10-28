@@ -1,5 +1,6 @@
 ﻿using FSUIPC;
 using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 using System;
 using System.Windows.Media;
 using System.IO;
@@ -19,8 +20,8 @@ namespace portableSimPanelsFsuipcServer
         private DispatcherTimer timerMain = new DispatcherTimer();
         // And another to look for a connection
         private DispatcherTimer timerConnection = new DispatcherTimer();
-
         private WebSocketServer webSocketServer;
+        public JObject config;
 
         public MainWindow()
         {
@@ -31,11 +32,13 @@ namespace portableSimPanelsFsuipcServer
             timerConnection.Interval = TimeSpan.FromMilliseconds(1000);
             timerConnection.Tick += timerConnection_Tick;
             timerConnection.Start();
+            var HtmlRootPath = @"" + config["webRootPath"].ToString();
+            var ServerPort = @"" + config["serverPort"].ToString(); 
+            var OpenWebsiteOnStart = bool.Parse(config["openWebsiteOnStart"].ToString());
 
-            var HtmlRootPath = @"C:\Users\j.herwig\projects\portable-sim-panels\public";
             if (Directory.Exists(HtmlRootPath))
                 Console.WriteLine("+++++++++++++++++ Folder exists on " + Dns.GetHostName());
-            var url = "http://*:8080/";
+            var url = "http://*:"+ ServerPort + "/";
 
             // Save web socket server as property and add it to web server
             webSocketServer = new WebSocketServer("/fsuipc");
@@ -44,11 +47,11 @@ namespace portableSimPanelsFsuipcServer
 	            .CreateWebServer(url, HtmlRootPath, webSocketServer)
                 .RunAsync();
 
-            if (true)
+            if (OpenWebsiteOnStart)
             {
                 var browser = new System.Diagnostics.Process()
                 {
-                    StartInfo = new System.Diagnostics.ProcessStartInfo("http://" + Dns.GetHostName() + ":8080/") { UseShellExecute = true }
+                    StartInfo = new System.Diagnostics.ProcessStartInfo("http://" + Dns.GetHostName() + ":"+ ServerPort + "/") { UseShellExecute = true }
                 };
                 browser.Start();
             }
@@ -93,6 +96,7 @@ namespace portableSimPanelsFsuipcServer
         // Configures the button and status label depending on if we're connected or not 
         private void ConfigureForm()
         {
+
             if (FSUIPCConnection.IsOpen)
             {
                 UpdateJsonTextField("Connected to " + FSUIPCConnection.FlightSimVersionConnected.ToString());
@@ -106,6 +110,10 @@ namespace portableSimPanelsFsuipcServer
 
                SimulatorInfo.Foreground = new SolidColorBrush(Color.FromRgb(255,0,0));
             }
+
+            config = JObject.Parse(Config.GetConfig());
+            SimulatorInfo.Content = config["webRootPath"];
+
         }
 
         // Window closing so stop all the timers and close the connection
