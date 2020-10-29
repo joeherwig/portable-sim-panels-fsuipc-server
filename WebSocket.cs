@@ -22,12 +22,12 @@
         /// <inheritdoc />
         protected override Task OnClientConnectedAsync(IWebSocketContext context)
         => Task.WhenAll(
-                SendAsync(context, "Welcome to the FSUIPC socket!"),
-                SendToOthersAsync(context, "Someone else subscribed to FSUIPC."));
+                SendAsync(context, "{\"Message\":\"Welcome to the FSUIPC socket!\"}"),
+                SendToOthersAsync(context, "{\"Message\":\"Someone else subscribed to FSUIPC\"}"));
 
         /// <inheritdoc />
         protected override Task OnClientDisconnectedAsync(IWebSocketContext context)
-            => SendToOthersAsync(context, "Someone unsubscribed.");
+            => SendToOthersAsync(context, "{\"Message\":\"Someone unsubscribed\"}");
 
         public Task SendToOthersAsync(IWebSocketContext context, string payload)
             => BroadcastAsync(payload, c => c != context);
