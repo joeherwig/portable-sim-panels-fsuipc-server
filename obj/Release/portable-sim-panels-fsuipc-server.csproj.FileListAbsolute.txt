@@ -113,3 +113,4 @@ C:\Users\joe\projects\portable-sim-panels-fsuipc-server\obj\Release\portable-sim
 C:\Users\joe\projects\portable-sim-panels-fsuipc-server\obj\Release\portable-sim-panels-fsuipc-server.csproj.CopyComplete
 C:\Users\joe\projects\portable-sim-panels-fsuipc-server\obj\Release\portable-sim-panels-fsuipc-server.exe
 C:\Users\joe\projects\portable-sim-panels-fsuipc-server\obj\Release\portable-sim-panels-fsuipc-server.pdb
+C:\Users\joe\projects\portable-sim-panels-fsuipc-server\obj\Release\portable-sim-panels-fsuipc-server.csprojAssemblyReference.cache

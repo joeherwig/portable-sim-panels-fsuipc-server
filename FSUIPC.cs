@@ -12,7 +12,7 @@ namespace portableSimPanelsFsuipcServer
         public Offset<string> ATC_IDENTIFIER = new Offset<string>(0x313C, 12);
         public Offset<uint> INDICATED_ALTITUDE = new Offset<uint>(0x3324);
         public Offset<uint> AIRSPEED_INDICATED = new Offset<uint>(0x02BC);
-        public Offset<uint> avionicsMaster = new Offset<uint>(0x2E80);
+        public static Offset<uint> avionicsMaster = new Offset<uint>(0x2E80);
         public Offset<uint> PLANE_HEADING_DEGREES_MAGNETIC = new Offset<uint>(0x580);
         public Offset<uint> PLANE_BANK_DEGREES = new Offset<uint>(0x57C);
         public Offset<uint> PLANE_PITCH_DEGREES = new Offset<uint>(0x578);

@@ -125,8 +125,8 @@ namespace portableSimPanelsFsuipcServer
             {
                 UpdateJsonTextField("Disconnected. Looking for Flight Simulator...");
                 SimulatorInfo.Content = "Disconnected. Looking for Flight Simulator...";
-
-               SimulatorInfo.Foreground = new SolidColorBrush(System.Windows.Media.Color.FromRgb(255,0,0));
+                SimulatorInfo.Foreground = new SolidColorBrush(System.Windows.Media.Color.FromRgb(255,0,0));
+                timerConnection.Start();
             }
 
             config = JObject.Parse(Config.GetConfig());

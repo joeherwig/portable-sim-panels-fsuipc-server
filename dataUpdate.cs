@@ -39,7 +39,7 @@ namespace portableSimPanelsFsuipcServer
                 App.FsuipcObject["AUTOPILOT_VERTICALSPEED_LOCK"] = Calc.CalculateValue("AUTOPILOT_VERTICALSPEED_LOCK", this.AUTOPILOT_VERTICALSPEED_LOCK.Value.ToString(), out result);
                 App.FsuipcObject["AUTOPILOT_YAW_DAMPER"] = Calc.CalculateValue("AUTOPILOT_YAW_DAMPER", this.AUTOPILOT_YAW_DAMPER.Value.ToString(), out result);
                 App.FsuipcObject["AUTOTHROTTLE_ARM"] = Calc.CalculateValue("AUTOTHROTTLE_ARM", this.AUTOTHROTTLE_ARM.Value.ToString(), out result);
-                App.FsuipcObject["AVIONICS_MASTER"] = Calc.CalculateValue("AVIONICS_MASTER", this.avionicsMaster.Value.ToString(), out result);
+                App.FsuipcObject["AVIONICS_MASTER"] = Calc.CalculateValue("AVIONICS_MASTER", MainWindow.avionicsMaster.Value.ToString(), out result);
                 App.FsuipcObject["DME_SWITCH"] = Calc.CalculateValue("DME_SWITCH", this.DME_SWITCH.Value.ToString(), out result);
                 App.FsuipcObject["ELEVATOR_TRIM_POSITION"] = Calc.CalculateValue("ELEVATOR_TRIM_POSITION", this.ELEVATOR_TRIM_POSITION.Value.ToString(), out result);
                 App.FsuipcObject["ENG_1_MANIFOLD_PRESSURE"] = Calc.CalculateValue("ENG_1_MANIFOLD_PRESSURE", this.ENG_1_MANIFOLD_PRESSURE.Value.ToString(), out result);

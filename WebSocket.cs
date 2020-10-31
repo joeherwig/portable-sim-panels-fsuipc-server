@@ -1,6 +1,7 @@
 ﻿namespace portableSimPanelsFsuipcServer
 {
     using EmbedIO.WebSockets;
+    using System;
     using System.Threading.Tasks;
 
     /// <summary>
@@ -16,7 +17,12 @@
 
         /// <inheritdoc />
         protected override Task OnMessageReceivedAsync(IWebSocketContext context, byte[] buffer, IWebSocketReceiveResult result)
-            => SendToOthersAsync(context, Encoding.GetString(buffer));
+        {
+            System.Text.ASCIIEncoding enc = new System.Text.ASCIIEncoding();
+            return Task.Run(() => SetSimValue.Update(enc.GetString(buffer)));
+        }
+
+        //SendToOthersAsync(context, Encoding.GetString(buffer));
 
 
         /// <inheritdoc />
