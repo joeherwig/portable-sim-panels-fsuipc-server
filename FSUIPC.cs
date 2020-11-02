@@ -30,12 +30,12 @@ namespace portableSimPanelsFsuipcServer
         public Offset<uint> GEAR_CENTER_POSITION = new Offset<uint>(0x0BEC);
         public Offset<uint> GEAR_RIGHT_POSITION = new Offset<uint>(0xBF0);
         public Offset<uint> AUTOPILOT_AVAILABLE = new Offset<uint>(0x764);
-        public Offset<uint> AUTOPILOT_MASTER = new Offset<uint>(0x7B);
+        public Offset<uint> AUTOPILOT_MASTER = new Offset<uint>(0x7BC);
         public Offset<uint> AUTOPILOT_HEADING_LOCK = new Offset<uint>(0x7C8);
-        public Offset<uint> AUTOPILOT_HEADING_LOCK_DIR = new Offset<uint>(0x7C);
+        public Offset<uint> AUTOPILOT_HEADING_LOCK_DIR = new Offset<uint>(0x7CC);
         public Offset<uint> AUTOPILOT_NAV1_LOCK = new Offset<uint>(0x7C4);
         public Offset<uint> AUTOPILOT_APR_LOCK = new Offset<uint>(0x800);
-        public Offset<uint> AUTOPILOT_GS_LOCK = new Offset<uint>(0x7F);
+        public Offset<uint> AUTOPILOT_GS_LOCK = new Offset<uint>(0x7FC);
         public Offset<uint> AUTOPILOT_FD_LOCK = new Offset<uint>(0x2EE0);
         public Offset<uint> AUTOPILOT_BACKCOURSE_LOCK = new Offset<uint>(0x804);
         public Offset<uint> AUTOPILOT_YAW_DAMPER = new Offset<uint>(0x808);
@@ -44,7 +44,7 @@ namespace portableSimPanelsFsuipcServer
         public Offset<uint> AUTOPILOT_ALTITUDE_LOCK_VAR = new Offset<uint>(0x7D4);
         public Offset<uint> AUTOPILOT_AIRSPEED_LOCK = new Offset<uint>(0x7D0);
         public Offset<uint> AUTOPILOT_AIRSPEED_LOCK_KNOTS = new Offset<uint>(0x7E2);
-        public Offset<uint> AUTOPILOT_VERTICALSPEED_LOCK = new Offset<uint>(0x7E);
+        public Offset<uint> AUTOPILOT_VERTICALSPEED_LOCK = new Offset<uint>(0x7EC);
         public Offset<uint> AUTOPILOT_VERTICALSPEED_LOCK_KNOTS = new Offset<uint>(0x7F2);
         public Offset<uint> AUTOPILOT_APPROACH_HOLD = new Offset<uint>(0x800);
         public Offset<uint> AUTOTHROTTLE_ARM = new Offset<uint>(0x810);
@@ -57,7 +57,7 @@ namespace portableSimPanelsFsuipcServer
         public Offset<short> NAV_1_DME_TIMETO = new Offset<short>(0x304);
         public Offset<byte> NAV_1_TOFROM = new Offset<byte>(0xC4B);
         public Offset<byte> HSI_TOFROM = new Offset<byte>(0x2FAD);
-        public Offset<byte> NAV_1_GS_ALIVE = new Offset<byte>(0xC4);
+        public Offset<byte> NAV_1_GS_ALIVE = new Offset<byte>(0xC4C);
         public Offset<Int32> NAV_1_SIGNAL_STRENGTH = new Offset<Int32>(0xC52);
         public Offset<short> NAV_1_RADIAL = new Offset<short>(0xC50);
         public Offset<short> Nav_2_OBS = new Offset<short>(0xC5E);
@@ -85,7 +85,7 @@ namespace portableSimPanelsFsuipcServer
         public Offset<double> PROP_2_RPM = new Offset<double>(0x2500);
         public Offset<double> PROP_3_RPM = new Offset<double>(0x2600);
         public Offset<double> PROP_4_RPM = new Offset<double>(0x2700);
-        public Offset<short> LIGHTS = new Offset<short>(0xD0);
+        public Offset<short> LIGHTS = new Offset<short>(0xD0C);
 
     }
 

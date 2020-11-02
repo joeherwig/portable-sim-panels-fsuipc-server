@@ -52,7 +52,7 @@ namespace portableSimPanelsFsuipcServer
             XamlQRCode qrCode = new XamlQRCode(qrCodeData);
             DrawingImage qrCodeAsXaml = qrCode.GetGraphic(20);
             QrCode.Source = qrCodeAsXaml;
-            QrCodeLabel.Content = "Click or Scan to open Website with Gauges from: http://" + Dns.GetHostName() + ":" + ServerPort + "/";
+            QrCodeLabel.Text = "Click or Scan to open Website with Gauges from:\nhttp://" + Dns.GetHostName() + ":" + ServerPort + "/";
 
             // Save web socket server as property and add it to web server
             webSocketServer = new WebSocketServer("/fsuipc");

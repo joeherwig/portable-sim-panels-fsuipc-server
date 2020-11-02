@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:portableSimPanelsFsuipcServer"
         mc:Ignorable="d"
         Title="portable-sim-panels-FSUIPC-server" 
-        Height="250" Width="400" 
+        Height="266.333" Width="401.333" 
         Background="{DynamicResource BackgroundColor}" WindowStyle="None"
         MouseDown="Window_MouseDown" MinWidth="400" MinHeight="250"
         WindowChrome.WindowChrome="{DynamicResource WindowChromeKey}">
@@ -25,21 +25,18 @@
                               HorizontalAlignment="Center"
                               ContentSource="Header" Margin="10,10,10,10"
                               RecognizesAccessKey="True">
-                                    <ContentPresenter.LayoutTransform>
-                                        <RotateTransform Angle="0" />
-                                    </ContentPresenter.LayoutTransform>
                                 </ContentPresenter>
                             </Border>
                         </Grid>
                         <ControlTemplate.Triggers>
                             <Trigger Property="IsEnabled" Value="true">
-                                <Setter TargetName="Border" Property="Background" Value="#33A5A5A5" />
+                                <Setter TargetName="Border" Property="Background" Value="#66353535" />
                                 <Setter TargetName="Border" Property="BorderThickness" Value="1,1,1,0" />
                                 <Setter Property="Foreground" Value="#FF969696" />
                             </Trigger>
                             <Trigger Property="IsSelected" Value="True">
                                 <Setter Property="Panel.ZIndex" Value="100" />
-                                <Setter TargetName="Border" Property="Background" Value="#33FFA200" />
+                                <Setter TargetName="Border" Property="Background" Value="#FF424242" />
                                 <Setter TargetName="Border" Property="BorderThickness" Value="1,1,1,0" />
                                 <Setter Property="Foreground" Value="White" />
                             </Trigger>
@@ -99,34 +96,41 @@
 
         </Grid>
         <Image Panel.ZIndex="-1" Source="airplane-airline-aircraft-travel.jpg" Stretch="UniformToFill"/>
-        <TabControl x:Name="Tabs" Margin="0,32,10,10" Background="#331D1D1D" TabStripPlacement="Left" BorderBrush="{x:Null}" Foreground="{DynamicResource TextColor}">
+        <TabControl x:Name="Tabs" Margin="0,32,10.5,9.5" Background="#331D1D1D" TabStripPlacement="Left" BorderBrush="{x:Null}" Foreground="{DynamicResource TextColor}">
 
             <TabItem Header="Sim" >
-                <TabItem.Background>
-                    <LinearGradientBrush EndPoint="0,1" StartPoint="0,0">
-                        <GradientStop Color="#FFF0F0F0" Offset="0"/>
-                        <GradientStop Color="#CCA60000" Offset="1"/>
-                    </LinearGradientBrush>
-                </TabItem.Background>
-                <Grid>
-                    <Label x:Name="SimulatorInfo" Content="" Margin="0,0,1,158"/>
-                    <Label x:Name="QrCodeLabel" Content="" Margin="0,47,1,123" Foreground="{DynamicResource TextColor}"/>
-                    <Button x:Name="QrCodeButton" Margin="100,87,100,10" Background="Black" BorderBrush="{x:Null}" Foreground="{DynamicResource TextColor}" Click="QrCodeButton_Click_1">
+                <Grid Background="#66424242">
+                    <Label x:Name="SimulatorInfo" Content="" Margin="0,0,0.5,174.5"/>
+                    <TextBlock x:Name="QrCodeLabel" HorizontalAlignment="Left" Margin="10,52,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="306" Height="34"/>
+                    <Button x:Name="QrCodeButton" Margin="100,91,100,10" Click="QrCodeButton_Click_1" Cursor="Hand">
+                        <Button.Style>
+        <Style TargetType="{x:Type Button}">
+            <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Border Background="{TemplateBinding Background}">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" Value="Transparent"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+    </Button.Style>
                         <Image x:Name="QrCode" />
                     </Button>
                 </Grid>
 
             </TabItem>
             <TabItem Header="FSUIPC">
-                <TabItem.Background>
-                    <LinearGradientBrush EndPoint="0,1" StartPoint="0,0">
-                        <GradientStop Color="#FFF0F0F0" Offset="0"/>
-                        <GradientStop Color="White" Offset="1"/>
-                    </LinearGradientBrush>
-                </TabItem.Background>
-                <Grid >
-                    <TextBox x:Name="JsonFilterField" Height="18" TextWrapping="Wrap" Text="" Background="{DynamicResource BackgroundColor}" Foreground="{DynamicResource TextColor}" Margin="0,-23,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.5,1.018"/>
-                    <TextBox x:Name="JsonTextField" Margin="0,28,10,10" TextWrapping="Wrap" Foreground="{DynamicResource TextColor}" AcceptsReturn="True" BorderBrush="{x:Null}" Background="{DynamicResource BackgroundColor}" OpacityMask="#7F2A2A2A"/>
+                <Grid Background="#66424242">
+                    <TextBox x:Name="JsonFilterField" Height="24" TextWrapping="Wrap" Text="" Background="{DynamicResource BackgroundColor}" Foreground="{DynamicResource TextColor}" VerticalAlignment="Top" RenderTransformOrigin="0.5,1.018"/>
+                    <TextBox x:Name="JsonTextField" Margin="0,29,0,0" TextWrapping="Wrap" Foreground="{DynamicResource TextColor}" AcceptsReturn="True" BorderBrush="{x:Null}" Background="{x:Null}" IsReadOnly="True" ScrollViewer.VerticalScrollBarVisibility="Auto"/>
                 </Grid>
             </TabItem>
 
