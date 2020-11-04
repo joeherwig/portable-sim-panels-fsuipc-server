@@ -16,7 +16,7 @@ namespace portableSimPanelsFsuipcServer
             catch (Exception ex)
             {
                 Console.WriteLine("Error on loading config.json" + ex);
-                return "{\"webRootPath\": \"..\\\\portable-sim-panels\\\\public\", \"serverPort\": 8080, \"openWebsiteOnStart\": true}";
+                return "{\"webRootPath\": \"..\\\\portable-sim-panels\\\\public\", \"serverPort\": 8080, \"OpenWebSiteOnStart\": true}";
             }
         }
     }

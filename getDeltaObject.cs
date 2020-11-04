@@ -8,7 +8,7 @@ namespace portableSimPanelsFsuipcServer
     /// </summary>
     public partial class App
     {
-        public static void getDeltaObject(Dictionary<string, string> previousValues, Dictionary<string, string> currentValues)
+        public static void GetDeltaObject(Dictionary<string, string> previousValues, Dictionary<string, string> currentValues)
         {
             App.DeltaObject.Clear();
             foreach (KeyValuePair<string, string> pair in currentValues)

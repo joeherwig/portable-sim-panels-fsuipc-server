@@ -12,7 +12,7 @@ namespace portableSimPanelsFsuipcServer
             private IEqualityComparer<TValue> valueComparer;
             public DictionaryComparer(IEqualityComparer<TValue> valueComparer = null)
             {
-                this.valueComparer = valueComparer ?? EqualityComparer<TValue>.Default;
+                valueComparer = valueComparer ?? EqualityComparer<TValue>.Default;
             }
             public bool Equals(Dictionary<TKey, TValue> x, Dictionary<TKey, TValue> y)
             {

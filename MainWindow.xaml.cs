@@ -18,28 +18,28 @@ namespace portableSimPanelsFsuipcServer
     public partial class MainWindow : Window
     {
         // Set up a main timer
-        private DispatcherTimer timerMain = new DispatcherTimer();
+        private static DispatcherTimer timerMain = new DispatcherTimer();
         // And another to look for a connection
-        private DispatcherTimer timerConnection = new DispatcherTimer();
+        private static DispatcherTimer timerConnection = new DispatcherTimer();
         private WebSocketServer webSocketServer;
         public JObject config;
         private string url;
         private string HtmlRootPath;
         private string ServerPort;
-        private bool OpenWebsiteOnStart;
+        private bool OpenWebSiteOnStart;
 
         public MainWindow()
         {
             InitializeComponent();
             ConfigureForm();
             timerMain.Interval = TimeSpan.FromMilliseconds(25);
-            timerMain.Tick += timerMain_Tick;
+            timerMain.Tick += TimerMain_Tick;
             timerConnection.Interval = TimeSpan.FromMilliseconds(1000);
-            timerConnection.Tick += timerConnection_Tick;
+            timerConnection.Tick += TimerConnection_Tick;
             timerConnection.Start();
             HtmlRootPath = @"" + config["webRootPath"].ToString();
             ServerPort = @"" + config["serverPort"].ToString(); 
-            OpenWebsiteOnStart = bool.Parse(config["openWebsiteOnStart"].ToString());
+            OpenWebSiteOnStart = bool.Parse(config["OpenWebSiteOnStart"].ToString());
 
             if (Directory.Exists(HtmlRootPath))
                 Console.WriteLine("+++++++++++++++++ Folder exists on " + Dns.GetHostName());
@@ -61,9 +61,9 @@ namespace portableSimPanelsFsuipcServer
 	            .CreateWebServer(url, HtmlRootPath, webSocketServer)
                 .RunAsync();
 
-            if (OpenWebsiteOnStart)
+            if (OpenWebSiteOnStart)
             {
-                openWebSite();
+                OpenWebSite();
             }
 
 
@@ -77,7 +77,7 @@ namespace portableSimPanelsFsuipcServer
             //}
         }
 
-        private void openWebSite()
+        private void OpenWebSite()
         {
             var browser = new System.Diagnostics.Process()
             {
@@ -85,7 +85,7 @@ namespace portableSimPanelsFsuipcServer
             };
             browser.Start();
         }
-        private void timerConnection_Tick(object sender, EventArgs e)
+        private void TimerConnection_Tick(object sender, EventArgs e)
         {
             // Try to open the connection
             try
@@ -94,8 +94,8 @@ namespace portableSimPanelsFsuipcServer
 
                 FSUIPCConnection.Open();
                 // If there was no problem, stop this timer and start the main timer
-                this.timerConnection.Stop();
-                this.timerMain.Start();
+                timerConnection.Stop();
+                timerMain.Start();
                 // Update the connection status
                 ConfigureForm();
             }
@@ -135,8 +135,8 @@ namespace portableSimPanelsFsuipcServer
         // Window closing so stop all the timers and close the connection
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
-            this.timerConnection.Stop();
-            this.timerMain.Stop();
+            timerConnection.Stop();
+            timerMain.Stop();
             FSUIPCConnection.Close();
         }
 
@@ -183,7 +183,7 @@ namespace portableSimPanelsFsuipcServer
 
         private void QrCodeButton_Click_1(object sender, RoutedEventArgs e)
         {
-            openWebSite();
+            OpenWebSite();
         }
     }
 }

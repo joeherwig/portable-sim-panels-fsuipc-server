@@ -18,8 +18,17 @@ namespace portableSimPanelsFsuipcServer
                 var jObj = JObject.Parse(json);
                 foreach (var command in jObj.Cast<KeyValuePair<string, JToken>>().ToList())
                 {
-                    Console.WriteLine(command.Key + ": " + command.Value);
-                    MainWindow.avionicsMaster.Value = Convert.ToUInt32(command.Value);
+                    switch (command.Key.ToUpper())
+                    {
+                        case "AVIONICS_MASTER":
+                            MainWindow.AVIONICS_MASTER.Value = (uint)(command.Value);
+                            break;
+                        case "GEAR_HANDLE_POSITION":
+                            var gearHandleValue = (uint)command.Value == 0 ? 0 : (uint)16383;
+                            MainWindow.GEAR_HANDLE_POSITION.Value = gearHandleValue;
+                            break;
+                    }
+
                     FSUIPC.FSUIPCConnection.Process();
                     Console.WriteLine(command.Key + ": " + command.Value);
                 }

@@ -29,7 +29,6 @@ C:\Users\j.herwig\projects\portable-sim-panels-fsuipc-server\obj\Release\portabl
 C:\Users\j.herwig\projects\portable-sim-panels-fsuipc-server\obj\Release\portable-sim-panels-fsuipc-server.csproj.CopyComplete
 C:\Users\j.herwig\projects\portable-sim-panels-fsuipc-server\obj\Release\portable-sim-panels-fsuipc-server.exe
 C:\Users\j.herwig\projects\portable-sim-panels-fsuipc-server\obj\Release\portable-sim-panels-fsuipc-server.pdb
-C:\Users\j.herwig\projects\portable-sim-panels-fsuipc-server\obj\Release\portable-sim-panels-fsuipc-server.csprojAssemblyReference.cache
 C:\Users\j.herwig\projects\portable-sim-panels-fsuipc-server - Kopie (2)\bin\Release\portable-sim-panels-fsuipc-server.exe.config
 C:\Users\j.herwig\projects\portable-sim-panels-fsuipc-server - Kopie (2)\bin\Release\portable-sim-panels-fsuipc-server.exe
 C:\Users\j.herwig\projects\portable-sim-panels-fsuipc-server - Kopie (2)\bin\Release\portable-sim-panels-fsuipc-server.pdb
