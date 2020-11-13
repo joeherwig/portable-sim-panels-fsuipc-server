@@ -64,13 +64,15 @@ namespace portableSimPanelsFsuipcServer
                 App.FsuipcObject["HSI_TOFROM"] = Calc.CalculateValue("HSI_TOFROM", HSI_TOFROM.Value.ToString(), out result);
                 App.FsuipcObject["INDICATED_ALTITUDE"] = Calc.CalculateValue("INDICATED_ALTITUDE", INDICATED_ALTITUDE.Value.ToString(), out result);
                 App.FsuipcObject["LIGHTS"] = Calc.CalculateValue("LIGHTS", LIGHTS.Value.ToString(), out result);
+                App.FsuipcObject["COM_1_FREQUENCY"] = Calc.ToFrequency("COM_1_FREQUENCY", COM_1_FREQUENCY.Value, out result);
+                App.FsuipcObject["NAV_1_FREQUENCY"] = Calc.ToFrequency("NAV_1_FREQUENCY", NAV_1_FREQUENCY.Value, out result);
                 App.FsuipcObject["NAV_1_CDI"] = Calc.CalculateValue("NAV_1_CDI", NAV_1_CDI.Value.ToString(), out result);
                 App.FsuipcObject["NAV_1_DME_DISTANCE"] = Calc.CalculateValue("NAV_1_DME_DISTANCE", NAV_1_DME_DISTANCE.Value.ToString(), out result);
                 App.FsuipcObject["NAV_1_DME_SPEED"] = Calc.CalculateValue("NAV_1_DME_SPEED", NAV_1_DME_SPEED.Value.ToString(), out result);
                 App.FsuipcObject["NAV_1_DME_TIMETO"] = Calc.CalculateValue("NAV_1_DME_TIMETO", NAV_1_DME_TIMETO.Value.ToString(), out result);
                 App.FsuipcObject["NAV_1_GS_ALIVE"] = Calc.CalculateValue("NAV_1_GS_ALIVE", NAV_1_GS_ALIVE.Value.ToString(), out result);
                 App.FsuipcObject["NAV_1_GSI"] = Calc.CalculateValue("NAV_1_GSI", NAV_1_GSI.Value.ToString(), out result);
-                App.FsuipcObject["Nav_1_OBS"] = Calc.CalculateValue("Nav_1_OBS", Nav_1_OBS.Value.ToString(), out result);
+                App.FsuipcObject["NAV_1_OBS"] = Calc.CalculateValue("NAV_1_OBS", NAV_1_OBS.Value.ToString(), out result);
                 App.FsuipcObject["NAV_1_RADIAL"] = Calc.CalculateValue("NAV_1_RADIAL", NAV_1_RADIAL.Value.ToString(), out result);
                 App.FsuipcObject["NAV_1_SIGNAL_STRENGTH"] = Calc.CalculateValue("NAV_1_SIGNAL_STRENGTH", NAV_1_SIGNAL_STRENGTH.Value.ToString(), out result);
                 App.FsuipcObject["NAV_1_TOFROM"] = Calc.CalculateValue("NAV_1_TOFROM", NAV_1_TOFROM.Value.ToString(), out result);
@@ -79,7 +81,7 @@ namespace portableSimPanelsFsuipcServer
                 App.FsuipcObject["NAV_2_DME_SPEED"] = Calc.CalculateValue("NAV_2_DME_SPEED", NAV_2_DME_SPEED.Value.ToString(), out result);
                 App.FsuipcObject["NAV_2_DME_TIMETO"] = Calc.CalculateValue("NAV_2_DME_TIMETO", NAV_2_DME_TIMETO.Value.ToString(), out result);
                 App.FsuipcObject["NAV_2_GSI"] = Calc.CalculateValue("NAV_2_GSI", NAV_2_GSI.Value.ToString(), out result);
-                App.FsuipcObject["Nav_2_OBS"] = Calc.CalculateValue("Nav_2_OBS", Nav_2_OBS.Value.ToString(), out result);
+                App.FsuipcObject["NAV_2_OBS"] = Calc.CalculateValue("NAV_2_OBS", NAV_2_OBS.Value.ToString(), out result);
                 App.FsuipcObject["PLANE_BANK_DEGREES"] = Calc.CalculateValue("PLANE_BANK_DEGREES", PLANE_BANK_DEGREES.Value.ToString(), out result);
                 App.FsuipcObject["PLANE_HEADING_DEGREES_MAGNETIC"] = Calc.CalculateValue("PLANE_HEADING_DEGREES_MAGNETIC", PLANE_HEADING_DEGREES_MAGNETIC.Value.ToString(), out result);
                 App.FsuipcObject["PLANE_PITCH_DEGREES"] = Calc.CalculateValue("PLANE_PITCH_DEGREES", PLANE_PITCH_DEGREES.Value.ToString(), out result);

@@ -49,8 +49,10 @@ namespace portableSimPanelsFsuipcServer
         public static Offset<uint> AUTOPILOT_VERTICALSPEED_LOCK_KNOTS = new Offset<uint>(0x7F2);
         public static Offset<uint> AUTOPILOT_APPROACH_HOLD = new Offset<uint>(0x800);
         public static Offset<uint> AUTOTHROTTLE_ARM = new Offset<uint>(0x810);
+        public static Offset<ushort> COM_1_FREQUENCY = new Offset<ushort>(0x34E);
         public static Offset<short> DME_SWITCH = new Offset<short>(0x378);
-        public static Offset<short> Nav_1_OBS = new Offset<short>(0xC4E);
+        public static Offset<ushort> NAV_1_FREQUENCY = new Offset<ushort>(0x350);
+        public static Offset<short> NAV_1_OBS = new Offset<short>(0xC4E);
         public static Offset<float> NAV_1_CDI = new Offset<float>(0x2AA);
         public static Offset<float> NAV_1_GSI = new Offset<float>(0x2AB0);
         public static Offset<short> NAV_1_DME_DISTANCE = new Offset<short>(0x300);
@@ -61,7 +63,7 @@ namespace portableSimPanelsFsuipcServer
         public static Offset<byte> NAV_1_GS_ALIVE = new Offset<byte>(0xC4C);
         public static Offset<Int32> NAV_1_SIGNAL_STRENGTH = new Offset<Int32>(0xC52);
         public static Offset<short> NAV_1_RADIAL = new Offset<short>(0xC50);
-        public static Offset<short> Nav_2_OBS = new Offset<short>(0xC5E);
+        public static Offset<short> NAV_2_OBS = new Offset<short>(0xC5E);
         public static Offset<float> NAV_2_CDI = new Offset<float>(0x2AB4);
         public static Offset<float> NAV_2_GSI = new Offset<float>(0x2AB8);
         public static Offset<short> NAV_2_DME_DISTANCE = new Offset<short>(0x306);

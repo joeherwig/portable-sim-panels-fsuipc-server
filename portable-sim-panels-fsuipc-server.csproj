@@ -118,7 +118,7 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="calculateValue.cs" />
+    <Compile Include="Calc.cs" />
     <Compile Include="SetSimValue.cs" />
     <Compile Include="Config.cs" />
     <Compile Include="WebSocket.cs" />

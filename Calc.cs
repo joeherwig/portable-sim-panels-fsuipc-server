@@ -175,4 +175,32 @@ public class Calc
         }
         return returnValue.ToString().Replace(",", ".");
     }
+
+    public static string ToFrequency(string key, ushort rawValue, out string returnValue)
+    {
+        returnValue = rawValue.ToString();
+        switch (key)
+        {
+            case "NAV_1_FREQUENCY":
+                returnValue = ushortToBCD(rawValue);
+                break;
+        }
+        returnValue = ushortToBCD(rawValue);
+        return returnValue;
+    }
+
+    static string ushortToBCD(ushort input)
+    {
+        byte[] bcds = BitConverter.GetBytes(input);
+        Array.Reverse(bcds);
+        decimal result = 0;
+        foreach (byte bcd in bcds)
+        {
+            result *= 100;
+            result += (10 * (bcd >> 4));
+            result += bcd & 0xf;
+        }
+        result = (result + 10000) / 100;
+        return result.ToString();
+    }
 }
