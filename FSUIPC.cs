@@ -49,7 +49,10 @@ namespace portableSimPanelsFsuipcServer
         public static Offset<uint> AUTOPILOT_VERTICALSPEED_LOCK_KNOTS = new Offset<uint>(0x7F2);
         public static Offset<uint> AUTOPILOT_APPROACH_HOLD = new Offset<uint>(0x800);
         public static Offset<uint> AUTOTHROTTLE_ARM = new Offset<uint>(0x810);
-        public static Offset<ushort> COM_1_FREQUENCY = new Offset<ushort>(0x34E);
+        public static Offset<uint> COM_1_FREQUENCY = new Offset<uint>(0x5C4);
+        public static Offset<uint> COM_1_STDBYFREQUENCY = new Offset<uint>(0x5CC);
+        public static Offset<uint> COM_2_FREQUENCY = new Offset<uint>(0x5C8);
+        public static Offset<uint> COM_2_STDBYFREQUENCY = new Offset<uint>(0x5D0);
         public static Offset<short> DME_SWITCH = new Offset<short>(0x378);
         public static Offset<ushort> NAV_1_FREQUENCY = new Offset<ushort>(0x350);
         public static Offset<short> NAV_1_OBS = new Offset<short>(0xC4E);

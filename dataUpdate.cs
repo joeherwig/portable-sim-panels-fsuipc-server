@@ -64,8 +64,11 @@ namespace portableSimPanelsFsuipcServer
                 App.FsuipcObject["HSI_TOFROM"] = Calc.CalculateValue("HSI_TOFROM", HSI_TOFROM.Value.ToString(), out result);
                 App.FsuipcObject["INDICATED_ALTITUDE"] = Calc.CalculateValue("INDICATED_ALTITUDE", INDICATED_ALTITUDE.Value.ToString(), out result);
                 App.FsuipcObject["LIGHTS"] = Calc.CalculateValue("LIGHTS", LIGHTS.Value.ToString(), out result);
-                App.FsuipcObject["COM_1_FREQUENCY"] = Calc.ToFrequency("COM_1_FREQUENCY", COM_1_FREQUENCY.Value, out result);
-                App.FsuipcObject["NAV_1_FREQUENCY"] = Calc.ToFrequency("NAV_1_FREQUENCY", NAV_1_FREQUENCY.Value, out result);
+                App.FsuipcObject["COM_1_FREQUENCY"] = Calc.To8kHzFrequency("COM_1_FREQUENCY", COM_1_FREQUENCY.Value, out result);
+                App.FsuipcObject["COM_1_STDBYFREQUENCY"] = Calc.To8kHzFrequency("COM_1_STDBYFREQUENCY", COM_1_STDBYFREQUENCY.Value, out result);
+                App.FsuipcObject["COM_2_FREQUENCY"] = Calc.To8kHzFrequency("COM_2_FREQUENCY", COM_2_FREQUENCY.Value, out result);
+                App.FsuipcObject["COM_2_STDBYFREQUENCY"] = Calc.To8kHzFrequency("COM_2_STDBYFREQUENCY", COM_2_STDBYFREQUENCY.Value, out result);
+                App.FsuipcObject["NAV_1_FREQUENCY"] = Calc.To25kHzFrequency("NAV_1_FREQUENCY", NAV_1_FREQUENCY.Value, out result);
                 App.FsuipcObject["NAV_1_CDI"] = Calc.CalculateValue("NAV_1_CDI", NAV_1_CDI.Value.ToString(), out result);
                 App.FsuipcObject["NAV_1_DME_DISTANCE"] = Calc.CalculateValue("NAV_1_DME_DISTANCE", NAV_1_DME_DISTANCE.Value.ToString(), out result);
                 App.FsuipcObject["NAV_1_DME_SPEED"] = Calc.CalculateValue("NAV_1_DME_SPEED", NAV_1_DME_SPEED.Value.ToString(), out result);
@@ -76,6 +79,7 @@ namespace portableSimPanelsFsuipcServer
                 App.FsuipcObject["NAV_1_RADIAL"] = Calc.CalculateValue("NAV_1_RADIAL", NAV_1_RADIAL.Value.ToString(), out result);
                 App.FsuipcObject["NAV_1_SIGNAL_STRENGTH"] = Calc.CalculateValue("NAV_1_SIGNAL_STRENGTH", NAV_1_SIGNAL_STRENGTH.Value.ToString(), out result);
                 App.FsuipcObject["NAV_1_TOFROM"] = Calc.CalculateValue("NAV_1_TOFROM", NAV_1_TOFROM.Value.ToString(), out result);
+                App.FsuipcObject["NAV_1_FREQUENCY"] = Calc.To25kHzFrequency("NAV_1_FREQUENCY", NAV_1_FREQUENCY.Value, out result);
                 App.FsuipcObject["NAV_2_CDI"] = Calc.CalculateValue("NAV_2_CDI", NAV_2_CDI.Value.ToString(), out result);
                 App.FsuipcObject["NAV_2_DME_DISTANCE"] = Calc.CalculateValue("NAV_2_DME_DISTANCE", NAV_2_DME_DISTANCE.Value.ToString(), out result);
                 App.FsuipcObject["NAV_2_DME_SPEED"] = Calc.CalculateValue("NAV_2_DME_SPEED", NAV_2_DME_SPEED.Value.ToString(), out result);

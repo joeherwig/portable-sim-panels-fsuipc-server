@@ -176,17 +176,15 @@ public class Calc
         return returnValue.ToString().Replace(",", ".");
     }
 
-    public static string ToFrequency(string key, ushort rawValue, out string returnValue)
+    public static string To25kHzFrequency(string key, ushort rawValue, out string returnValue)
     {
-        returnValue = rawValue.ToString();
-        switch (key)
-        {
-            case "NAV_1_FREQUENCY":
-                returnValue = ushortToBCD(rawValue);
-                break;
-        }
         returnValue = ushortToBCD(rawValue);
         return returnValue;
+    }
+    public static string To8kHzFrequency(string key, uint rawValue, out string newFreq)
+    {
+        newFreq = (Convert.ToDecimal(rawValue) / 1000000).ToString("0.000", System.Globalization.CultureInfo.InvariantCulture);
+        return newFreq;
     }
 
     static string ushortToBCD(ushort input)
@@ -201,6 +199,6 @@ public class Calc
             result += bcd & 0xf;
         }
         result = (result + 10000) / 100;
-        return result.ToString();
+        return result.ToString("0.00", System.Globalization.CultureInfo.InvariantCulture);
     }
 }
